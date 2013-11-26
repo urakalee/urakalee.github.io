@@ -16,4 +16,7 @@ killall Dock
 
 好吧，本来分组这种东西也是我蛋疼搞的，消失就消失吧，有 Alfred 呢。。。
 
- [community]: https://discussions.apple.com/message/23541241#23541241 "Mavericks Launchpad, missing icons" 
+ [community]: https://discussions.apple.com/message/23541241#23541241 "Mavericks Launchpad, missing icons"
+
+****
+Update@2013.11.26: 最新版的 CleanMyMac 2.2.0 貌似不会有清理完缓存瘫痪的问题了
