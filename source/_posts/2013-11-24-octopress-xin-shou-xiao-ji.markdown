@@ -44,4 +44,5 @@ git branch -D master
  * PS: 由于可以使用 `rake preview` 进行调试，master 分枝仅用于发布，所以完全没有必要 checkout master；不 checkout 还避免了 pull 和 push 时会捎上 master 的问题
  * TODO1: 更新 Octopress
  * TODO2: 评论和其它组件
+ * TODO3: Google Analytic
 
