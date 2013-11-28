@@ -17,4 +17,31 @@ sudo bundle install
 rake install
 </code></pre>
 
+`rake deploy` 之后，要 `git add` 和 `git push origin source`, git 新手（像我）往往都习惯于顺手来个 `git pull`。唔，然后就悲剧了。因为这个时候 git 已经很傻地把你的 source 分枝和远程的 master 分枝关联在一起了，所以 pull 的时候会没头没脑地要 merge 这两个分枝。已经 merge 的怎么回退我就不说了，还没 pull 的，先修改一下 config 文件。
+<pre><code>vim .git/config
+
+...
+[branch "source"]
+    remote = origin
+    merge = refs/heads/source
+</code></pre>
+
+如果你像我一样，公司用 git，但博客是私人的，那么最好配置一个 local 的 user，这样博客的提交会好看些。知道格式的也可以直接修改 config 文件。
+<pre><code>git config user.name [your-name]
+git config user.email [your-email]
+</code></pre>
+
+最后，在多台机器上部署。同样要先搞定 ruby 部分，但不需要运行 `rake install` 了。
+<pre><code>git clone git@github.com:[your-blog-name].github.io.git
+cd [your-blog-name].github.io
+checkout source
+git branch -D master
+</code></pre>
+
  [devtang]: http://beyondvincent.com/blog/2013/08/03/108-creating-a-github-blog-using-octopress/ "利用Octopress搭建一个Github博客"
+
+****
+ * PS: 由于可以使用 `rake preview` 进行调试，master 分枝仅用于发布，所以完全没有必要 checkout master；不 checkout 还避免了 pull 和 push 时会捎上 master 的问题
+ * TODO1: 更新 Octopress
+ * TODO2: 评论和其它组件
+
