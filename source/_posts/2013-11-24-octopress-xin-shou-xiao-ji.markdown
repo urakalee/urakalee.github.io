@@ -31,11 +31,12 @@ rake install
 git config user.email [your-email]
 </code></pre>
 
-最后，在多台机器上部署。同样要先搞定 ruby 部分，但不需要运行 `rake install` 了。
-<pre><code>git clone git@github.com:[your-blog-name].github.io.git
+最后，在多台机器上部署。同样要先搞定 ruby 部分，但不需要运行 `rake install` 和 `rake setup_github_pages` 了。
+<pre><code>git clone [your-blog-repo]
 cd [your-blog-name].github.io
 checkout source
-git branch -D master
+git branch -D master # 不 checkout master
+git clone [your-blog-repo] _deploy # 模拟 rake setup_github_pages
 </code></pre>
 
  [devtang]: http://beyondvincent.com/blog/2013/08/03/108-creating-a-github-blog-using-octopress/ "利用Octopress搭建一个Github博客"
