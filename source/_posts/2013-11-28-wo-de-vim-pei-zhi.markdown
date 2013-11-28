@@ -9,7 +9,7 @@ categories: teamtoy
 
 # 行号
 set nu
-# tab转空格
+# tab 转空格
 set ts=4
 set expandtab
 set autoindent
