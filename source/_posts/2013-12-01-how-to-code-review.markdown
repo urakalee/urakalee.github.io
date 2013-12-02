@@ -12,30 +12,29 @@ categories: teamtoy
  
 ## 准备工作
  * 用 ldap 账号登录
- * 确保参与 review 的人都需要登录过，否则会找不到
+ * 确保参与 review 的人都需要登录过，否则会找不到人
  * 确保你要 review 的代码的 git 已经加入 reviewboard
  * 确保你要 review 的代码基点已经 push 到 git 服务器
    * 代码基点: `git diff <src-rev> <tgt-rev>` 中的 `<src-rev>`
 
 ## 提交一个 review
  1. 生成diff
-   * `git diff <src-rev> <tgt-rev> > d1.diff`
-     * 一般来说src是tgt的父节点
-   * 如何得到<src-rev>
-     * 对于开分枝/开发/merge的工作模式而言
-     * <src-rev>就是你开分枝时分枝点的版本
-     * 可以用git merge-base <src-branch> <tgt-branch>得到<src-rev>
-     * 比如你要从work分枝merge回master, 则执行git merge-base master work得到<src-rev>
-     * 前提是你没有merge过
-     * 但如果你已经merge过, 这样得到的<src-rev>是从最后一次merge的版本
-     * 对于在一个分枝上持续开发的工作模式
-     * 查看git log找到需要的<src-rev>
-     * 应该尽量在代码稳定时再merge, 勤开分枝, 慎重merge
-     * 应该尽量使用amend, 减少commit, git log才好找
- 1. 访问reviewboard, 点击New Review Request
- 1. 选择Repository, 选择diff文件, 点击Create Review Request
- 1. 点击View Diff, 查看上传结果是否和预期一致
- 1. 填写Summary/People/Description, 注意people是ldap账号名, 用tab选中, 别按回车
+    * `git diff <src-rev> <tgt-rev> > d1.diff`
+      * 一般来说src是tgt的父节点
+    * 如何得到 `<src-rev>`
+      * 对于开分枝 / 开发 / merge 的工作模式而言
+        * `<src-rev>` 就是你开分枝时分枝点的版本
+        * 可以用 `git merge-base <src-branch> <tgt-branch>` 得到 `<src-rev>`
+          * 比如你要从 work 分枝 merge 回 master，则执行 `git merge-base master work` 得到 `<src-rev>`，前提是你没有 merge 过
+          * 但如果你已经 merge 过，这样得到的 `<src-rev>` 是从最后一次 merge 的版本
+      * 对于在一个分枝上持续开发的工作模式
+        * 查看git log 找到需要的 `<src-rev>`
+      * 应该尽量在代码稳定时再 merge：勤开分枝，慎重 merge
+      * 应该尽量使用 amend，减少 commit，git log 才好找
+ 1. 访问 reviewboard，点击 New Review Request
+ 1. 选择 Repository，选择 diff 文件，点击 Create Review Request
+ 1. 点击 View Diff，查看上传结果是否和预期一致
+ 1. 填写 Summary / People / Description，注意 people 是 ldap 账号名，用 tab 补全，别按回车
  1. 确认提交，系统会发邮件给 people，通知他们来 review
                                             
 ## 更新一个 review
@@ -46,7 +45,7 @@ categories: teamtoy
     * 只能更新自己提交的 review
  1. 点击 Update 下拉菜单中的 Update Diff，选择 diff 文件，点击 Upload
  1. 点击 View Diff，查看上传结果是否和预期一致
- 1. 填写本次更新的内容, 确认提交
+ 1. 填写本次更新的内容，确认提交
                                                         
 ## review 别人的代码
  1. 点击邮件通知中的链接，登录 reviewboard
