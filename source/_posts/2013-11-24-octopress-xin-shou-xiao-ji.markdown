@@ -16,6 +16,7 @@ sudo gem install bundler
 sudo bundle install
 rake install
 </code></pre>
+<!-- more -->
 
 `rake deploy` 之后，要 `git add` 和 `git push origin source`, git 新手（像我）往往都习惯于顺手来个 `git pull`。唔，然后就悲剧了。因为这个时候 git 已经很傻地把你的 source 分枝和远程的 master 分枝关联在一起了，所以 pull 的时候会没头没脑地要 merge 这两个分枝。已经 merge 的怎么回退我就不说了，还没 pull 的，先修改一下 config 文件。
 <pre><code>vim .git/config

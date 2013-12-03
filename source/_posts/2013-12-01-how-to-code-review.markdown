@@ -18,6 +18,7 @@ categories: teamtoy
    * 代码基点: `git diff <src-rev> <tgt-rev>` 中的 `<src-rev>`
 
 ## 提交一个 review
+<!-- more -->
  1. 生成diff
     * `git diff <src-rev> <tgt-rev> > d1.diff`
       * 一般来说src是tgt的父节点
