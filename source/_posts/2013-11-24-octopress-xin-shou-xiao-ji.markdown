@@ -30,25 +30,27 @@ rake install
 
 如果你像我一样，公司用 git，但博客是私人的，那么最好配置一个 local 的 user，这样博客的提交会好看些。知道格式的也可以直接修改 config 文件。
 ``` sh
-git config user.name [your-name]
-git config user.email [your-email]
+git config user.name <your-name>
+git config user.email <your-email>
 ```
 
 最后，在多台机器上部署。同样要先搞定 ruby 部分，但不需要运行 `rake install` 和 `rake setup_github_pages` 了。
 ``` sh
-git clone [your-blog-repo]
-cd [your-blog-name].github.io
+git clone <your-blog-repo>
+cd <your-blog-name>.github.io
 checkout source
 git branch -D master # 不 checkout master
-git clone [your-blog-repo] _deploy # 模拟 rake setup_github_pages
+git clone <your-blog-repo> _deploy # 模拟 rake setup_github_pages
 ```
 
 ### 更多设置
  * 设置导航栏和增加文章分类的方法可以参考[冯威的博客][fengwei]
    * 文中 category_list.html 的代码有点小问题，应该是 <code>{&#37; category_list &#37;}</code>，估计是作者没有找到转义的方法，我用的是 ```<code>{&#37; category_list &#37;}</code>```
+ * 输入和显示表格的方法可以参考 [@samwize 的博客][samwize]
 
  [devtang]: http://blog.devtang.com/blog/2012/02/10/setup-blog-based-on-github/ "象写程序一样写博客：搭建基于github的博客"
  [fengwei]: http://oec2003.github.io/blog/2013/06/26/octopress-blog-setting/ "Octopress博客设置"
+ [samwize]: http://samwize.com/2012/09/24/octopress-table-stylesheet/ "Octopress Table Stylesheet"
 
 ****
  * PS: 由于可以使用 `rake preview` 进行调试，master 分枝仅用于发布，所以完全没有必要 checkout master；不 checkout 还避免了 pull 和 push 时会捎上 master 的问题

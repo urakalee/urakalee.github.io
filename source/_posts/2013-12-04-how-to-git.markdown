@@ -1,0 +1,67 @@
+---
+layout: post
+title: "How to Git"
+date: 2013-12-04 09:37:29 +0800
+comments: true
+categories: teamtoy 
+---
+## Git 入门资料
+ * windows 客户端: http://git-scm.com/download/win
+ * Pro Git 中文版(书, 可能被墙): http://git-scm.com/book/zh
+ * Pro Git 中文下载版(pdf): http://ishare.iask.sina.com.cn/f/23292123.html
+ * 图解 Git (推荐阅读): http://my.oschina.net/xdev/blog/114383
+ 
+## windows 下 Git 的配置和使用
+ * 以下命令都在 Git Bash 中运行
+ * 生成公钥/私钥
+   * ```ssh-keygen -t rsa```
+   * 生成的密钥对的位置在 ```C:\Users\<user-name>\.ssh```
+   * id_rsa 为私钥, id_rsa.pub 为公钥
+ * 配置 Git 的用户名和邮件
+   * $ git config --global user.name "<your-name>"
+   * $ git config --global user.email "<your-email>"
+<!-- more -->
+
+### 进阶配置
+ * 编辑 ```<git-install-path>\etc\gitconfig```
+   1. 修改autocrlf = input, 确保提交的文本都是 utf8 编码
+   1. 在文件末尾增加下面的代码, 使 Git GUI 能显示中文
+<pre><code>[gui]
+    encoding = utf-8
+</code></pre>
+ * 编辑 ```<git-install-path>\etc\git-completion.bash```
+   1. 在文件末尾增加下面的代码, 使 Git Bash 能显示中文
+<pre><code>alias ls='ls --show-control-chars --color=auto'
+</code></pre>
+ 
+## Git 使用规范
+ * 禁用中文文件名
+ * 所有文本文件使用 utf8 编码
+ * 所有文本文件使用 unix 换行 (\n), 而非 windows 换行 (\r\n)
+
+### Git 分枝管理
+ * master: 稳定可编译/测试通过的代码
+ * test: 测试环境的代码, 通过测试后merge到master
+ * pri-xxx: 个人开发代码 (private), 由于可能需要到部署到服务器上, 因此允许 push 到 remote
+ * dev: 开发环境的代码
+  * 在 pri-xxx 上开发的代码, 可能需要 merge 到开发环境上验证
+  * 验证通过后, **禁止**直接把 dev merge 到 test, 而是应该从 pri-xxx merge 到 test
+  * 由于 dev 代码在多人 merge 后可能出问题, 所以定期会从 master 重开 dev 分枝
+
+### Git 注释规范
+ * 所有注释, 除了 merge 时系统自动生成的, 均应符合以下规范
+   1. 格式为 ```<OPERATION>: description```
+   1. OPERATION 包括 ADD/MOD/DEL/FIX/MERGE/REFACTOR/CLEAN, 全部大写, 后面跟着冒号
+   1. description 需要是全英文, 包括标点
+ * 一次提交可以有多个 OPERATION, 但最好只有一个
+   * 多个 OPERATION 一行一个
+
+OPERATION| 何时使用 | description应该写什么
+---- | ---- | ----
+ADD | 增加功能/文件 | 增加了什么功能/文件(文件太多可以写目录)
+MOD | 修改功能/文件 | 修改了什么功能/文件, 以及修改原因
+DEL | 删除功能/文件 | 删除了什么功能/文件, 以及删除原因
+FIX | 修复 bug | bug 列表中有的, 可以只写 bug 号, 没有的需要说明
+MERGE | 手动合并 | 从哪里合并到哪里 (from x to y), 如何解决了冲突
+REFACTOR | 重构 | 重构了什么
+CLEAN | 清理 | 清理了什么
