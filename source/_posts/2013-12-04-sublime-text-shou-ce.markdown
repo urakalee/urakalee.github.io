@@ -3,7 +3,7 @@ layout: post
 title: "Sublime Text 手册"
 date: 2013-12-04 09:09:01 +0800
 comments: true
-categories: manual
+categories: selfengine
 ---
 ## 缩进
  * Cmd+, 进入 Preference - Settings - User
