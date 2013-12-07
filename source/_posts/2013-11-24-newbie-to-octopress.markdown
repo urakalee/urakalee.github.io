@@ -11,7 +11,7 @@ categories: selfengine
 
 [唐大牛的博客][devtang]很容易搜到，但我还是建议第一次搞的同学看一下官网。如果你像我一样在使用最新版的 MacOS，那么 ruby 部分就会简化许多：
 ``` sh
-git clone git://github.com/imathis/octopress.git octopress 
+git clone git://github.com/imathis/octopress.git octopress
 cd octopress
 sudo gem install bundler
 sudo bundle install

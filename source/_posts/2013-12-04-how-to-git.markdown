@@ -18,8 +18,10 @@ categories: teamtoy
    * 生成的密钥对的位置在 ```C:\Users\<user-name>\.ssh```
    * id_rsa 为私钥, id_rsa.pub 为公钥
  * 配置 Git 的用户名和邮件
-   * $ git config --global user.name "<your-name>"
-   * $ git config --global user.email "<your-email>"
+``` sh
+git config --global user.name <your-name>
+git config --global user.email <your-email>
+```
 <!-- more -->
 
 ### 进阶配置
