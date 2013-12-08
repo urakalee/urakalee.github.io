@@ -9,10 +9,14 @@ published: false
 ## 常用命令
 
 ### find
-* find -name "*.xyz"
+``` sh
+find -name "*.xyz"
+```
 
 ### wc
-* wc -l find -name "*.java"
+``` sh
+wc -l find -name "*.java" # 统计 java 代码行数
+```
 
 ## 系统工具
 
