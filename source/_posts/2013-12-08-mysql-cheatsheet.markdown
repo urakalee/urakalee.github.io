@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "MySQL CheatSheet"
+title: "MySQL 手册"
 date: 2013-12-08 16:22:54 +0800
 comments: true
 categories: cheatsheet
