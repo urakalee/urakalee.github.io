@@ -30,14 +30,17 @@ GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,ALTER,DROP ON ...;
 ## 支持中文
 
 ### mysql 客户端
-```set names utf8;```: 插入或查询中文出现乱码时使用
+``` sql
+set names utf8; -- 插入或查询中文出现乱码时使用
+```
 
-### my.cnf
-* [mysqld] character-set-server=utf8
+### mysql 服务器: 修改 my.cnf
+* 增加: ```[mysqld] character-set-server=utf8```
   * http://guichina.blog.51cto.com/2001125/724939
-* 老版本可能还需要进行如下修改
-  * [client] default-character-set=utf8
-  * [mysqld] default-storage-engine=INNODB
+* 老版本可能还需要进行增加如下两行
+  * ```[client] default-character-set=utf8```
+  * ```[mysqld] default-storage-engine=INNODB```
+* 重启 mysql 服务器
 
 ## MyBatis
 * 返回自增值
