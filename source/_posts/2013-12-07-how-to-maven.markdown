@@ -11,7 +11,7 @@ published: false
 * [Maven 实战(扫描 PDF 版)][maven-book-cn]
 
 ## 基本框架
-1. 下载 maven 3.+, 在机器上部署好, 需要配置 M2_HOME 和添加 PATH
+1. 下载 maven 3.+, 在机器上部署好, 需要配置 `$M2_HOME` 和添加 `$PATH`
   * http://maven.apache.org/
 1. 下载框架代码: https://github.com/urakalee/archetype
   * archetype/java/jar: 一个 jar 项目(完成)

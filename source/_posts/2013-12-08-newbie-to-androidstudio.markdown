@@ -7,9 +7,12 @@ categories: android
 ---
 ## 安装
 * 下载安装后, 需要更新到最新版本
-  * http://www.cnsecer.com/842.html
-  * http://blog.csdn.net/hil2000/article/details/11395485
-  * 关键命令
+  * 不更新可能会遇到一些奇葩问题
+  * 如果能直接更新或者翻墙更新的, 请直接更新
+  * 不能更新的, 请参考下列文章手动更新
+    * http://www.cnsecer.com/842.html
+    * http://blog.csdn.net/hil2000/article/details/11395485
+    * 关键命令
 ``` sh
 java -classpath AI-<old-edition>-<new-edition>-patch-<os>.jar com.intellij.updater.Runner install .
 ```
@@ -20,7 +23,7 @@ java -classpath AI-<old-edition>-<new-edition>-patch-<os>.jar com.intellij.updat
   * 注意: 接受协议时可能需要在弹出的对话框里逐个接受, 才能一并下载
 
 ## 模拟器
-* 以下问题仅限于 windows
+* 以下问题仅限于 windows, Mac 用户可以直接放弃模拟器...
 * 运行模拟器失败, 需要把 ```X盘/.android/avd``` 拷贝到 ```C盘/用户目录/.android``` 下
 * 运行模拟器慢, 需要下载和安装 intel x86 emulator, 创建 avd 时也要选这个
   * 用 SDK Manager 下载 intel x86 emulator 和对应的 rom

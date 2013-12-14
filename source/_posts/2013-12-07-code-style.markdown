@@ -7,9 +7,9 @@ categories: teamtoy
 ---
 ## 代码风格
 * 代码是给人看的, 偶尔也在机器上跑一跑
-* 代码应该越写越少: **Write Less Do More** !!!
+* 代码应该越写越少: ***Write Less Do More***
 * 所有源代码文件(包括 html/css/properties/readme 等)均为 utf-8 无 bom 格式, unix 换行
-* **禁用tab**, 所有源代码文件一律使用 4 空格缩进
+* ***禁用tab***, 所有源代码文件一律使用 4 空格缩进
 
 ## Java
 * [Java Code Conventions][java-code]

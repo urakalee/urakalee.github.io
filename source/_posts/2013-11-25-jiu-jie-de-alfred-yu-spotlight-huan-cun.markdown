@@ -17,7 +17,7 @@ categories: oshack
 
 ****
  * PS1: Spotlight 索引文件的位置（from [Apple 社区][community]）在磁盘根目录 `/`
- * PS2: 查看其大小需要 root 权限 `:/ $ sudo du -sh .Spotlight-V100`
+ * PS2: 查看其大小需要 root 权限: `sudo du -sh .Spotlight-V100`
  * PS3: Path Finder 居然也要调用 Spotlight 的结果
  * PS4: Spotlight 真应该搞白名单机制，黑名单太纠结了
 

@@ -14,14 +14,21 @@ Host github.com
 
 Host gerrit.work-host.com
     User work-name # 使用公司 gerrit 服务时的默认用户名
-    IdentityFile ~/.ssh/id_rsa.work-host # 为不同的 host 配置不同的 key
+    IdentityFile ~/.ssh/id_rsa.work # 为不同的 host 配置不同的 key
 
 # ssh mctx => ssh urakalee@192.168.1.1
 # 不需要配系统 host, 不过除 ssh 相关命令外, 该 host 不起作用
 Host mctx
-    HostName 192.168.1.1
+    HostName 192.168.1.1 # 私人服务器 ip
     User urakalee # ssh 到私人服务器时的默认用户名
     IdentityFile ~/.ssh/id_rsa.urakalee # 为不同的 host 配置不同的 key
+
+# ssh workstation 和 ssh 10.0.0.1 同时生效
+# 不需要配系统 host, 不过除 ssh 相关命令外, 该 host 不起作用
+Host workstation 10.0.0.1
+    HostName 10.0.0.1 # 公司 workstation 服务器 ip
+    User work-name # ssh 到公司 workstation 服务器时的默认用户名
+    IdentityFile ~/.ssh/id_rsa.work # 为不同的 host 配置不同的 key
 </code></pre>
 
 <pre><code>vim ~/.ssh/known_hosts

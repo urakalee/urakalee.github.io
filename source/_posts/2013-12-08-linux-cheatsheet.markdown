@@ -22,10 +22,10 @@ wc -l find -name "*.java" # 统计 java 代码行数
 
 ### ssh
 * ssh-add -D删除所有记住的key
-  * 解决mac下所有使用过的key都被记住，即使删除key也不起作用的问题
+  * 解决 Mac 下所有使用过的 key 都会被记住，删除 key 文件没用的问题
 
 ### 链接库
-* 查看链接库是否缺失: ```ldd <可执行文件>```
+* 查看链接库是否缺失: `ldd <可执行文件>`
 * 修改系统加载库
 ``` sh
 vim /etc/ld.so.conf

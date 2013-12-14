@@ -93,8 +93,8 @@ git commit --amend
   * fetch 后用 ```git merge <repo-name>/<remote-branch>``` merge
   * 如果 ```merge <branch>```, 修改 branch, 再 merge, 只 merge 修改的部分
   * 合并冲突时, 不 merge 而是指定某个版本: ```git checkout --ours/--theirs <file>```
-  * "复制"一次提交(比如某个分枝只有一次提交需要保留): ```git cherry-pick <rev>```
-    * 停止"复制": ```git cherry-pick --abort```
+  * "复制" 一次提交(比如某个分枝只有一次提交需要保留): ```git cherry-pick <rev>```
+    * 停止 "复制": ```git cherry-pick --abort```
 * 将当前分枝 rebase 到 tgt-branch: ```git rebase <tgt-branch>```
 * merge 与 rebase 的区别
   * merge 建立了一个新版本, 而 rebase 是分枝上有多少新版本, 就会建立多少新版本
