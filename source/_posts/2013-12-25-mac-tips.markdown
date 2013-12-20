@@ -1,0 +1,20 @@
+---
+layout: post
+title: "Mac Tips"
+date: 2013-12-25 14:05:13 +0800
+comments: true
+categories: oshack
+---
+## Migration
+* transfer 出来的 Mac 系统, 有一些地方需要重新设置
+  1. 关闭 guest: Pref - User - Unlock - Guest User - Uncheck
+  1. 修改机器名1: Pref - Share - Computer Name
+  1. 修改机器名2: `sudo scutil --set HostName <name>`
+  1. 修改 Terminal 提示符
+```sh
+vim ~/.bash_profile
+
+export PS1="[\u@\h \W]\$ " # 增加这一行
+
+source ~/.bash_profile
+```

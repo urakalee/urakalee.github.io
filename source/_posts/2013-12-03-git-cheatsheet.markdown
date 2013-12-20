@@ -123,6 +123,7 @@ git stash branch <branch>
 ``` sh
 git tag # 标签列表
 git tag <tag> # 在当前版本上打标签
+git show <tag> # 查看标签
 git tag -d <tag> # 删除标签
 git push <repo-name> <tag> # 分享标签
 ```
