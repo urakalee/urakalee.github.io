@@ -28,3 +28,18 @@ java -classpath AI-<old-edition>-<new-edition>-patch-<os>.jar com.intellij.updat
 * 运行模拟器慢, 需要下载和安装 intel x86 emulator, 创建 avd 时也要选这个
   * 用 SDK Manager 下载 intel x86 emulator 和对应的 rom
   * 注意: 下载 emulator 后需要安装, 可执行文件在 ```sdk/extras/intel``` 中
+
+## 数据目录
+* AndroidStudio 目前还不太稳定, 偶尔折腾, 甚至需要把数据目录清空
+* 下面的内容摘自 [Intellij 官网][jetbrain], 只要把路径换成 AndroidStudioPreview 即可
+<pre><code>Mac
+~/Library/Application Support/IntelliJIdeaXX contains the catalog with plugins.
+~/Library/Preferences/IntelliJIdeaXX contains the rest of the configuration settings.
+~/Library/Caches/IntelliJIdeaXX contains data caches, logs, local history, etc. These files can be quite significant in size.
+9.0+ ~/Library/Logs/IntelliJIdeaXX contains logs
+Windows
+~\.IntelliJIdeaXX\config that contains user-specific settings.
+~\.IntelliJIdeaXX\system that stores IntelliJ IDEA data caches.
+</code></pre>
+
+ [jetbrain]: http://www.jetbrains.com/idea/webhelp/project-and-ide-settings.html "Project and IDE Settings"
