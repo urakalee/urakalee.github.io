@@ -18,6 +18,14 @@ find -name "*.xyz"
 wc -l find -name "*.java" # 统计 java 代码行数
 ```
 
+### 权限
+```sh
+chmod u+x <file> # 设为可执行文件
+chown <name> <file>
+chown -R <name> <dir>
+chgrp ... # 格式同 chown
+```
+
 ## 系统工具
 
 ### ssh

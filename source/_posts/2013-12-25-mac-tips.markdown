@@ -5,6 +5,17 @@ date: 2013-12-25 14:05:13 +0800
 comments: true
 categories: oshack
 ---
+## 升级 Chrome
+1. 直接升级失败, Error 12
+1. 找到[官方解决方案][google]
+```sh
+~/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Resources/GoogleSoftwareUpdateAgent.app/Contents/Resources/install.py --uninstall # Mac 10.9 上无此文件
+sudo /Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Resources/GoogleSoftwareUpdateAgent.app/Contents/Resources/install.py --uninstall
+```
+* 折腾半天还是不行, 最后从官网下载了最新版的 Chrome, 覆盖安装
+
+ [google]: https://support.google.com/chrome/answer/1367288?hl=zh-Hans "无法在苹果机上更新 Google Chrome 浏览器"
+
 ## Migration
 * transfer 出来的 Mac 系统, 有一些地方需要重新设置
   1. 关闭 guest: Pref - User - Unlock - Guest User - Uncheck
@@ -18,3 +29,26 @@ export PS1="[\u@\h \W]\$ " # 增加这一行
 
 source ~/.bash_profile
 ```
+* 开启 TRIM
+  * 方法 1: 使用 [Terminal 命令][weiphone]
+  * 方法 2: 使用 [Chameleon SSD Optimizer][chameleon]
+    * 我是在使用过方法 1 之后才找到方法 2 的, 不过以后再有需要会先用方法 2
+* 检查安装的软件
+  * Dropbox
+  * CloudStation
+  * GoAgentX: 升个级吧
+  * Alfred: [设置 Spotlight 索引][spotlight], 重建 Alfred 索引
+* 配置 hosts/ssh-config/known_hosts/vimrc/gitconfig/SwitchySharp
+* 各种清理
+  * 清理个人的 Login Items: Pref - User - Login Items
+  * 使用 CleanMyMac 清理全局的 Login Items
+  * 使用 CleanMyMac 删除没用的软件
+  * 到 `~/` 下删除没用的目录和没用软件的残留
+  * 到 `~/Library/Application Support/` 和 `Preferences`, `Caches`, `Logs` 目录下删除没用软件的残留
+* 运行 Disk Utility
+* 修复 HomeBrew
+  * 按照 `brew doctor` 的提示做即可
+
+ [spotlight]: /blog/2013/11/25/jiu-jie-de-alfred-yu-spotlight-huan-cun/ "Alfred & Spotlight"
+ [weiphone]: http://bbs.weiphone.com/read-htm-tid-7173782.html "[求助] 10.9 怎么开启TRIM"
+ [chameleon]: http://chameleon.alessandroboschini.it/index.php "Chameleon SSD Optimizer"
