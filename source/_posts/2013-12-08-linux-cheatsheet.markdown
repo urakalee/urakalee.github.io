@@ -10,7 +10,8 @@ published: false
 
 ### find
 ``` sh
-find -name "*.xyz"
+find . -name "*.xyz"
+find . -name "*abc*" -delete
 ```
 
 ### wc
