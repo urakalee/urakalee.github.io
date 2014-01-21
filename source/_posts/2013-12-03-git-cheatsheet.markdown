@@ -22,7 +22,8 @@ categories: cheatsheet
 * 提交到本地
   * stage: ```git add <file/dir>```
   * ```git commit -m "<comment>"```
-    * 已经处于版本控制中的文件, 可以使用 ``` git commit -am "<comment>"``` 略过 stage
+    * 对于已经处于版本控制中的文件, 可以使用 ``` git commit -am "<comment>"``` 略过 stage
+    * 有时需要构造空提交: ```git commit --allow-empty -m "EMPTY"```
 * 提交到远程
   * ```git push [repo-name] [branch] ```
     * repo-name 默认为 origin, branch 默认为当前分枝
