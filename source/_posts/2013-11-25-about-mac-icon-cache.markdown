@@ -21,3 +21,4 @@ killall Dock
 
 ****
 Update@2013.11.26: 最新版的 CleanMyMac 2.2.0 貌似不会有清理完缓存瘫痪的问题了
+Update@2015.01.21: 最新版的 MacOS 10.10 已经不能用上述命令行清理 Launchpad 了

@@ -4,7 +4,6 @@ title: "致 Weiwei: 我们期待着你的降临"
 date: 2013-12-25 21:56:02 +0800
 comments: true
 categories: familybuild
-published: false
 ---
 ## 记录
 * 圣诞节, Mimi 怀孕 14 周 2 天; 大风; 上线结束的时间还好, 9点到家.
