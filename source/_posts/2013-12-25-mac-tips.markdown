@@ -34,9 +34,9 @@ source ~/.bash_profile
   * 方法 2: 使用 [Chameleon SSD Optimizer][chameleon]
     * 我是在使用过方法 1 之后才找到方法 2 的, 不过以后再有需要会先用方法 2
 * 检查安装的软件
-  * Dropbox
-  * CloudStation
-  * GoAgentX: 升个级吧
+  * ~~Dropbox~~
+  * ~~CloudStation~~ -> 家用 ONLY
+  * ~~GoAgentX: 升个级吧~~ -> 买个 VPN 吧
   * Alfred: [设置 Spotlight 索引][spotlight], 重建 Alfred 索引
 * 配置 hosts/ssh-config/known_hosts/vimrc/gitconfig/SwitchySharp
 * 各种清理
@@ -52,3 +52,6 @@ source ~/.bash_profile
  [spotlight]: /blog/2013/11/25/jiu-jie-de-alfred-yu-spotlight-huan-cun/ "Alfred & Spotlight"
  [weiphone]: http://bbs.weiphone.com/read-htm-tid-7173782.html "[求助] 10.9 怎么开启TRIM"
  [chameleon]: http://chameleon.alessandroboschini.it/index.php "Chameleon SSD Optimizer"
+
+****
+Update@2015.04.13: 修改"检查安装的软件"部分
