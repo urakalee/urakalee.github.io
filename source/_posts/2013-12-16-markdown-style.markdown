@@ -37,6 +37,12 @@ categories: selfengine
   * 比如 **少量** **不是很长** 且 **在行尾** 的链接
   * 比如 **少量** **不是很长** 的链接列表
 * 其它情况均需要使用引用方式, 引用需要集中写在文章或段落末尾
+<pre>
+[Display Name][name]
+...
+
+ [name]: link(url) "Link Description"
+</pre>
 
 ### 更新
 * 在文档末尾添加
