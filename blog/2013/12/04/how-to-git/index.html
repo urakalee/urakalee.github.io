@@ -1,0 +1,454 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>How to Git - Binary Life</title>
+  <meta name="author" content="Uraka Lee">
+
+  
+  <meta name="description" content="Git 入门资料 windows 客户端: http://git-scm.com/download/win
+Pro Git 中文版(书, 可能被墙): http://git-scm.com/book/zh
+Pro Git 中文下载版(pdf): http://ishare.iask.sina. &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://life.urakalee.me/blog/2013/12/04/how-to-git">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Binary Life" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<!--
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-46162042-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Binary Life</a></h1>
+  
+    <h2>诗人 方法论者 喝汤族 微微爸</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:life.urakalee.me" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+    <li><a href="/">Blog</a></li>
+    <li><a href="/blog/archives">Archives</a></li>
+    <li><a href="/blog/categories/cheatsheet">CheatSheets</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">How to Git</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-04T09:37:29+08:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2>Git 入门资料</h2>
+
+<ul>
+<li>windows 客户端: <a href="http://git-scm.com/download/win">http://git-scm.com/download/win</a></li>
+<li>Pro Git 中文版(书, 可能被墙): <a href="http://git-scm.com/book/zh">http://git-scm.com/book/zh</a></li>
+<li>Pro Git 中文下载版(pdf): <a href="http://ishare.iask.sina.com.cn/f/23292123.html">http://ishare.iask.sina.com.cn/f/23292123.html</a></li>
+<li>图解 Git (推荐阅读): <a href="http://my.oschina.net/xdev/blog/114383">http://my.oschina.net/xdev/blog/114383</a></li>
+</ul>
+
+
+<h2>windows 下 Git 的配置和使用</h2>
+
+<ul>
+<li>以下命令都在 Git Bash 中运行</li>
+<li>生成公钥/私钥
+
+<ul>
+<li><code>ssh-keygen -t rsa</code></li>
+<li>生成的密钥对的位置在 <code>C:\Users\&lt;user-name&gt;\.ssh</code></li>
+<li>id_rsa 为私钥, id_rsa.pub 为公钥</li>
+</ul>
+</li>
+<li>配置 Git 的用户名和邮件</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>git config --global user.name &lt;your-name&gt;
+</span><span class='line'>git config --global user.email &lt;your-email&gt;
+</span></code></pre></td></tr></table></div></figure>
+
+
+<!-- more -->
+
+
+<h3>进阶配置</h3>
+
+<ul>
+<li>编辑 <code>&lt;git-install-path&gt;\etc\gitconfig</code>
+
+<ol>
+<li>修改autocrlf = input, 确保提交的文本都是 utf8 编码</li>
+<li>在文件末尾增加下面的代码, 使 Git GUI 能显示中文</li>
+</ol>
+</li>
+</ul>
+
+
+<pre><code>[gui]
+    encoding = utf-8
+</code></pre>
+
+
+<ul>
+<li>编辑 <code>&lt;git-install-path&gt;\etc\git-completion.bash</code>
+
+<ol>
+<li>在文件末尾增加下面的代码, 使 Git Bash 能显示中文</li>
+</ol>
+</li>
+</ul>
+
+
+<pre><code>alias ls='ls --show-control-chars --color=auto'
+</code></pre>
+
+
+<h2>Git 使用规范</h2>
+
+<ul>
+<li>禁用中文文件名</li>
+<li>所有文本文件使用 utf8 编码</li>
+<li>所有文本文件使用 unix 换行 (\n), 而非 windows 换行 (\r\n)</li>
+</ul>
+
+
+<h3>Git 分枝管理</h3>
+
+<ul>
+<li>master: 稳定可编译/测试通过的代码</li>
+<li>test: 测试环境的代码, 通过测试后merge到master</li>
+<li>pri-xxx: 个人开发代码 (private), 由于可能需要到部署到服务器上, 因此允许 push 到 remote</li>
+<li>dev: 开发环境的代码</li>
+<li>在 pri-xxx 上开发的代码, 可能需要 merge 到开发环境上验证</li>
+<li>验证通过后, <strong>禁止</strong> 直接把 dev merge 到 test, 而是应该从 pri-xxx merge 到 test</li>
+<li>由于 dev 代码在多人 merge 后可能出问题, 所以定期会从 master 重开 dev 分枝</li>
+</ul>
+
+
+<h3>Git 注释规范</h3>
+
+<ul>
+<li>所有注释, 除了 merge 时系统自动生成的, 均应符合以下规范
+
+<ol>
+<li>格式为 <code>&lt;OPERATION&gt;: description</code></li>
+<li>OPERATION 包括 ADD/MOD/DEL/FIX/MERGE/REFACTOR/CLEAN, 全部大写, 后面跟着冒号</li>
+<li>description 需要是全英文, 包括标点</li>
+</ol>
+</li>
+<li>一次提交可以有多个 OPERATION, 但最好只有一个
+
+<ul>
+<li>多个 OPERATION 一行一个</li>
+</ul>
+</li>
+</ul>
+
+
+<table>
+<thead>
+<tr>
+<th>OPERATION</th>
+<th> 何时使用 </th>
+<th> description应该写什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ADD </td>
+<td> 增加功能/文件 </td>
+<td> 增加了什么功能/文件(文件太多可以写目录)</td>
+</tr>
+<tr>
+<td>MOD </td>
+<td> 修改功能/文件 </td>
+<td> 修改了什么功能/文件, 以及修改原因</td>
+</tr>
+<tr>
+<td>DEL </td>
+<td> 删除功能/文件 </td>
+<td> 删除了什么功能/文件, 以及删除原因</td>
+</tr>
+<tr>
+<td>FIX </td>
+<td> 修复 bug </td>
+<td> bug 列表中有的, 可以只写 bug 号, 没有的需要说明</td>
+</tr>
+<tr>
+<td>MERGE </td>
+<td> 手动合并 </td>
+<td> 从哪里合并到哪里 (from x to y), 如何解决了冲突</td>
+</tr>
+<tr>
+<td>REFACTOR </td>
+<td> 重构 </td>
+<td> 重构了什么</td>
+</tr>
+<tr>
+<td>CLEAN </td>
+<td> 清理 </td>
+<td> 清理了什么</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Uraka Lee</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-04T09:37:29+08:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/teamtoy/'>teamtoy</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+  
+    <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+    <span class="jiathis_txt">分享到：</span>
+    <a class="jiathis_button_weixin">微信</a>
+    <a class="jiathis_button_tsina">新浪微博</a>
+    <a class="jiathis_button_douban">豆瓣</a>
+    <a class="jiathis_button_tqq">腾讯微博</a>
+    <a class="jiathis_button_ydnote">有道云笔记</a>
+    <a class="jiathis_button_copy">复制网址</a>
+    <!--
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+    <a class="jiathis_counter_style"></a>
+    -->
+</div>
+<script type="text/javascript" >
+var jiathis_config = {
+    summary: "",
+    shortUrl: true,
+    hideMore: true
+};
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+  
+</div>
+
+    
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/03/10/android-night-theme-for-9-patch/">Android: 9-patch的夜间模式</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/03/10/optimize-question-and-solution-of-yuantiku-1/">做题解析性能优化始末(1)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/03/10/android-mechanism-asynctask/">Android机制: AsyncTask</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/04/19/disable-cmd-q-for-chrome/">Mac Tips: 对 Chrome 禁用 Cmd+Q</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/04/19/mac-migration/">Mac 重装/数据迁移</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/01/21/android-home-watcher/">Android: 捕获 Home 键</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/25/to-weiwei-waiting-for-you/">致 Weiwei: 我们期待着你的降临</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/25/mac-chrome-upgrade/">Mac Chrome 升级</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/20/android-tips/">Android 开发点滴</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/16/markdown-style/">Markdown Style</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+    <h1>Categories</h1>
+    <ul id="categories">
+        <li class='category'><a href='/blog/categories/android/'>android (6)</a></li>
+<li class='category'><a href='/blog/categories/cheatsheet/'>cheatsheet (4)</a></li>
+<li class='category'><a href='/blog/categories/familybuild/'>familybuild (2)</a></li>
+<li class='category'><a href='/blog/categories/oshack/'>oshack (5)</a></li>
+<li class='category'><a href='/blog/categories/readbook/'>readbook (1)</a></li>
+<li class='category'><a href='/blog/categories/selfengine/'>selfengine (3)</a></li>
+<li class='category'><a href='/blog/categories/teamtoy/'>teamtoy (8)</a></li>
+
+    </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2016 - Uraka Lee -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'urakalee';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://life.urakalee.me/blog/2013/12/04/how-to-git/';
+        var disqus_url = 'http://life.urakalee.me/blog/2013/12/04/how-to-git/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

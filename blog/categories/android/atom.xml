@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Android | Binary Life]]></title>
+  <link href="http://life.urakalee.me/blog/categories/android/atom.xml" rel="self"/>
+  <link href="http://life.urakalee.me/"/>
+  <updated>2016-03-10T20:16:45+08:00</updated>
+  <id>http://life.urakalee.me/</id>
+  <author>
+    <name><![CDATA[Uraka Lee]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Android: 9-patch的夜间模式]]></title>
+    <link href="http://life.urakalee.me/blog/2016/03/10/android-night-theme-for-9-patch/"/>
+    <updated>2016-03-10T19:59:31+08:00</updated>
+    <id>http://life.urakalee.me/blog/2016/03/10/android-night-theme-for-9-patch</id>
+    <content type="html"><![CDATA[<p><a href="https://www.evernote.com/l/ABCVzpSbJs1HoKym6kJDBZQsyMlFtgXKYpM">https://www.evernote.com/l/ABCVzpSbJs1HoKym6kJDBZQsyMlFtgXKYpM</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[做题解析性能优化始末(1)]]></title>
+    <link href="http://life.urakalee.me/blog/2016/03/10/optimize-question-and-solution-of-yuantiku-1/"/>
+    <updated>2016-03-10T19:51:45+08:00</updated>
+    <id>http://life.urakalee.me/blog/2016/03/10/optimize-question-and-solution-of-yuantiku-1</id>
+    <content type="html"><![CDATA[<p><a href="https://www.evernote.com/l/ABC9oWR2d7xBaK-bic2LbgXHmwIsthq2-HI">https://www.evernote.com/l/ABC9oWR2d7xBaK-bic2LbgXHmwIsthq2-HI</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Android机制: AsyncTask]]></title>
+    <link href="http://life.urakalee.me/blog/2016/03/10/android-mechanism-asynctask/"/>
+    <updated>2016-03-10T19:35:34+08:00</updated>
+    <id>http://life.urakalee.me/blog/2016/03/10/android-mechanism-asynctask</id>
+    <content type="html"><![CDATA[<p><a href="https://www.evernote.com/l/ABDmk4yr90FNi6-Pa69oLDK291tym7e00qE">https://www.evernote.com/l/ABDmk4yr90FNi6-Pa69oLDK291tym7e00qE</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Android: 捕获 Home 键]]></title>
+    <link href="http://life.urakalee.me/blog/2015/01/21/android-home-watcher/"/>
+    <updated>2015-01-21T17:12:00+08:00</updated>
+    <id>http://life.urakalee.me/blog/2015/01/21/android-home-watcher</id>
+    <content type="html"><![CDATA[<p>在<a href="http://yuantiku.com">猿题库</a>工作一年多, 新功能做了不少, bug 也改了许多, 近期开始做更多的优化工作. 本篇博客的内容来自"错题锁屏"功能的优化.</p>
+
+<p>我们 2014 年 9 月开始做"错题锁屏"功能, 希望增加曝光, 提高存留. 开发该功能的同学现在已经结束实习出国工作了, 但做这个功能的时候我就知道坑很多, 而且上线前为了避免风险留了一些坑没改. 上线后, 发现该功能比较受欢迎, 所以又有了多次拉锯式的修改, 不过对于锁屏本身的坑并没有填.</p>
+
+<p>关于如何防止锁屏进程被杀, 我可能会开另外一篇博客来说明, 不过其实你也可以逆向工程我们的 apk 自己去看. 还有就是错题锁屏变成一个独立进程之后, 进程间共享数据变成了一个新的大坑&hellip;</p>
+
+<p>由于我们一开始就不想把错题锁屏做得很暴力, 所以虽然禁用了 Back 键(按 Back 键不能退出锁屏), 却还是保留了按 Home 键退出的可能性, 避免用户因为答不对题而无法解锁(我们可能低估用户了).</p>
+
+<p>于是有一个问题, 按 Home 键退出锁屏之后, 用户可以在"最近使用"中重新打开锁屏界面, 而我们只想让用户在"最近使用"中看到猿题库本身. 我开始寻找如何在用户按 Home 键时让锁屏界面自己把自己 finish 掉的方法.</p>
+
+<p>首先查到的方法是 onUserLeaveHint, 按 Home 键时确实会调用这个函数. 不过遇到的问题也很坑: 当有其它锁屏, 甚至 QQ 弹窗(实际上也是用类似锁屏的方法实现的)出现时, 我们的锁屏可能被挤掉(onUserLeaveHint 被调用).</p>
+
+<p>然后开始寻找能够捕获 Home 键的方法:</p>
+
+<ol>
+<li><a href="http://stackoverflow.com/questions/8881951/detect-home-button-press-in-android">override onKeyDown</a>, 不过 no longer works as of 4.0, <a href="http://www.coderzheaven.com/2012/06/02/override-hardware-home-button-android-listen-home-button-click-android/">这里</a>给出了完整的代码</li>
+<li><a href="http://stackoverflow.com/questions/5907102/home-button-listener">这篇 vote 比较少的文章</a>其实离最终答案很近了, 不过因为 vote 太少, 我一开始没有相信它&hellip;</li>
+<li>中文网络上看起来有更多人搞过这个问题: 文章 <a href="http://blog.csdn.net/way_ping_li/article/details/8953622">A</a> <a href="http://blog.csdn.net/watt520/article/details/18959897">B</a> <a href="http://blog.csdn.net/ekeuy/article/details/39400939">C</a> 大同小异, <a href="http://862123204-qq-com.iteye.com/blog/1888532">这里</a>分析得更详细一些. 其中 <a href="http://blog.csdn.net/watt520/article/details/18959897">B</a> 的代码更漂亮一些, 我试过可行 (Android4.+)</li>
+</ol>
+
+
+<p>可行之后, 我发现又掉到了坑里: <strong>即使 finish 掉了, 用户还是可以在最近使用中重新打开锁屏界面!!!</strong></p>
+
+<p>最后, 我解决这个问题的方法与捕获 Home 键没有任何关系, 只能把锁屏的 activity 设为最近不可见 (excludeFromRecents=&ldquo;true&rdquo;). 这充分体现了坚持做一个 SB 程序员的必要性: 过于相信一知半解的既有信息是错误的根源.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Android 开发点滴]]></title>
+    <link href="http://life.urakalee.me/blog/2013/12/20/android-tips/"/>
+    <updated>2013-12-20T13:27:02+08:00</updated>
+    <id>http://life.urakalee.me/blog/2013/12/20/android-tips</id>
+    <content type="html"><![CDATA[<h2>Manifest</h2>
+
+<h3>弹出键盘</h3>
+
+<ul>
+<li><code>android:windowSoftInputMode</code> 控制弹出键盘
+
+<ul>
+<li>stateHidden 为刚进入 activity 时不显示键盘</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>控件</h2>
+
+<h3>EditText 与弹出键盘</h3>
+
+<ul>
+<li>在 xml 中设置 <code>android:inputType</code>, 常用的有:
+
+<ul>
+<li>default, 中文手机会弹出中文输入法, 并切换到默认输入模式(通常是中文模式)</li>
+<li>phone, 电话号码键盘, 不过我们通常还是会用 number 彻底限制只能输入数字</li>
+<li>textEmailAddress, 虽然名字是 email, 但是也可以输入电话号码</li>
+</ul>
+</li>
+<li>java 中可以 <code>setInputType</code>, 对应的 type 在 <code>InputType</code> 找到:
+
+<ul>
+<li>比如 textEmailAddress 对应 TYPE_TEXT_VARIATION_EMAIL_ADDRESS</li>
+<li>注意 textPassword 对应 TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_PASSWORD</li>
+</ul>
+</li>
+<li>详见 <a href="http://developer.android.com/guide/topics/ui/controls/text.html" title="Text Fields">官方文档</a></li>
+</ul>
+
+
+<h2>工具</h2>
+
+<h3>sleep</h3>
+
+<ul>
+<li><code>SystemClock.sleep</code> 不会抛出 <code>InterruptedException</code>, 同时也无法 <code>thread.interrupt</code>
+
+<ul>
+<li>Thread.sleep 则正相反</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>线程</h2>
+
+<h3>UI 线程</h3>
+
+<ul>
+<li>UI 控件不是线程安全的, 所以只能在 UI 线程上操作
+
+<ul>
+<li>Activity.runOnUiThread</li>
+<li>View.post/postDelayed</li>
+<li>Handler</li>
+</ul>
+</li>
+<li>AsyncTask
+
+<ul>
+<li>doInBackground 在 worker 线程</li>
+<li>onPre/PostExecute 和 onProgressUpdate 在 UI 线程</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>WebView</h2>
+
+<h3>使用 HttpClient 的 cookie</h3>
+
+<pre><code class="java">/**
+ * @param url - 形如 http://xxx.domain.com/yyy/zzz.z?mmm=nnn
+ * @param cookie - 从 HttpClient 取得的 cookie
+ */
+public static void synCookies(Context context, String url, Cookie cookie) {
+    CookieSyncManager.createInstance(context);
+    CookieManager cookieManager = CookieManager.getInstance();
+    cookieManager.setAcceptCookie(true); // 这句可能可以不要
+    String cookieString = cookie.getName() + "=" + cookie.getValue() + "; domain=" + cookie.getDomain();
+    cookieManager.setCookie(url, cookieString);
+    CookieSyncManager.getInstance().sync();
+}
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

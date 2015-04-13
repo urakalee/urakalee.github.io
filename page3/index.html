@@ -1,0 +1,654 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Binary Life</title>
+  <meta name="author" content="Uraka Lee">
+
+  
+  <meta name="description" content="基本操作 创建版本库: git init
+克隆版本库 git clone /path/to/repo
+git clone user@host:/path/to/repo
+多版本库: git remote add &lt;repo-name&gt; &lt;repo&gt;
+多版本库列表: git &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://life.urakalee.me/page3">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Binary Life" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<!--
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-46162042-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Binary Life</a></h1>
+  
+    <h2>诗人 方法论者 喝汤族 微微爸</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:life.urakalee.me" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+    <li><a href="/">Blog</a></li>
+    <li><a href="/blog/archives">Archives</a></li>
+    <li><a href="/blog/categories/cheatsheet">CheatSheets</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/12/03/git-cheatsheet/">Git 手册</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-03T18:13:53+08:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>基本操作</h2>
+
+<ul>
+<li>创建版本库: <code>git init</code></li>
+<li>克隆版本库
+
+<ul>
+<li><code>git clone /path/to/repo</code></li>
+<li><code>git clone user@host:/path/to/repo</code></li>
+<li>多版本库: <code>git remote add &lt;repo-name&gt; &lt;repo&gt;</code></li>
+<li>多版本库列表: <code>git remote -v</code></li>
+</ul>
+</li>
+<li>更新版本库
+
+<ul>
+<li><code>git pull [repo-name]</code>
+
+<ul>
+<li>repo-name 默认为 origin</li>
+<li><code>git pull --rebase</code> 可以避免无意义的 pull-merge, 使版本树尽可能是一条直线</li>
+</ul>
+</li>
+<li><code>git fetch [repo-name]</code> - <code>git pull</code> does a <code>git fetch</code> followed by a <code>git merge</code>
+
+<ul>
+<li>repo-name 默认为 origin</li>
+<li>会把 repo-name 的更新都 fetch 到本地, 包括新分枝和新标签, 但不会建立本地分枝</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>提交到本地
+
+<ul>
+<li>stage: <code>git add &lt;file/dir&gt;</code></li>
+<li><code>git commit -m "&lt;comment&gt;"</code>
+
+<ul>
+<li>对于已经处于版本控制中的文件, 可以使用 <code>git commit -am "&lt;comment&gt;"</code> 略过 stage</li>
+<li>有时需要构造空提交: <code>git commit --allow-empty -m "EMPTY"</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>提交到远程
+
+<ul>
+<li><code>git push [repo-name] [branch]</code>
+
+<ul>
+<li>repo-name 默认为 origin, branch 默认为当前分枝</li>
+<li><code>git push -u &lt;repo-name&gt; &lt;branch&gt;</code> 设置 push/pull 时默认使用的 repo-name</li>
+<li><code>git push &lt;repo-name&gt; &lt;branch&gt;:&lt;remote-branch&gt;</code> - 如果本地和远程分枝名字不同</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/12/03/git-cheatsheet/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/12/01/how-to-code-review/">How to Code Review</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-01T21:17:33+08:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>引</h2>
+
+<ul>
+<li>版本控制工具：Git</li>
+<li>代码 review 工具：<a href="http://www.reviewboard.org/" title="Review Board">ReviewBoard</a></li>
+<li>代码 review 需要积极评估代码的设计和清晰程度，项目 owner 还要确保被review 代码的逻辑正确性，而不仅限于命名和格式</li>
+</ul>
+
+
+<h2>准备工作</h2>
+
+<ul>
+<li>用 ldap 账号登录</li>
+<li>确保参与 review 的人都需要登录过，否则会找不到人</li>
+<li>确保你要 review 的代码的 git 已经加入 reviewboard</li>
+<li>确保你要 review 的代码基点已经 push 到 git 服务器
+
+<ul>
+<li>代码基点: <code>git diff &lt;src-rev&gt; &lt;tgt-rev&gt;</code> 中的 <code>&lt;src-rev&gt;</code></li>
+</ul>
+</li>
+</ul>
+
+
+<h2>提交一个 review</h2>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/12/01/how-to-code-review/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/11/28/my-git-configuration/">我的 Git 配置</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-11-28T20:35:55+08:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><pre><code>vim ~/.gitconfig
+
+[color]
+    ui = true
+    diff = true
+    status = true
+    branch = true
+    interactive = true
+[alias]
+    st = status
+    ss = status -s
+    ci = commit
+    ca = commit --amend
+    co = checkout
+    ll = log --graph --color --format=format:'%C(bold)%h%C(reset) -%C(bold)%d%C(reset) %C(white)%s%C(reset) %C(bold red)- %an' --abbrev-commit
+    ft = fetch
+    pl = pull --rebase
+    br = branch
+    cp = cherry-pick
+    mg = merge
+    rb = rebase
+    dci = dcommit
+    sbi = submodule init
+    sbu = submodule update
+    sbp = submodule foreach git pull
+    sbc = submodule foreach git co master
+</code></pre>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/11/28/my-vim-configuration/">我的 Vim 配置</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-11-28T20:25:20+08:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><pre><code>vim ~/.vimrc
+
+# 行号
+set nu
+# tab 转空格
+set ts=4
+set expandtab
+set autoindent
+# 语法高亮
+syntax enable
+set background=dark
+colorscheme solarized
+</code></pre>
+
+
+<p>solarized 是一套很棒的配色方案，请参考 <a href="http://www.vpsee.com/2013/09/use-the-solarized-color-theme-on-mac-os-x-terminal/" title="在 Mac OS X 终端里使用 Solarized 配色方案">vpsee</a> 中的方法进行配置。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/11/25/about-mac-icon-cache/">Mac 图标缓存的二三事</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-11-25T13:50:02+08:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>信息焦虑的第三个症状：随时需要“清理”自己的电脑，虽然完全不知道究竟“清理”了啥。</p>
+
+<p>CleanMyMac 满足了我的这个愿望，但也给我带来了一些麻烦。首当其冲的就是图标缓存问题——每次清理完之后，缓存就会瘫痪，不仅 Launchpad 中有的图标显示不出来，Alfred 也难以幸免，最让人无法接受的是 Finder 会崩溃（Path Finder 貌似无碍）。好在重启之后一切如常。</p>
+
+<p>今天终于不淡定了，因为重启也不能解决问题了！按照 <a href="https://discussions.apple.com/message/23541241#23541241" title="Mavericks Launchpad, missing icons">Apple 社区</a>上给出的解决办法，打开终端，运行命令，图标找回，分组消失。。。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>rm ~/Library/Application<span class="se">\ </span>Support/Dock/*.db
+</span><span class='line'>killall Dock
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>好吧，本来分组这种东西也是我蛋疼搞的，消失就消失吧，有 Alfred 呢。。。</p>
+
+<hr />
+
+<ul>
+<li>Update@2013.11.26: 最新版的 CleanMyMac 2.2.0 貌似不会有清理完缓存瘫痪的问题了</li>
+<li>Update@2015.01.21: 最新版的 MacOS 10.10 已经不能用上述命令行清理 Launchpad 了</li>
+<li>Update@2016.03.10: 可以使用如下命令重置 Launchpad 图标</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>defaults write com.apple.dock ResetLaunchPad -bool <span class="nb">true</span><span class="p">;</span> killall Dock
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/11/25/confused-alfred-and-spotlight/">纠结的 Alfred 与 Spotlight</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-11-25T12:59:02+08:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>既然已经不用 Spotlight 了，就打算把它的索引彻底关掉。Google 到若干相关文章，操作也都很简单，<a href="http://support.apple.com/kb/HT2409?viewlocale=zh_CN" title="Spotlight：如何重建文件夹或宗卷的索引">Apple 官网也有</a>，于是就照着做了。</p>
+
+<p>然后 Alfred 就挂了。新安装的 app 在 Alfred 中找不到，清了 cache 之后更是啥都没有了。</p>
+
+<p>继续搞！没有找到确切的答案，但也能根据现有知识猜个差不离。无非是 Alfred 要调用 Spotlight 的结果，所以 Spotlight 关得不对 Alfred 也就不 work了。</p>
+
+<p>于是还得打开 Spotlight，但是怎么打开还要考虑一下。目标是：Application 索引，而其它不索引。所以先把 HD 加到 privacy 中，再把 HD 下面 Application 之外的都加到 privacy 中；重启；查看一下索引大小，大概 12K；最后把 HD 从 privacy 中移除，DONE！</p>
+
+<hr />
+
+<ul>
+<li>PS1: Spotlight 索引文件的位置（from <a href="https://discussions.apple.com/thread/2429947" title="backup Spotlight index file - where is it?">Apple 社区</a>）在磁盘根目录 <code>/</code></li>
+<li>PS2: 查看其大小需要 root 权限: <code>sudo du -sh .Spotlight-V100</code></li>
+<li>PS3: Path Finder 居然也要调用 Spotlight 的结果</li>
+<li>PS4: Spotlight 真应该搞白名单机制，黑名单太纠结了</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/11/24/newbie-to-octopress/">Octopress 新手小记</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-11-24T21:10:28+08:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>信息焦虑的第二个症状：换过好几个博客，但都因为配置复杂、格式不可控、备份麻烦等原因放弃了。</p>
+
+<p>作为一个程序员，深深地为自己不能迅速地把博客搞定而惭愧。在构思许久之后，终于还是决定先偷懒，把习惯陪养起来再说。Octopress 还是非常符合我审美的，没有太多可配置的东西，所有格式都能自己掌控，更不用说备份——噢！又犯病了。。。</p>
+
+<p><a href="http://blog.devtang.com/blog/2012/02/10/setup-blog-based-on-github/" title="象写程序一样写博客：搭建基于github的博客">唐巧的博客</a>很容易搜到，但我还是建议第一次搞的同学看一下官网。如果你像我一样在使用最新版的 MacOS，那么 ruby 部分就会简化许多：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>git clone git://github.com/imathis/octopress.git octopress
+</span><span class='line'><span class="nb">cd </span>octopress
+</span><span class='line'>sudo gem install bundler
+</span><span class='line'>bundle install
+</span><span class='line'>rake install
+</span><span class='line'>rake new_post<span class="o">[</span><span class="s1">&#39;Article Name&#39;</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/11/24/newbie-to-octopress/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="2">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/03/10/android-night-theme-for-9-patch/">Android: 9-patch的夜间模式</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/03/10/optimize-question-and-solution-of-yuantiku-1/">做题解析性能优化始末(1)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/03/10/android-mechanism-asynctask/">Android机制: AsyncTask</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/04/19/disable-cmd-q-for-chrome/">Mac Tips: 对 Chrome 禁用 Cmd+Q</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/04/19/mac-migration/">Mac 重装/数据迁移</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/01/21/android-home-watcher/">Android: 捕获 Home 键</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/25/to-weiwei-waiting-for-you/">致 Weiwei: 我们期待着你的降临</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/25/mac-chrome-upgrade/">Mac Chrome 升级</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/20/android-tips/">Android 开发点滴</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/16/markdown-style/">Markdown Style</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+    <h1>Categories</h1>
+    <ul id="categories">
+        <li class='category'><a href='/blog/categories/android/'>android (6)</a></li>
+<li class='category'><a href='/blog/categories/cheatsheet/'>cheatsheet (4)</a></li>
+<li class='category'><a href='/blog/categories/familybuild/'>familybuild (2)</a></li>
+<li class='category'><a href='/blog/categories/oshack/'>oshack (5)</a></li>
+<li class='category'><a href='/blog/categories/readbook/'>readbook (1)</a></li>
+<li class='category'><a href='/blog/categories/selfengine/'>selfengine (3)</a></li>
+<li class='category'><a href='/blog/categories/teamtoy/'>teamtoy (8)</a></li>
+
+    </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2016 - Uraka Lee -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'urakalee';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

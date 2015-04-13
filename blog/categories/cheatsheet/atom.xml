@@ -1,0 +1,581 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Cheatsheet | Binary Life]]></title>
+  <link href="http://life.urakalee.me/blog/categories/cheatsheet/atom.xml" rel="self"/>
+  <link href="http://life.urakalee.me/"/>
+  <updated>2016-03-10T20:16:45+08:00</updated>
+  <id>http://life.urakalee.me/</id>
+  <author>
+    <name><![CDATA[Uraka Lee]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Markdown Style]]></title>
+    <link href="http://life.urakalee.me/blog/2013/12/16/markdown-style/"/>
+    <updated>2013-12-16T15:26:28+08:00</updated>
+    <id>http://life.urakalee.me/blog/2013/12/16/markdown-style</id>
+    <content type="html"><![CDATA[<ul>
+<li>本文仅用于有洁癖者(本人)统一 markdown 风格, 以及 check style</li>
+</ul>
+
+
+<h2>行文</h2>
+
+<h3>标点</h3>
+
+<ul>
+<li>除非必要, 所有标点都使用英文标点</li>
+</ul>
+
+
+<h3>强调</h3>
+
+<ul>
+<li>说明性的词和短语用双引号(&ldquo;&rdquo;)强调</li>
+<li>提示性的词和短语用双星号(**)强调</li>
+<li>结论性的短语和句子用三星号(***)强调</li>
+</ul>
+
+
+<h3>删除</h3>
+
+<ul>
+<li><code>~~删除的文字~~</code> -> <del>删除的文字</del></li>
+</ul>
+
+
+<h3>空格</h3>
+
+<ul>
+<li>第一级列表标记(比如*)前不需要空格</li>
+<li>英文单词的前后都需要空格
+
+<ul>
+<li>行首不需要前面的空格, 句尾不需要后面的空格</li>
+<li>如果英文单词在括号里, 则前后的空格写在括号外, 比如 &ldquo; (abc) &rdquo; 或 &ldquo; (abc 很不错)&rdquo;</li>
+</ul>
+</li>
+<li>左引号前和右引号后都需要空格
+
+<ul>
+<li>行首不需要前面的空格, 句尾不需要后面的空格</li>
+</ul>
+</li>
+<li>强调标记的前后都需要空格
+
+<ul>
+<li>行首不需要前面的空格, 句尾不需要后面的空格</li>
+</ul>
+</li>
+</ul>
+
+
+<!-- more -->
+
+
+<h3>链接</h3>
+
+<ul>
+<li>行文中需要文字的, 使用引用方式</li>
+<li>直接贴链接不影响行文的, 可以直接贴连接
+
+<ul>
+<li>比如 <strong>少量</strong> <strong>不是很长</strong> 且 <strong>在行尾</strong> 的链接</li>
+<li>比如 <strong>少量</strong> <strong>不是很长</strong> 的链接列表</li>
+</ul>
+</li>
+<li>其它情况均需要使用引用方式, 引用需要集中写在文章或段落末尾</li>
+</ul>
+
+
+<pre>
+[Display Name][name]
+...
+
+ [name]: http://external.link "Link Description"
+ [name]: /blog/yyyy/MM/dd/internal-link/ "Link Description"
+</pre>
+
+
+<h3>更新</h3>
+
+<ul>
+<li>在文档末尾添加</li>
+</ul>
+
+
+<pre>
+****
+Update@yyyy.MM.dd: 更新的内容
+</pre>
+
+
+<h3>大小写</h3>
+
+<ul>
+<li>TODO</li>
+</ul>
+
+
+<h3>用词</h3>
+
+<ul>
+<li>举例时用 &ldquo;比如&rdquo;, 不用 &ldquo;如&rdquo;; &ldquo;比如&rdquo; 后面不加冒号, 除非后面跟着列表</li>
+<li>并列时用 &ldquo;和&rdquo;, 不用 &ldquo;及&rdquo;; 除非需要使用 &ldquo;以及&rdquo;</li>
+<li>&ldquo;其他&rdquo; 修饰人, &ldquo;其它&rdquo; 修饰非人</li>
+</ul>
+
+
+<h2>代码</h2>
+
+<h3>单行模式</h3>
+
+<ul>
+<li>一行可执行代码使用变音符号(`)单行模式</li>
+<li>一行文本内容使用变音符号单行模式或 pre-code 多行模式</li>
+<li>特殊记号使用变音符号单行模式
+
+<ul>
+<li>比如文件路径 <code>C:\Windows</code></li>
+<li>比如代码元素 <code>++</code> <code>--</code></li>
+</ul>
+</li>
+<li>变音符号单行模式的空格规则同引号</li>
+</ul>
+
+
+<h3>可执行代码和支持代码高亮的文本</h3>
+
+<ul>
+<li>使用变音符号(`)多行模式</li>
+<li>支持代码高亮的语言列表: <a href="http://pygments.org/docs/lexers/">http://pygments.org/docs/lexers/</a></li>
+</ul>
+
+
+<h3>不支持代码高亮的文本内容</h3>
+
+<ul>
+<li>使用 pre-code 多行模式</li>
+<li>打开该文本文件的命令可以写在一起, 命令和文本之间空一行</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Linux 手册]]></title>
+    <link href="http://life.urakalee.me/blog/2013/12/08/linux-cheatsheet/"/>
+    <updated>2013-12-08T12:13:45+08:00</updated>
+    <id>http://life.urakalee.me/blog/2013/12/08/linux-cheatsheet</id>
+    <content type="html"><![CDATA[<h2>常用命令</h2>
+
+<h3>find</h3>
+
+<pre><code class="sh">find . -name "*.xyz"
+find . -name "*abc*" -delete
+</code></pre>
+
+<h3>grep</h3>
+
+<pre><code class="sh">grep -i "abc" * # 忽略大小写
+grep -R "abc" .
+</code></pre>
+
+<h3>wc</h3>
+
+<pre><code class="sh">wc -l find -name "*.java" # 统计 java 代码行数
+</code></pre>
+
+<h3>权限</h3>
+
+<pre><code class="sh">chmod u+x &lt;file&gt; # 设为可执行文件
+chown &lt;name&gt; &lt;file&gt;
+chown -R &lt;name&gt; &lt;dir&gt;
+chgrp ... # 格式同 chown
+</code></pre>
+
+<h2>系统工具</h2>
+
+<h3>ssh</h3>
+
+<ul>
+<li>ssh-add -D删除所有记住的key
+
+<ul>
+<li>解决 Mac 下所有使用过的 key 都会被记住，删除 key 文件没用的问题</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>链接库</h3>
+
+<ul>
+<li>查看链接库是否缺失: <code>ldd &lt;可执行文件&gt;</code></li>
+<li>修改系统加载库
+<code>sh
+vim /etc/ld.so.conf
+/sbin/ldconfig
+</code></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Git 手册]]></title>
+    <link href="http://life.urakalee.me/blog/2013/12/03/git-cheatsheet/"/>
+    <updated>2013-12-03T18:13:53+08:00</updated>
+    <id>http://life.urakalee.me/blog/2013/12/03/git-cheatsheet</id>
+    <content type="html"><![CDATA[<h2>基本操作</h2>
+
+<ul>
+<li>创建版本库: <code>git init</code></li>
+<li>克隆版本库
+
+<ul>
+<li><code>git clone /path/to/repo</code></li>
+<li><code>git clone user@host:/path/to/repo</code></li>
+<li>多版本库: <code>git remote add &lt;repo-name&gt; &lt;repo&gt;</code></li>
+<li>多版本库列表: <code>git remote -v</code></li>
+</ul>
+</li>
+<li>更新版本库
+
+<ul>
+<li><code>git pull [repo-name]</code>
+
+<ul>
+<li>repo-name 默认为 origin</li>
+<li><code>git pull --rebase</code> 可以避免无意义的 pull-merge, 使版本树尽可能是一条直线</li>
+</ul>
+</li>
+<li><code>git fetch [repo-name]</code> - <code>git pull</code> does a <code>git fetch</code> followed by a <code>git merge</code>
+
+<ul>
+<li>repo-name 默认为 origin</li>
+<li>会把 repo-name 的更新都 fetch 到本地, 包括新分枝和新标签, 但不会建立本地分枝</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>提交到本地
+
+<ul>
+<li>stage: <code>git add &lt;file/dir&gt;</code></li>
+<li><code>git commit -m "&lt;comment&gt;"</code>
+
+<ul>
+<li>对于已经处于版本控制中的文件, 可以使用 <code>git commit -am "&lt;comment&gt;"</code> 略过 stage</li>
+<li>有时需要构造空提交: <code>git commit --allow-empty -m "EMPTY"</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>提交到远程
+
+<ul>
+<li><code>git push [repo-name] [branch]</code>
+
+<ul>
+<li>repo-name 默认为 origin, branch 默认为当前分枝</li>
+<li><code>git push -u &lt;repo-name&gt; &lt;branch&gt;</code> 设置 push/pull 时默认使用的 repo-name</li>
+<li><code>git push &lt;repo-name&gt; &lt;branch&gt;:&lt;remote-branch&gt;</code> - 如果本地和远程分枝名字不同</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+<!-- more -->
+
+
+<h2>反悔</h2>
+
+<ol>
+<li>revert stage: <code>git reset HEAD &lt;file&gt;</code></li>
+<li>reset working: <code>git checkout -- &lt;file&gt;</code></li>
+<li>restore(1+2): <code>git checkout HEAD &lt;file&gt;</code>
+
+<ul>
+<li>checkout 上一个版本, 放在 stage/working 中: <code>git checkout HEAD~ &lt;file&gt;</code></li>
+<li>如果改动, add, 再改动, 使用 <code>1.</code> 不会恢复到第一次改动的结果; 使用 <code>2.</code> 才行!</li>
+</ul>
+</li>
+<li><code>git reset &lt;rev&gt; [file]</code>
+
+<ul>
+<li>没有 file 把 HEAD/branch 指向 rev</li>
+<li>有 file 把 rev 版本的 file checkout 出来</li>
+<li>如果 <code>--hard</code>, 那么 stage 和 working 都更新为 rev; 如果 <code>--soft</code>, 那么 stage 和 working 都不变(但 <code>git status</code> 会发现有文件 stage 了, 这是相对运动的结果); 如果 <code>--mixed</code> (默认), 那么只更新 stage (这时 <code>git status</code> 会发现 working 中有改动, 原因同上)</li>
+<li>rev 默认为 HEAD: 如果 <code>--hard</code>, 那么 stage 和 working 都更新为 HEAD (和 <code>3.</code> 效果一样); <code>--soft</code> 没意义; 如果 <code>--mixed</code>, 那么只更新 stage (就是 <code>1.</code> 咯~)</li>
+<li>没有 file 时 <code>--hard</code> 类似于 checkout, 区别在于 <code>reset &lt;rev&gt;</code> 会移动 branch 指针, <code>checkout &lt;branch&gt;</code> 回不去, 而 <code>checkout &lt;rev&gt;</code> 再 <code>checkout &lt;branch&gt;</code> 可以回去</li>
+<li>放弃所有本地改动(含本地提交): <code>git reset --hard &lt;repo-name&gt;/&lt;remote-branch&gt;</code></li>
+</ul>
+</li>
+<li><code>git checkout &lt;rev&gt; [file]</code>
+
+<ul>
+<li>没有 file 会建立一个 detached HEAD (匿名分枝) - 最好别用!</li>
+<li>有 file 把 rev 版本的 file checkout 出来</li>
+<li>rev 默认为 <code>--</code> 即 stage, 从 stage checkout 到 working</li>
+<li>其它 rev 从 rev checkout 到 stage 再到 working</li>
+</ul>
+</li>
+<li><code>git revert &lt;rev&gt;</code>: 类似 svn 中的倒着 merge, 生成一个新版本 V+, 和 V-完全一样 - 仅用于 revert 一个很久以前的错误改动!</li>
+<li>修改已经 push 到远程的提交
+
+<ol>
+<li>使用下面的方法修改已经 push 到远程的提交</li>
+<li><code>git push &lt;repo-name&gt; +&lt;branch&gt;:&lt;remote-branch&gt;</code></li>
+</ol>
+</li>
+<li>修改上一个提交: <code>git commit --amend</code></li>
+<li>修改多个提交(交互式)
+
+<ol>
+<li><code>git rebase -i &lt;rev&gt;</code>, 编辑 rev 之后的提交, rev 默认为 repo-name/remote-branch</li>
+<li>对于想合并到前一个的提交, 选择 fixup</li>
+<li>对于想删除的提交, 直接删除对应的行</li>
+</ol>
+</li>
+<li>将上 N 个提交合并成一个
+<code>sh
+git reset --soft HEAD^(N-1)
+git commit --amend
+</code></li>
+</ol>
+
+
+<h2>分枝</h2>
+
+<ul>
+<li>建立分枝:
+
+<ul>
+<li><code>git checkout -b &lt;branch&gt;</code> 在当前 HEAD 上创建分枝并切换到新分枝</li>
+<li><code>git checkout -b &lt;branch&gt; &lt;repo-name&gt;/&lt;remote-branch&gt;</code> 跟踪远程分枝</li>
+</ul>
+</li>
+<li>切换分枝: <code>git checkout &lt;branch&gt;</code></li>
+<li>删除分枝: <code>git branch -d &lt;branch&gt;</code>
+
+<ul>
+<li>对于没有合并或提交到远程的分枝, 删除时会提示用 <code>-D</code> 强制删除</li>
+</ul>
+</li>
+<li>将分枝提交到远程(在远程建立新分枝): <code>git push &lt;repo-name&gt; &lt;branch&gt;</code>
+
+<ul>
+<li>提交到远程之后, 如果希望能够 pull 该分枝, 需要 <code>git push -u</code></li>
+</ul>
+</li>
+<li>删除远程分枝: <code>git push &lt;repo-name&gt; :&lt;remote-branch&gt;</code></li>
+<li>删除已删除远程分枝的本地缓存: <code>git remote prune origin</code></li>
+<li>查看所有分枝: <code>git branch -av</code>
+
+<ul>
+<li><code>git branch</code> 不显示远程分枝</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>diff</h2>
+
+<ul>
+<li>分枝 diff: <code>git diff &lt;src-branch&gt; &lt;tgt-branch&gt;</code> (tgt 默认为当前分枝)
+
+<ul>
+<li>如果是和 master 比较, src-branch 应该是master</li>
+</ul>
+</li>
+<li>版本 diff: <code>git diff &lt;src-rev&gt; &lt;tgt-rev&gt;</code> (tgt 默认为当前版本)
+
+<ul>
+<li>src-rev 应该是比 tgt-rev 更老的版本(祖先版本)</li>
+<li><code>git merge-base &lt;src-branch&gt; &lt;tgt-branch&gt;</code> 可能可以得到你需要的 src-rev</li>
+</ul>
+</li>
+<li>其它 diff
+
+<ul>
+<li>working 和 stage 的 diff: <code>git diff</code></li>
+<li>stage 和 HEAD 的 diff: <code>git diff --cached</code></li>
+<li>working 和 HEAD 的 diff: <code>git diff HEAD</code></li>
+<li><strong>注意</strong> 上述 3 种方式都不会 diff 新文件(未处于版本控制中的文件)</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>合并</h2>
+
+<ul>
+<li>合并 branch 到当前分枝: <code>git merge &lt;branch&gt;</code>
+
+<ul>
+<li>fetch 后用 <code>git merge &lt;repo-name&gt;/&lt;remote-branch&gt;</code> merge</li>
+<li>如果 <code>merge &lt;branch&gt;</code>, 修改 branch, 再 merge, 只 merge 修改的部分</li>
+<li>合并冲突时, 不 merge 而是指定某个版本: <code>git checkout --ours/--theirs &lt;file&gt;</code></li>
+<li>&ldquo;复制&rdquo; 一次提交(比如某个分枝只有一次提交需要保留): <code>git cherry-pick &lt;rev&gt;</code>
+
+<ul>
+<li>停止 &ldquo;复制&rdquo;: <code>git cherry-pick --abort</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>将当前分枝 rebase 到 tgt-branch: <code>git rebase &lt;tgt-branch&gt;</code></li>
+<li>merge 与 rebase 的区别
+
+<ul>
+<li>merge 建立了一个新版本, 而 rebase 是分枝上有多少新版本, 就会建立多少新版本</li>
+<li>rebase 后需要再做一次快速 merge, 才能使 tgt-branch 的指针正确(两者指针移动方式不同)</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>查看状态信息</h2>
+
+<ul>
+<li><code>git status</code></li>
+<li><code>git log</code></li>
+<li><code>git reflog</code>: 查看 HEAD 指针的移动历史</li>
+<li><code>git branch --merge</code>: 查看哪些分枝已被合并到当前分枝</li>
+<li><code>git branch --no-merged</code>: 查看尚未合并的分枝</li>
+<li><code>git remote show &lt;repo-name&gt;</code>: 查看远程信息</li>
+</ul>
+
+
+<h2>暂存</h2>
+
+<pre><code class="sh">git stash
+git stash pop
+git stash list
+git stash clear
+git stash apply stash@{x}
+git stash drop stash@{x}
+git stash branch &lt;branch&gt;
+</code></pre>
+
+<h2>标签</h2>
+
+<pre><code class="sh">git tag # 标签列表
+git tag &lt;tag&gt; # 在当前版本上打标签
+git show &lt;tag&gt; # 查看标签
+git tag -d &lt;tag&gt; # 删除标签
+git push &lt;repo-name&gt; &lt;tag&gt; # 提交标签
+git push &lt;repo-name&gt; :&lt;tag&gt; # 删除远程标签
+</code></pre>
+
+<h2>submodule @2015.04.13</h2>
+
+<pre><code class="sh">git submodule add &lt;remote-path&gt; [&lt;local-path&gt;] # 添加 remote-path 为当前项目的 submodule
+</code></pre>
+
+<pre><code class="sh 删除 local-path 下的子项目">git rm -r &lt;local-path&gt; # 如果有问题, 试试 git rm --cached &lt;local-path&gt;
+vim .gitmodules # 通常会在 git rm 时自动执行
+git commit
+rm -rf .git/modules/&lt;local-path&gt; # 可能不必要
+vim .git/config
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress 新手小记]]></title>
+    <link href="http://life.urakalee.me/blog/2013/11/24/newbie-to-octopress/"/>
+    <updated>2013-11-24T21:10:28+08:00</updated>
+    <id>http://life.urakalee.me/blog/2013/11/24/newbie-to-octopress</id>
+    <content type="html"><![CDATA[<p>信息焦虑的第二个症状：换过好几个博客，但都因为配置复杂、格式不可控、备份麻烦等原因放弃了。</p>
+
+<p>作为一个程序员，深深地为自己不能迅速地把博客搞定而惭愧。在构思许久之后，终于还是决定先偷懒，把习惯陪养起来再说。Octopress 还是非常符合我审美的，没有太多可配置的东西，所有格式都能自己掌控，更不用说备份——噢！又犯病了。。。</p>
+
+<p><a href="http://blog.devtang.com/blog/2012/02/10/setup-blog-based-on-github/" title="象写程序一样写博客：搭建基于github的博客">唐巧的博客</a>很容易搜到，但我还是建议第一次搞的同学看一下官网。如果你像我一样在使用最新版的 MacOS，那么 ruby 部分就会简化许多：
+<code>sh
+git clone git://github.com/imathis/octopress.git octopress
+cd octopress
+sudo gem install bundler
+bundle install
+rake install
+rake new_post['Article Name']
+</code></p>
+
+<!-- more -->
+
+
+<p>写作就是 MarkDown 了, 虽然和 wiki 的写法有些差异, 容易记混. 通常我都会使用 Sublime Text + MarkDown 插件, 同时运行 <code>rake preview</code> 进行调试(-___-b). Preview 模式下, published:false 的文章会是可见的; 可能由于 bug, 如果你开着 preview 运行 deploy, published:false 的文章也会是可见的&hellip; <strong><em><code>rake deploy</code> 前务必退出 preview, 并运行 <code>rake generate</code></em></strong>.</p>
+
+<p><code>rake deploy</code> 之前，要 <code>git add</code> 和 <code>git push origin source</code>, git 新手（像我）往往都习惯于顺手来个 <code>git pull</code>。唔，然后就悲剧了。因为这个时候 git 已经很傻地把你的 source 分枝和远程的 master 分枝关联在一起了，所以 pull 的时候会没头没脑地要 merge 这两个分枝。已经 merge 的怎么回退我就不说了，还没 pull 的，先修改一下 config 文件。</p>
+
+<pre><code>vim .git/config
+
+...
+[branch "source"]
+    remote = origin
+    merge = refs/heads/source
+</code></pre>
+
+
+<p>如果你像我一样，公司用 git，但博客是私人的，那么最好配置一个 local 的 user，这样博客的提交会好看些。知道格式的也可以直接修改 config 文件。
+<code>sh
+git config user.name &lt;your-name&gt;
+git config user.email &lt;your-email&gt;
+</code></p>
+
+<p>最后，在多台机器上部署。同样要先搞定 ruby 部分，但不需要运行 <code>rake install</code> 和 <code>rake setup_github_pages</code> 了。
+<code>sh
+git clone &lt;your-blog-repo&gt;
+cd &lt;your-blog-name&gt;.github.io
+checkout source
+git branch -D master # 不 checkout master
+git clone &lt;your-blog-repo&gt; _deploy # 模拟 rake setup_github_pages
+</code></p>
+
+<h3>更多设置</h3>
+
+<ul>
+<li>设置导航栏和增加文章分类的方法可以参考<a href="http://oec2003.github.io/blog/2013/06/26/octopress-blog-setting/" title="Octopress博客设置">冯威的博客</a></li>
+<li>输入和显示表格的方法可以参考 <a href="http://samwize.com/2012/09/24/octopress-table-stylesheet/" title="Octopress Table Stylesheet">@samwize 的博客</a></li>
+<li>增加 disqus 的评论只需要申请 disqus 账号并修改 _config.yml @2013.12.14</li>
+</ul>
+
+
+<hr />
+
+<ul>
+<li>PS: 由于可以使用 <code>rake preview</code> 进行调试，master 分枝仅用于发布，所以完全没有必要 checkout master；不 checkout 还避免了 pull 和 push 时会捎上 master 的问题</li>
+</ul>
+
+
+<hr />
+
+<ul>
+<li>Update@2016.03.10: 更新Octopress, 解决升级 Mac 后无法 preview 的问题
+<code>sh
+git merge octopress/master
+sudo gem install bundler # 可能不必要
+bundle update
+bundle install
+</code>
+<code>sh 如果需要升级 Ruby
+brew update
+brew install rbenv ruby-build
+rbenv install 2.2.4
+rbenv local 2.2.4
+sudo gem install bundler
+rbenv rehash
+</code></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

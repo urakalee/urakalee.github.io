@@ -1,0 +1,319 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Android: 捕获 Home 键 - Binary Life</title>
+  <meta name="author" content="Uraka Lee">
+
+  
+  <meta name="description" content="在猿题库工作一年多, 新功能做了不少, bug 也改了许多, 近期开始做更多的优化工作. 本篇博客的内容来自"错题锁屏"功能的优化. 我们 2014 年 9 月开始做"错题锁屏"功能, 希望增加曝光, 提高存留. 开发该功能的同学现在已经结束实习出国工作了, 但做这个功能的时候我就知道坑很多, &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://life.urakalee.me/blog/2015/01/21/android-home-watcher">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Binary Life" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<!--
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-46162042-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Binary Life</a></h1>
+  
+    <h2>诗人 方法论者 喝汤族 微微爸</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:life.urakalee.me" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+    <li><a href="/">Blog</a></li>
+    <li><a href="/blog/archives">Archives</a></li>
+    <li><a href="/blog/categories/cheatsheet">CheatSheets</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Android: 捕获 Home 键</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-01-21T17:12:00+08:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>在<a href="http://yuantiku.com">猿题库</a>工作一年多, 新功能做了不少, bug 也改了许多, 近期开始做更多的优化工作. 本篇博客的内容来自"错题锁屏"功能的优化.</p>
+
+<p>我们 2014 年 9 月开始做"错题锁屏"功能, 希望增加曝光, 提高存留. 开发该功能的同学现在已经结束实习出国工作了, 但做这个功能的时候我就知道坑很多, 而且上线前为了避免风险留了一些坑没改. 上线后, 发现该功能比较受欢迎, 所以又有了多次拉锯式的修改, 不过对于锁屏本身的坑并没有填.</p>
+
+<p>关于如何防止锁屏进程被杀, 我可能会开另外一篇博客来说明, 不过其实你也可以逆向工程我们的 apk 自己去看. 还有就是错题锁屏变成一个独立进程之后, 进程间共享数据变成了一个新的大坑&hellip;</p>
+
+<p>由于我们一开始就不想把错题锁屏做得很暴力, 所以虽然禁用了 Back 键(按 Back 键不能退出锁屏), 却还是保留了按 Home 键退出的可能性, 避免用户因为答不对题而无法解锁(我们可能低估用户了).</p>
+
+<p>于是有一个问题, 按 Home 键退出锁屏之后, 用户可以在"最近使用"中重新打开锁屏界面, 而我们只想让用户在"最近使用"中看到猿题库本身. 我开始寻找如何在用户按 Home 键时让锁屏界面自己把自己 finish 掉的方法.</p>
+
+<p>首先查到的方法是 onUserLeaveHint, 按 Home 键时确实会调用这个函数. 不过遇到的问题也很坑: 当有其它锁屏, 甚至 QQ 弹窗(实际上也是用类似锁屏的方法实现的)出现时, 我们的锁屏可能被挤掉(onUserLeaveHint 被调用).</p>
+
+<p>然后开始寻找能够捕获 Home 键的方法:</p>
+
+<ol>
+<li><a href="http://stackoverflow.com/questions/8881951/detect-home-button-press-in-android">override onKeyDown</a>, 不过 no longer works as of 4.0, <a href="http://www.coderzheaven.com/2012/06/02/override-hardware-home-button-android-listen-home-button-click-android/">这里</a>给出了完整的代码</li>
+<li><a href="http://stackoverflow.com/questions/5907102/home-button-listener">这篇 vote 比较少的文章</a>其实离最终答案很近了, 不过因为 vote 太少, 我一开始没有相信它&hellip;</li>
+<li>中文网络上看起来有更多人搞过这个问题: 文章 <a href="http://blog.csdn.net/way_ping_li/article/details/8953622">A</a> <a href="http://blog.csdn.net/watt520/article/details/18959897">B</a> <a href="http://blog.csdn.net/ekeuy/article/details/39400939">C</a> 大同小异, <a href="http://862123204-qq-com.iteye.com/blog/1888532">这里</a>分析得更详细一些. 其中 <a href="http://blog.csdn.net/watt520/article/details/18959897">B</a> 的代码更漂亮一些, 我试过可行 (Android4.+)</li>
+</ol>
+
+
+<p>可行之后, 我发现又掉到了坑里: <strong>即使 finish 掉了, 用户还是可以在最近使用中重新打开锁屏界面!!!</strong></p>
+
+<p>最后, 我解决这个问题的方法与捕获 Home 键没有任何关系, 只能把锁屏的 activity 设为最近不可见 (excludeFromRecents=&ldquo;true&rdquo;). 这充分体现了坚持做一个 SB 程序员的必要性: 过于相信一知半解的既有信息是错误的根源.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Uraka Lee</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-01-21T17:12:00+08:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/android/'>android</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+  
+    <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+    <span class="jiathis_txt">分享到：</span>
+    <a class="jiathis_button_weixin">微信</a>
+    <a class="jiathis_button_tsina">新浪微博</a>
+    <a class="jiathis_button_douban">豆瓣</a>
+    <a class="jiathis_button_tqq">腾讯微博</a>
+    <a class="jiathis_button_ydnote">有道云笔记</a>
+    <a class="jiathis_button_copy">复制网址</a>
+    <!--
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+    <a class="jiathis_counter_style"></a>
+    -->
+</div>
+<script type="text/javascript" >
+var jiathis_config = {
+    summary: "",
+    shortUrl: true,
+    hideMore: true
+};
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+  
+</div>
+
+    
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/03/10/android-night-theme-for-9-patch/">Android: 9-patch的夜间模式</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/03/10/optimize-question-and-solution-of-yuantiku-1/">做题解析性能优化始末(1)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/03/10/android-mechanism-asynctask/">Android机制: AsyncTask</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/04/19/disable-cmd-q-for-chrome/">Mac Tips: 对 Chrome 禁用 Cmd+Q</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/04/19/mac-migration/">Mac 重装/数据迁移</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/01/21/android-home-watcher/">Android: 捕获 Home 键</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/25/to-weiwei-waiting-for-you/">致 Weiwei: 我们期待着你的降临</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/25/mac-chrome-upgrade/">Mac Chrome 升级</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/20/android-tips/">Android 开发点滴</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/16/markdown-style/">Markdown Style</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+    <h1>Categories</h1>
+    <ul id="categories">
+        <li class='category'><a href='/blog/categories/android/'>android (6)</a></li>
+<li class='category'><a href='/blog/categories/cheatsheet/'>cheatsheet (4)</a></li>
+<li class='category'><a href='/blog/categories/familybuild/'>familybuild (2)</a></li>
+<li class='category'><a href='/blog/categories/oshack/'>oshack (5)</a></li>
+<li class='category'><a href='/blog/categories/readbook/'>readbook (1)</a></li>
+<li class='category'><a href='/blog/categories/selfengine/'>selfengine (3)</a></li>
+<li class='category'><a href='/blog/categories/teamtoy/'>teamtoy (8)</a></li>
+
+    </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2016 - Uraka Lee -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'urakalee';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://life.urakalee.me/blog/2015/01/21/android-home-watcher/';
+        var disqus_url = 'http://life.urakalee.me/blog/2015/01/21/android-home-watcher/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

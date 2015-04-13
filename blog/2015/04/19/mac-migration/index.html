@@ -1,0 +1,369 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Mac 重装/数据迁移 - Binary Life</title>
+  <meta name="author" content="Uraka Lee">
+
+  
+  <meta name="description" content="transfer 出来的 Mac 系统, 有一些地方需要重新设置 关闭 guest: Pref - User - Unlock - Guest User - Uncheck
+修改机器名1: Pref - Share - Computer Name
+修改机器名2: sudo scutil -- &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://life.urakalee.me/blog/2015/04/19/mac-migration">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Binary Life" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<!--
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-46162042-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Binary Life</a></h1>
+  
+    <h2>诗人 方法论者 喝汤族 微微爸</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:life.urakalee.me" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+    <li><a href="/">Blog</a></li>
+    <li><a href="/blog/archives">Archives</a></li>
+    <li><a href="/blog/categories/cheatsheet">CheatSheets</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Mac 重装/数据迁移</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-04-19T10:14:44+08:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><ul>
+<li>transfer 出来的 Mac 系统, 有一些地方需要重新设置
+
+<ol>
+<li>关闭 guest: Pref - User - Unlock - Guest User - Uncheck</li>
+<li>修改机器名1: Pref - Share - Computer Name</li>
+<li>修改机器名2: <code>sudo scutil --set HostName &lt;name&gt;</code></li>
+<li>修改 Terminal 提示符</li>
+</ol>
+</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>vim ~/.bash_profile
+</span><span class='line'>
+</span><span class='line'><span class="nb">export </span><span class="nv">PS1</span><span class="o">=</span><span class="s2">&quot;[\u@\h \W]\$ &quot;</span> <span class="c"># 增加这一行</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">source</span> ~/.bash_profile
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>开启 TRIM
+
+<ul>
+<li>方法 1: 使用 <a href="http://bbs.weiphone.com/read-htm-tid-7173782.html" title="[求助] 10.9 怎么开启TRIM">Terminal 命令</a></li>
+<li>方法 2: 使用 <a href="http://chameleon.alessandroboschini.it/index.php" title="Chameleon SSD Optimizer">Chameleon SSD Optimizer</a>
+
+<ul>
+<li>我是在使用过方法 1 之后才找到方法 2 的, 不过以后再有需要会先用方法 2</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>检查安装的软件
+
+<ul>
+<li><del>Dropbox</del></li>
+<li><del>CloudStation</del> -> 家用 ONLY</li>
+<li><del>GoAgentX: 升个级吧</del> -> 买个 VPN 吧</li>
+<li>Alfred: <a href="/blog/2013/11/25/confused-alfred-and-spotlight/" title="Alfred &amp; Spotlight">设置 Spotlight 索引</a>, 重建 Alfred 索引</li>
+</ul>
+</li>
+<li>配置 hosts/ssh-config/known_hosts/vimrc/gitconfig/SwitchySharp</li>
+<li>各种清理
+
+<ul>
+<li>清理个人的 Login Items: Pref - User - Login Items</li>
+<li>使用 CleanMyMac 清理全局的 Login Items</li>
+<li>使用 CleanMyMac 删除没用的软件</li>
+<li>到 <code>~/</code> 下删除没用的目录和没用软件的残留</li>
+<li>到 <code>~/Library/Application Support/</code> 和 <code>Preferences</code>, <code>Caches</code>, <code>Logs</code> 目录下删除没用软件的残留</li>
+</ul>
+</li>
+<li>运行 Disk Utility</li>
+<li>修复 HomeBrew
+
+<ul>
+<li>按照 <code>brew doctor</code> 的提示做即可</li>
+</ul>
+</li>
+</ul>
+
+
+<hr />
+
+<p>Update@2015.04.13: 修改"检查安装的软件"部分</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Uraka Lee</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-04-19T10:14:44+08:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/oshack/'>oshack</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+  
+    <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+    <span class="jiathis_txt">分享到：</span>
+    <a class="jiathis_button_weixin">微信</a>
+    <a class="jiathis_button_tsina">新浪微博</a>
+    <a class="jiathis_button_douban">豆瓣</a>
+    <a class="jiathis_button_tqq">腾讯微博</a>
+    <a class="jiathis_button_ydnote">有道云笔记</a>
+    <a class="jiathis_button_copy">复制网址</a>
+    <!--
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+    <a class="jiathis_counter_style"></a>
+    -->
+</div>
+<script type="text/javascript" >
+var jiathis_config = {
+    summary: "",
+    shortUrl: true,
+    hideMore: true
+};
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+  
+</div>
+
+    
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/03/10/android-night-theme-for-9-patch/">Android: 9-patch的夜间模式</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/03/10/optimize-question-and-solution-of-yuantiku-1/">做题解析性能优化始末(1)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/03/10/android-mechanism-asynctask/">Android机制: AsyncTask</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/04/19/disable-cmd-q-for-chrome/">Mac Tips: 对 Chrome 禁用 Cmd+Q</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/04/19/mac-migration/">Mac 重装/数据迁移</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/01/21/android-home-watcher/">Android: 捕获 Home 键</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/25/to-weiwei-waiting-for-you/">致 Weiwei: 我们期待着你的降临</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/25/mac-chrome-upgrade/">Mac Chrome 升级</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/20/android-tips/">Android 开发点滴</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/16/markdown-style/">Markdown Style</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+    <h1>Categories</h1>
+    <ul id="categories">
+        <li class='category'><a href='/blog/categories/android/'>android (6)</a></li>
+<li class='category'><a href='/blog/categories/cheatsheet/'>cheatsheet (4)</a></li>
+<li class='category'><a href='/blog/categories/familybuild/'>familybuild (2)</a></li>
+<li class='category'><a href='/blog/categories/oshack/'>oshack (5)</a></li>
+<li class='category'><a href='/blog/categories/readbook/'>readbook (1)</a></li>
+<li class='category'><a href='/blog/categories/selfengine/'>selfengine (3)</a></li>
+<li class='category'><a href='/blog/categories/teamtoy/'>teamtoy (8)</a></li>
+
+    </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2016 - Uraka Lee -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'urakalee';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://life.urakalee.me/blog/2015/04/19/mac-migration/';
+        var disqus_url = 'http://life.urakalee.me/blog/2015/04/19/mac-migration/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

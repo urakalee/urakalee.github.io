@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Teamtoy | Binary Life]]></title>
+  <link href="http://life.urakalee.me/blog/categories/teamtoy/atom.xml" rel="self"/>
+  <link href="http://life.urakalee.me/"/>
+  <updated>2016-03-10T20:16:45+08:00</updated>
+  <id>http://life.urakalee.me/</id>
+  <author>
+    <name><![CDATA[Uraka Lee]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[SSH 配置解析]]></title>
+    <link href="http://life.urakalee.me/blog/2013/12/14/ssh-configuration-explain/"/>
+    <updated>2013-12-14T14:09:00+08:00</updated>
+    <id>http://life.urakalee.me/blog/2013/12/14/ssh-configuration-explain</id>
+    <content type="html"><![CDATA[<ul>
+<li>使用 git (ssh 模式)和 scp 等 ssh 相关命令时也遵从该配置</li>
+</ul>
+
+
+<pre><code>vim ~/.ssh/config
+
+Host github.com
+    User git # 使用 github 时的默认用户名
+    IdentityFile ~/.ssh/id_rsa.github # 为不同的 host 配置不同的 key
+
+Host gerrit.work-host.com
+    User work-name # 使用公司 gerrit 服务时的默认用户名
+    IdentityFile ~/.ssh/id_rsa.work # 为不同的 host 配置不同的 key
+
+# ssh mctx => ssh urakalee@192.168.1.1
+# 不需要配系统 host, 不过除 ssh 相关命令外, 该 host 不起作用
+Host mctx
+    HostName 192.168.1.1 # 私人服务器 ip
+    User urakalee # ssh 到私人服务器时的默认用户名
+    IdentityFile ~/.ssh/id_rsa.urakalee # 为不同的 host 配置不同的 key
+
+# ssh workstation 和 ssh 10.0.0.1 同时生效
+# 不需要配系统 host, 不过除 ssh 相关命令外, 该 host 不起作用
+Host workstation 10.0.0.1
+    HostName 10.0.0.1 # 公司 workstation 服务器 ip
+    User work-name # ssh 到公司 workstation 服务器时的默认用户名
+    IdentityFile ~/.ssh/id_rsa.work # 为不同的 host 配置不同的 key
+</code></pre>
+
+
+
+
+<pre><code>vim ~/.ssh/known_hosts
+
+# 通过用户认证的主机列表, 一行一个
+<主机名>,ip1[,ip2]...[,ipN] ssh-<加密方式> <主机指纹>
+</code></pre>
+
+
+
+
+<pre><code>vim ~/.ssh/authorized_keys
+
+# 设置本机允许那些用户登录, 一行一个
+ssh-<加密方式> <公钥> [user@host]
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Code Style]]></title>
+    <link href="http://life.urakalee.me/blog/2013/12/07/code-style/"/>
+    <updated>2013-12-07T18:07:00+08:00</updated>
+    <id>http://life.urakalee.me/blog/2013/12/07/code-style</id>
+    <content type="html"><![CDATA[<h2>代码风格</h2>
+
+<ul>
+<li>代码是给人看的, 偶尔也在机器上跑一跑</li>
+<li>代码应该越写越少: <strong><em>Write Less Do More</em></strong></li>
+<li>所有源代码文件(包括 html/css/properties/readme 等)均为 utf-8 无 bom 格式, unix 换行</li>
+<li><strong><em>禁用tab</em></strong>, 所有源代码文件一律使用 4 空格缩进</li>
+</ul>
+
+
+<h2>Java</h2>
+
+<ul>
+<li><a href="http://www.oracle.com/technetwork/java/codeconv-138413.html" title="Java 编码规范">Java Code Conventions</a></li>
+<li><a href="http://doc.javanb.com/code-conventions-for-the-java-programming-language-zh/" title="Java 编码规范(中文版)">Java编码规范(中文版)</a></li>
+</ul>
+
+
+<!-- more -->
+
+
+<h3>内部规范</h3>
+
+<ul>
+<li>第三部分
+
+<ul>
+<li>每行不超过 120 字符, 一个文件不超过 600 行</li>
+<li>愿意遵循每行不超过 72 或 80 字符的也可以, 但不超过 120 是必须的</li>
+</ul>
+</li>
+<li>第四部分
+
+<ul>
+<li>再次强调每行不超过 120 字符, 一个文件不超过 600 行</li>
+<li><strong><em>换行是检验代码可读性的重要标准</em></strong></li>
+</ul>
+</li>
+<li>第六部分
+
+<ul>
+<li>一行声明一个变量</li>
+</ul>
+</li>
+<li>第七部分
+
+<ul>
+<li>语句块即使只有一行也要有括号</li>
+<li>尤其是 if 语句!</li>
+</ul>
+</li>
+<li>第九部分
+
+<ul>
+<li>类名为首字母大写格式</li>
+<li>包名均为小写, 视觉上应为一个倒置的域名, 比如 <code>com.domain.codename</code></li>
+<li>常量为全大写, 下划线分隔</li>
+</ul>
+</li>
+<li>第十部分
+
+<ul>
+<li>善用 TODO, XXX, FIXME</li>
+</ul>
+</li>
+<li>其它
+
+<ul>
+<li>避免 magic number</li>
+<li>禁用 <code>System.out.print</code>, 使用 logger</li>
+<li>如果可能, 避免使用 <code>++</code>, 无论是前 <code>++</code> 还是后 <code>++</code>, 而是用 <code>+= 1</code>来替代</li>
+<li>文件结构: 将功能和方法分为命令和查询两类, 并将两者分别放在一起
+
+<ul>
+<li>也可以分成更多类, 比如 override/implement/public/private/getter/setter 等</li>
+<li>定义 code template 是个好办法, 但关键还是在于所有人都能坚持遵循</li>
+</ul>
+</li>
+<li>包结构: 包内文件不超过 10 个, 接口的实现要放在对应的 impl 目录下</li>
+<li>Singleton (helper): 需要初始化</li>
+<li>静态函数集合 (utils): 不需要初始化, 或者有瞬间又无异常的static初始化</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>防御</h3>
+
+<ul>
+<li>警告就是错误!</li>
+<li>报告所有的异常, 传播不能处理的异常, 禁止空 catch, 即使是临时这样做也不行!</li>
+<li>在异常发生之前使用断言, 可以避免更严重的问题(比如数据不一致)</li>
+</ul>
+
+
+<h3>测试</h3>
+
+<ul>
+<li>单元测试就是最可信的文档</li>
+<li>刚刚开始 TDD 时要用最简单的方式编写 TestCase, 而不是不断引入新的类, 否则你会强迫自己保留和使用它们</li>
+<li>像重构代码一样重构测试</li>
+<li>测试用例以 Test 开头, 测试一个类用 TestClassName, 测试一个包用 TestPackageName (为了遵循类命名规范, 包名需要首字母大写)</li>
+</ul>
+
+
+<h3>调试</h3>
+
+<ul>
+<li>善用 debug 模式, 而不是 log, 更不是 print</li>
+<li>但是, 在运行着的系统中 log 还是很有用的, 所以 log 中要展示有用的信息</li>
+<li>实验用例以 Run 开头, 后面同测试用例, 通常每个实验用例都只有一个 main 函数, 主要用来做实验</li>
+</ul>
+
+
+<h2>Html/Css/Javascipt</h2>
+
+<ul>
+<li>html 的 id 为驼峰格式, 形如 abcXyz</li>
+<li>html 的 class 为全小写, 形如 abc-xyz</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to Wiki]]></title>
+    <link href="http://life.urakalee.me/blog/2013/12/07/how-to-wiki/"/>
+    <updated>2013-12-07T17:35:18+08:00</updated>
+    <id>http://life.urakalee.me/blog/2013/12/07/how-to-wiki</id>
+    <content type="html"><![CDATA[<h2>什么是 wiki</h2>
+
+<ul>
+<li>wiki 是一种网络应用</li>
+<li>遵照一定的格式, 使用纯文本书写, 输出 html 文档</li>
+<li>方便的内链接, 在多个内部页面之间跳转</li>
+<li>多人编辑, 支持版本历史</li>
+</ul>
+
+
+<h2>如何创建一个 wiki 页面</h2>
+
+<ul>
+<li>访问一个不存在的 url, 建立一个新的页面
+
+<ul>
+<li>比如 <code>/APageDoesNotExist</code></li>
+</ul>
+</li>
+<li>页面的名字必须是 <strong>首字母大写</strong> 的, 首字母大写的名字可以被 wiki 识别为内链接</li>
+<li>点击 &ldquo;创建页面&rdquo;, 编辑</li>
+<li>书写语法见 <code>/WikiFormatting</code></li>
+<li>编辑完点击 &ldquo;预览&rdquo;, 查看输出的 html 是否符合预期</li>
+<li>如果没问题, 点击 &ldquo;提交改动&rdquo;, 即生成一个新的 wiki 页面</li>
+</ul>
+
+
+<!-- more -->
+
+
+<h2>添加附件</h2>
+
+<ul>
+<li>wiki 允许增加附件</li>
+<li>打开一个存在的 wiki 页面, 点击页面底部的 &ldquo;附件&rdquo;</li>
+<li>选择文件并上传</li>
+<li>如果可能, 尽量书写一份 wiki 文档而不是上传一个 word 文档作为 wiki 的附件</li>
+</ul>
+
+
+<h2>规划 wiki 文档的层次结构</h2>
+
+<ul>
+<li>wiki 中使用 <code>=</code> 到 <code>======</code> 代表 h1 到 h6 标签, 标识文档的层次结构</li>
+<li>书写 wiki 文档时, 需要合理地规划层次结构, 增加文档的可读性</li>
+<li>需要合理地使用表格, 列表等 html 元素, 增加文档的可读性</li>
+<li>更多格式语法见 <code>/WikiFormatting</code></li>
+<li>当一个文档过长时, 可以考虑切分成几个文档, 或者当成一个项目</li>
+</ul>
+
+
+<h2>如何创建一个项目的 wiki 页面</h2>
+
+<ul>
+<li>一个项目通常有很多内容, 需要创建多个页面</li>
+<li>先创建项目首页, 比如 <code>/NewProject</code></li>
+<li>再创建子页面, 比如:
+
+<ul>
+<li>设计文档: <code>/NewProject/Design</code></li>
+<li>如何部署: <code>/NewProject/Deploy</code></li>
+</ul>
+</li>
+<li>每个子页面可以根据需要再创建子页面</li>
+<li>编辑项目页面, 在底部加入下面的代码, 即可在项目页面上看到所有子页面:</li>
+</ul>
+
+
+<pre><code>== 文章列表 ==
+[[TitleIndex(NewProject)]]
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Work Style]]></title>
+    <link href="http://life.urakalee.me/blog/2013/12/07/work-style/"/>
+    <updated>2013-12-07T15:20:01+08:00</updated>
+    <id>http://life.urakalee.me/blog/2013/12/07/work-style</id>
+    <content type="html"><![CDATA[<h2>工作模式(暂行)</h2>
+
+<ul>
+<li>4 天计划, 前紧后松</li>
+<li>CoC, 主动 &amp; 高效, 跨职能 的 技术团队</li>
+<li>执行 <strong>敏捷开发</strong> 和 <strong>文档驱动</strong>
+
+<ul>
+<li>每日站会, 详见 <strong>45个习惯</strong> 第 8 章</li>
+<li>代码集体所有制, 详见 <strong>45个习惯</strong> 第 8 章</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>CoC: Convention over Configuration</h2>
+
+<ul>
+<li>习惯优于配置</li>
+<li>达成目标的方式有很多种, 可以灵活配置, 但遵从习惯可以降低沟通成本
+
+<ul>
+<li>版本控制: Git</li>
+<li>Java 包管理和部署: Maven</li>
+<li>文档管理: wiki (Trac)</li>
+<li>项目管理: Trello</li>
+</ul>
+</li>
+<li>习惯可以改, 只要好处 >> 成本</li>
+</ul>
+
+
+<!-- more -->
+
+
+<h2>主动&amp;高效</h2>
+
+<ul>
+<li>主动提问, 站会匆匆而过, 没听明白的一定要问</li>
+<li>主动沟通, 有问题超过 1h 搞不定, 就应该想想能找谁帮忙解决</li>
+<li>主动通知, 邮件是广播 &amp; 存档, 不能指望每个人都会看邮件, 但至少让 Ta 有地方去看</li>
+<li>4 天做完 1 周的事, 剩下一天提高团队战斗力, 或者爱干嘛干嘛</li>
+<li>一图抵万言, 确保大家说的 A 是同一个 A, 理解的 B 是同一个 B</li>
+</ul>
+
+
+<h2>跨职能</h2>
+
+<ul>
+<li>为了大家都能做一些爱做的事, 需要大家都做一些不爱做的事</li>
+<li>每项工作都需要有至少 2 个人了解, 避免某件事情由于某个人不在就搞不定</li>
+</ul>
+
+
+<h2>技术团队</h2>
+
+<ul>
+<li>关注解决方案, 尽可能的解决问题</li>
+<li>让 &ldquo;这个很难&rdquo;, &ldquo;这个搞不定&rdquo; 越来越少</li>
+<li>领取 <strong>个人项目</strong>, 作为 bonus</li>
+</ul>
+
+
+<h2>借鉴 Scrum 敏捷开发框架</h2>
+
+<ul>
+<li>每周一个 Sprint, 按照大版本规划 Sprint</li>
+<li>持续交付, 每个 Sprint 产出的结果对于最终用户都是有用的</li>
+<li>每个 Sprint 需要分拆成最小 0.5D, 最大 2D 的任务</li>
+<li>每天 10 ~ 20 分钟同步进度, 解决问题</li>
+<li>使用 Trello 进行项目管理</li>
+</ul>
+
+
+<h2>文档驱动</h2>
+
+<ul>
+<li>任何 <strong>三个月后还有用的东西</strong> 都需要文档</li>
+<li>文档需要回答的问题: 如果我完全不了解这个项目, 我想知道什么
+
+<ul>
+<li>怎么用: 如何部署/运行, 提供什么接口</li>
+<li>怎么开发: 代码结构/核心算法/核心模块和逻辑(数据流图)</li>
+</ul>
+</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to Git]]></title>
+    <link href="http://life.urakalee.me/blog/2013/12/04/how-to-git/"/>
+    <updated>2013-12-04T09:37:29+08:00</updated>
+    <id>http://life.urakalee.me/blog/2013/12/04/how-to-git</id>
+    <content type="html"><![CDATA[<h2>Git 入门资料</h2>
+
+<ul>
+<li>windows 客户端: <a href="http://git-scm.com/download/win">http://git-scm.com/download/win</a></li>
+<li>Pro Git 中文版(书, 可能被墙): <a href="http://git-scm.com/book/zh">http://git-scm.com/book/zh</a></li>
+<li>Pro Git 中文下载版(pdf): <a href="http://ishare.iask.sina.com.cn/f/23292123.html">http://ishare.iask.sina.com.cn/f/23292123.html</a></li>
+<li>图解 Git (推荐阅读): <a href="http://my.oschina.net/xdev/blog/114383">http://my.oschina.net/xdev/blog/114383</a></li>
+</ul>
+
+
+<h2>windows 下 Git 的配置和使用</h2>
+
+<ul>
+<li>以下命令都在 Git Bash 中运行</li>
+<li>生成公钥/私钥
+
+<ul>
+<li><code>ssh-keygen -t rsa</code></li>
+<li>生成的密钥对的位置在 <code>C:\Users\&lt;user-name&gt;\.ssh</code></li>
+<li>id_rsa 为私钥, id_rsa.pub 为公钥</li>
+</ul>
+</li>
+<li>配置 Git 的用户名和邮件
+<code>sh
+git config --global user.name &lt;your-name&gt;
+git config --global user.email &lt;your-email&gt;
+</code></li>
+</ul>
+
+
+<!-- more -->
+
+
+<h3>进阶配置</h3>
+
+<ul>
+<li>编辑 <code>&lt;git-install-path&gt;\etc\gitconfig</code>
+
+<ol>
+<li>修改autocrlf = input, 确保提交的文本都是 utf8 编码</li>
+<li>在文件末尾增加下面的代码, 使 Git GUI 能显示中文</li>
+</ol>
+</li>
+</ul>
+
+
+<pre><code>[gui]
+    encoding = utf-8
+</code></pre>
+
+
+<ul>
+<li>编辑 <code>&lt;git-install-path&gt;\etc\git-completion.bash</code>
+
+<ol>
+<li>在文件末尾增加下面的代码, 使 Git Bash 能显示中文</li>
+</ol>
+</li>
+</ul>
+
+
+<pre><code>alias ls='ls --show-control-chars --color=auto'
+</code></pre>
+
+
+<h2>Git 使用规范</h2>
+
+<ul>
+<li>禁用中文文件名</li>
+<li>所有文本文件使用 utf8 编码</li>
+<li>所有文本文件使用 unix 换行 (\n), 而非 windows 换行 (\r\n)</li>
+</ul>
+
+
+<h3>Git 分枝管理</h3>
+
+<ul>
+<li>master: 稳定可编译/测试通过的代码</li>
+<li>test: 测试环境的代码, 通过测试后merge到master</li>
+<li>pri-xxx: 个人开发代码 (private), 由于可能需要到部署到服务器上, 因此允许 push 到 remote</li>
+<li>dev: 开发环境的代码</li>
+<li>在 pri-xxx 上开发的代码, 可能需要 merge 到开发环境上验证</li>
+<li>验证通过后, <strong>禁止</strong> 直接把 dev merge 到 test, 而是应该从 pri-xxx merge 到 test</li>
+<li>由于 dev 代码在多人 merge 后可能出问题, 所以定期会从 master 重开 dev 分枝</li>
+</ul>
+
+
+<h3>Git 注释规范</h3>
+
+<ul>
+<li>所有注释, 除了 merge 时系统自动生成的, 均应符合以下规范
+
+<ol>
+<li>格式为 <code>&lt;OPERATION&gt;: description</code></li>
+<li>OPERATION 包括 ADD/MOD/DEL/FIX/MERGE/REFACTOR/CLEAN, 全部大写, 后面跟着冒号</li>
+<li>description 需要是全英文, 包括标点</li>
+</ol>
+</li>
+<li>一次提交可以有多个 OPERATION, 但最好只有一个
+
+<ul>
+<li>多个 OPERATION 一行一个</li>
+</ul>
+</li>
+</ul>
+
+
+<table>
+<thead>
+<tr>
+<th>OPERATION</th>
+<th> 何时使用 </th>
+<th> description应该写什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ADD </td>
+<td> 增加功能/文件 </td>
+<td> 增加了什么功能/文件(文件太多可以写目录)</td>
+</tr>
+<tr>
+<td>MOD </td>
+<td> 修改功能/文件 </td>
+<td> 修改了什么功能/文件, 以及修改原因</td>
+</tr>
+<tr>
+<td>DEL </td>
+<td> 删除功能/文件 </td>
+<td> 删除了什么功能/文件, 以及删除原因</td>
+</tr>
+<tr>
+<td>FIX </td>
+<td> 修复 bug </td>
+<td> bug 列表中有的, 可以只写 bug 号, 没有的需要说明</td>
+</tr>
+<tr>
+<td>MERGE </td>
+<td> 手动合并 </td>
+<td> 从哪里合并到哪里 (from x to y), 如何解决了冲突</td>
+</tr>
+<tr>
+<td>REFACTOR </td>
+<td> 重构 </td>
+<td> 重构了什么</td>
+</tr>
+<tr>
+<td>CLEAN </td>
+<td> 清理 </td>
+<td> 清理了什么</td>
+</tr>
+</tbody>
+</table>
+
+]]></content>
+  </entry>
+  
+</feed>

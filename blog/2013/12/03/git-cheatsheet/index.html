@@ -1,0 +1,580 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Git 手册 - Binary Life</title>
+  <meta name="author" content="Uraka Lee">
+
+  
+  <meta name="description" content="基本操作 创建版本库: git init
+克隆版本库 git clone /path/to/repo
+git clone user@host:/path/to/repo
+多版本库: git remote add &lt;repo-name&gt; &lt;repo&gt;
+多版本库列表: git &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://life.urakalee.me/blog/2013/12/03/git-cheatsheet">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Binary Life" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<!--
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-46162042-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Binary Life</a></h1>
+  
+    <h2>诗人 方法论者 喝汤族 微微爸</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:life.urakalee.me" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+    <li><a href="/">Blog</a></li>
+    <li><a href="/blog/archives">Archives</a></li>
+    <li><a href="/blog/categories/cheatsheet">CheatSheets</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Git 手册</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-03T18:13:53+08:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2>基本操作</h2>
+
+<ul>
+<li>创建版本库: <code>git init</code></li>
+<li>克隆版本库
+
+<ul>
+<li><code>git clone /path/to/repo</code></li>
+<li><code>git clone user@host:/path/to/repo</code></li>
+<li>多版本库: <code>git remote add &lt;repo-name&gt; &lt;repo&gt;</code></li>
+<li>多版本库列表: <code>git remote -v</code></li>
+</ul>
+</li>
+<li>更新版本库
+
+<ul>
+<li><code>git pull [repo-name]</code>
+
+<ul>
+<li>repo-name 默认为 origin</li>
+<li><code>git pull --rebase</code> 可以避免无意义的 pull-merge, 使版本树尽可能是一条直线</li>
+</ul>
+</li>
+<li><code>git fetch [repo-name]</code> - <code>git pull</code> does a <code>git fetch</code> followed by a <code>git merge</code>
+
+<ul>
+<li>repo-name 默认为 origin</li>
+<li>会把 repo-name 的更新都 fetch 到本地, 包括新分枝和新标签, 但不会建立本地分枝</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>提交到本地
+
+<ul>
+<li>stage: <code>git add &lt;file/dir&gt;</code></li>
+<li><code>git commit -m "&lt;comment&gt;"</code>
+
+<ul>
+<li>对于已经处于版本控制中的文件, 可以使用 <code>git commit -am "&lt;comment&gt;"</code> 略过 stage</li>
+<li>有时需要构造空提交: <code>git commit --allow-empty -m "EMPTY"</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>提交到远程
+
+<ul>
+<li><code>git push [repo-name] [branch]</code>
+
+<ul>
+<li>repo-name 默认为 origin, branch 默认为当前分枝</li>
+<li><code>git push -u &lt;repo-name&gt; &lt;branch&gt;</code> 设置 push/pull 时默认使用的 repo-name</li>
+<li><code>git push &lt;repo-name&gt; &lt;branch&gt;:&lt;remote-branch&gt;</code> - 如果本地和远程分枝名字不同</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+<!-- more -->
+
+
+<h2>反悔</h2>
+
+<ol>
+<li>revert stage: <code>git reset HEAD &lt;file&gt;</code></li>
+<li>reset working: <code>git checkout -- &lt;file&gt;</code></li>
+<li>restore(1+2): <code>git checkout HEAD &lt;file&gt;</code>
+
+<ul>
+<li>checkout 上一个版本, 放在 stage/working 中: <code>git checkout HEAD~ &lt;file&gt;</code></li>
+<li>如果改动, add, 再改动, 使用 <code>1.</code> 不会恢复到第一次改动的结果; 使用 <code>2.</code> 才行!</li>
+</ul>
+</li>
+<li><code>git reset &lt;rev&gt; [file]</code>
+
+<ul>
+<li>没有 file 把 HEAD/branch 指向 rev</li>
+<li>有 file 把 rev 版本的 file checkout 出来</li>
+<li>如果 <code>--hard</code>, 那么 stage 和 working 都更新为 rev; 如果 <code>--soft</code>, 那么 stage 和 working 都不变(但 <code>git status</code> 会发现有文件 stage 了, 这是相对运动的结果); 如果 <code>--mixed</code> (默认), 那么只更新 stage (这时 <code>git status</code> 会发现 working 中有改动, 原因同上)</li>
+<li>rev 默认为 HEAD: 如果 <code>--hard</code>, 那么 stage 和 working 都更新为 HEAD (和 <code>3.</code> 效果一样); <code>--soft</code> 没意义; 如果 <code>--mixed</code>, 那么只更新 stage (就是 <code>1.</code> 咯~)</li>
+<li>没有 file 时 <code>--hard</code> 类似于 checkout, 区别在于 <code>reset &lt;rev&gt;</code> 会移动 branch 指针, <code>checkout &lt;branch&gt;</code> 回不去, 而 <code>checkout &lt;rev&gt;</code> 再 <code>checkout &lt;branch&gt;</code> 可以回去</li>
+<li>放弃所有本地改动(含本地提交): <code>git reset --hard &lt;repo-name&gt;/&lt;remote-branch&gt;</code></li>
+</ul>
+</li>
+<li><code>git checkout &lt;rev&gt; [file]</code>
+
+<ul>
+<li>没有 file 会建立一个 detached HEAD (匿名分枝) - 最好别用!</li>
+<li>有 file 把 rev 版本的 file checkout 出来</li>
+<li>rev 默认为 <code>--</code> 即 stage, 从 stage checkout 到 working</li>
+<li>其它 rev 从 rev checkout 到 stage 再到 working</li>
+</ul>
+</li>
+<li><code>git revert &lt;rev&gt;</code>: 类似 svn 中的倒着 merge, 生成一个新版本 V+, 和 V-完全一样 - 仅用于 revert 一个很久以前的错误改动!</li>
+<li>修改已经 push 到远程的提交
+
+<ol>
+<li>使用下面的方法修改已经 push 到远程的提交</li>
+<li><code>git push &lt;repo-name&gt; +&lt;branch&gt;:&lt;remote-branch&gt;</code></li>
+</ol>
+</li>
+<li>修改上一个提交: <code>git commit --amend</code></li>
+<li>修改多个提交(交互式)
+
+<ol>
+<li><code>git rebase -i &lt;rev&gt;</code>, 编辑 rev 之后的提交, rev 默认为 repo-name/remote-branch</li>
+<li>对于想合并到前一个的提交, 选择 fixup</li>
+<li>对于想删除的提交, 直接删除对应的行</li>
+</ol>
+</li>
+<li>将上 N 个提交合并成一个</li>
+</ol>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>git reset --soft HEAD^<span class="o">(</span>N-1<span class="o">)</span>
+</span><span class='line'>git commit --amend
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>分枝</h2>
+
+<ul>
+<li>建立分枝:
+
+<ul>
+<li><code>git checkout -b &lt;branch&gt;</code> 在当前 HEAD 上创建分枝并切换到新分枝</li>
+<li><code>git checkout -b &lt;branch&gt; &lt;repo-name&gt;/&lt;remote-branch&gt;</code> 跟踪远程分枝</li>
+</ul>
+</li>
+<li>切换分枝: <code>git checkout &lt;branch&gt;</code></li>
+<li>删除分枝: <code>git branch -d &lt;branch&gt;</code>
+
+<ul>
+<li>对于没有合并或提交到远程的分枝, 删除时会提示用 <code>-D</code> 强制删除</li>
+</ul>
+</li>
+<li>将分枝提交到远程(在远程建立新分枝): <code>git push &lt;repo-name&gt; &lt;branch&gt;</code>
+
+<ul>
+<li>提交到远程之后, 如果希望能够 pull 该分枝, 需要 <code>git push -u</code></li>
+</ul>
+</li>
+<li>删除远程分枝: <code>git push &lt;repo-name&gt; :&lt;remote-branch&gt;</code></li>
+<li>删除已删除远程分枝的本地缓存: <code>git remote prune origin</code></li>
+<li>查看所有分枝: <code>git branch -av</code>
+
+<ul>
+<li><code>git branch</code> 不显示远程分枝</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>diff</h2>
+
+<ul>
+<li>分枝 diff: <code>git diff &lt;src-branch&gt; &lt;tgt-branch&gt;</code> (tgt 默认为当前分枝)
+
+<ul>
+<li>如果是和 master 比较, src-branch 应该是master</li>
+</ul>
+</li>
+<li>版本 diff: <code>git diff &lt;src-rev&gt; &lt;tgt-rev&gt;</code> (tgt 默认为当前版本)
+
+<ul>
+<li>src-rev 应该是比 tgt-rev 更老的版本(祖先版本)</li>
+<li><code>git merge-base &lt;src-branch&gt; &lt;tgt-branch&gt;</code> 可能可以得到你需要的 src-rev</li>
+</ul>
+</li>
+<li>其它 diff
+
+<ul>
+<li>working 和 stage 的 diff: <code>git diff</code></li>
+<li>stage 和 HEAD 的 diff: <code>git diff --cached</code></li>
+<li>working 和 HEAD 的 diff: <code>git diff HEAD</code></li>
+<li><strong>注意</strong> 上述 3 种方式都不会 diff 新文件(未处于版本控制中的文件)</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>合并</h2>
+
+<ul>
+<li>合并 branch 到当前分枝: <code>git merge &lt;branch&gt;</code>
+
+<ul>
+<li>fetch 后用 <code>git merge &lt;repo-name&gt;/&lt;remote-branch&gt;</code> merge</li>
+<li>如果 <code>merge &lt;branch&gt;</code>, 修改 branch, 再 merge, 只 merge 修改的部分</li>
+<li>合并冲突时, 不 merge 而是指定某个版本: <code>git checkout --ours/--theirs &lt;file&gt;</code></li>
+<li>&ldquo;复制&rdquo; 一次提交(比如某个分枝只有一次提交需要保留): <code>git cherry-pick &lt;rev&gt;</code>
+
+<ul>
+<li>停止 &ldquo;复制&rdquo;: <code>git cherry-pick --abort</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>将当前分枝 rebase 到 tgt-branch: <code>git rebase &lt;tgt-branch&gt;</code></li>
+<li>merge 与 rebase 的区别
+
+<ul>
+<li>merge 建立了一个新版本, 而 rebase 是分枝上有多少新版本, 就会建立多少新版本</li>
+<li>rebase 后需要再做一次快速 merge, 才能使 tgt-branch 的指针正确(两者指针移动方式不同)</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>查看状态信息</h2>
+
+<ul>
+<li><code>git status</code></li>
+<li><code>git log</code></li>
+<li><code>git reflog</code>: 查看 HEAD 指针的移动历史</li>
+<li><code>git branch --merge</code>: 查看哪些分枝已被合并到当前分枝</li>
+<li><code>git branch --no-merged</code>: 查看尚未合并的分枝</li>
+<li><code>git remote show &lt;repo-name&gt;</code>: 查看远程信息</li>
+</ul>
+
+
+<h2>暂存</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>git stash
+</span><span class='line'>git stash pop
+</span><span class='line'>git stash list
+</span><span class='line'>git stash clear
+</span><span class='line'>git stash apply stash@<span class="o">{</span>x<span class="o">}</span>
+</span><span class='line'>git stash drop stash@<span class="o">{</span>x<span class="o">}</span>
+</span><span class='line'>git stash branch &lt;branch&gt;
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>标签</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>git tag <span class="c"># 标签列表</span>
+</span><span class='line'>git tag &lt;tag&gt; <span class="c"># 在当前版本上打标签</span>
+</span><span class='line'>git show &lt;tag&gt; <span class="c"># 查看标签</span>
+</span><span class='line'>git tag -d &lt;tag&gt; <span class="c"># 删除标签</span>
+</span><span class='line'>git push &lt;repo-name&gt; &lt;tag&gt; <span class="c"># 提交标签</span>
+</span><span class='line'>git push &lt;repo-name&gt; :&lt;tag&gt; <span class="c"># 删除远程标签</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>submodule @2015.04.13</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>git submodule add &lt;remote-path&gt; <span class="o">[</span>&lt;<span class="nb">local</span>-path&gt;<span class="o">]</span> <span class="c"># 添加 remote-path 为当前项目的 submodule</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<figure class='code'><figcaption><span>删除 local-path 下的子项目</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>git rm -r &lt;<span class="nb">local</span>-path&gt; <span class="c"># 如果有问题, 试试 git rm --cached &lt;local-path&gt;</span>
+</span><span class='line'>vim .gitmodules <span class="c"># 通常会在 git rm 时自动执行</span>
+</span><span class='line'>git commit
+</span><span class='line'>rm -rf .git/modules/&lt;<span class="nb">local</span>-path&gt; <span class="c"># 可能不必要</span>
+</span><span class='line'>vim .git/config
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Uraka Lee</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-03T18:13:53+08:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/cheatsheet/'>cheatsheet</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+  
+    <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+    <span class="jiathis_txt">分享到：</span>
+    <a class="jiathis_button_weixin">微信</a>
+    <a class="jiathis_button_tsina">新浪微博</a>
+    <a class="jiathis_button_douban">豆瓣</a>
+    <a class="jiathis_button_tqq">腾讯微博</a>
+    <a class="jiathis_button_ydnote">有道云笔记</a>
+    <a class="jiathis_button_copy">复制网址</a>
+    <!--
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+    <a class="jiathis_counter_style"></a>
+    -->
+</div>
+<script type="text/javascript" >
+var jiathis_config = {
+    summary: "",
+    shortUrl: true,
+    hideMore: true
+};
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+  
+</div>
+
+    
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/03/10/android-night-theme-for-9-patch/">Android: 9-patch的夜间模式</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/03/10/optimize-question-and-solution-of-yuantiku-1/">做题解析性能优化始末(1)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/03/10/android-mechanism-asynctask/">Android机制: AsyncTask</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/04/19/disable-cmd-q-for-chrome/">Mac Tips: 对 Chrome 禁用 Cmd+Q</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/04/19/mac-migration/">Mac 重装/数据迁移</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/01/21/android-home-watcher/">Android: 捕获 Home 键</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/25/to-weiwei-waiting-for-you/">致 Weiwei: 我们期待着你的降临</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/25/mac-chrome-upgrade/">Mac Chrome 升级</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/20/android-tips/">Android 开发点滴</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/16/markdown-style/">Markdown Style</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+    <h1>Categories</h1>
+    <ul id="categories">
+        <li class='category'><a href='/blog/categories/android/'>android (6)</a></li>
+<li class='category'><a href='/blog/categories/cheatsheet/'>cheatsheet (4)</a></li>
+<li class='category'><a href='/blog/categories/familybuild/'>familybuild (2)</a></li>
+<li class='category'><a href='/blog/categories/oshack/'>oshack (5)</a></li>
+<li class='category'><a href='/blog/categories/readbook/'>readbook (1)</a></li>
+<li class='category'><a href='/blog/categories/selfengine/'>selfengine (3)</a></li>
+<li class='category'><a href='/blog/categories/teamtoy/'>teamtoy (8)</a></li>
+
+    </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2016 - Uraka Lee -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'urakalee';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://life.urakalee.me/blog/2013/12/03/git-cheatsheet/';
+        var disqus_url = 'http://life.urakalee.me/blog/2013/12/03/git-cheatsheet/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Oshack | Binary Life]]></title>
+  <link href="http://life.urakalee.me/blog/categories/oshack/atom.xml" rel="self"/>
+  <link href="http://life.urakalee.me/"/>
+  <updated>2016-03-10T20:16:45+08:00</updated>
+  <id>http://life.urakalee.me/</id>
+  <author>
+    <name><![CDATA[Uraka Lee]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Mac Tips: 对 Chrome 禁用 Cmd+Q]]></title>
+    <link href="http://life.urakalee.me/blog/2015/04/19/disable-cmd-q-for-chrome/"/>
+    <updated>2015-04-19T10:34:27+08:00</updated>
+    <id>http://life.urakalee.me/blog/2015/04/19/disable-cmd-q-for-chrome</id>
+    <content type="html"><![CDATA[<p>我有一个坏习惯, 开巨多 Chrome 标签页, 然后幻想着有一天可以一个一个看完并记录&hellip;</p>
+
+<p>以前的解决方案是使用 <a href="https://chrome.google.com/webstore/detail/onetab/chphlpgkkbolifaimnlloiipkdnihall" title="OneTab">OneTab</a>, 实际情况是内存占满, 从未看完过.</p>
+
+<p>在一天两次 Cmd+Q 把所有标签页都关掉之后, 我要继续 hack 这个问题. <a href="http://www.quora.com/How-do-I-disable-Command-q-in-OS-X" title="Disable Cmd+Q in OS X">Quora</a> 上已经有人遇到并解决了这个问题, copy 过来:</p>
+
+<ul>
+<li>System Pref - Keyboard - Shortcuts - App Shortcuts - Add
+
+<ul>
+<li>App: Chrome</li>
+<li>Title: Quit Google Chrome</li>
+<li>Shortcut: Cmd+Opt+Q</li>
+</ul>
+</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mac 重装/数据迁移]]></title>
+    <link href="http://life.urakalee.me/blog/2015/04/19/mac-migration/"/>
+    <updated>2015-04-19T10:14:44+08:00</updated>
+    <id>http://life.urakalee.me/blog/2015/04/19/mac-migration</id>
+    <content type="html"><![CDATA[<ul>
+<li>transfer 出来的 Mac 系统, 有一些地方需要重新设置
+
+<ol>
+<li>关闭 guest: Pref - User - Unlock - Guest User - Uncheck</li>
+<li>修改机器名1: Pref - Share - Computer Name</li>
+<li>修改机器名2: <code>sudo scutil --set HostName &lt;name&gt;</code></li>
+<li>修改 Terminal 提示符
+```sh
+vim ~/.bash_profile</li>
+</ol>
+</li>
+</ul>
+
+
+<p>export PS1=&ldquo;[\u@\h \W]\$ &rdquo; # 增加这一行</p>
+
+<p>source ~/.bash_profile
+<code>``
+* 开启 TRIM
+  * 方法 1: 使用 [Terminal 命令][weiphone]
+  * 方法 2: 使用 [Chameleon SSD Optimizer][chameleon]
+    * 我是在使用过方法 1 之后才找到方法 2 的, 不过以后再有需要会先用方法 2
+* 检查安装的软件
+  * ~~Dropbox~~
+  * ~~CloudStation~~ -&gt; 家用 ONLY
+  * ~~GoAgentX: 升个级吧~~ -&gt; 买个 VPN 吧
+  * Alfred: [设置 Spotlight 索引][spotlight], 重建 Alfred 索引
+* 配置 hosts/ssh-config/known_hosts/vimrc/gitconfig/SwitchySharp
+* 各种清理
+  * 清理个人的 Login Items: Pref - User - Login Items
+  * 使用 CleanMyMac 清理全局的 Login Items
+  * 使用 CleanMyMac 删除没用的软件
+  * 到</code>~/<code>下删除没用的目录和没用软件的残留
+  * 到</code>~/Library/Application Support/<code>和</code>Preferences<code>,</code>Caches<code>,</code>Logs<code>目录下删除没用软件的残留
+* 运行 Disk Utility
+* 修复 HomeBrew
+  * 按照</code>brew doctor` 的提示做即可</p>
+
+<hr />
+
+<p>Update@2015.04.13: 修改"检查安装的软件"部分</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mac Chrome 升级]]></title>
+    <link href="http://life.urakalee.me/blog/2013/12/25/mac-chrome-upgrade/"/>
+    <updated>2013-12-25T14:05:13+08:00</updated>
+    <id>http://life.urakalee.me/blog/2013/12/25/mac-chrome-upgrade</id>
+    <content type="html"><![CDATA[<ol>
+<li>直接升级失败, Error 12</li>
+<li>找到<a href="https://support.google.com/chrome/answer/1367288?hl=zh-Hans" title="无法在苹果机上更新 Google Chrome 浏览器">官方解决方案</a>
+<code>sh
+~/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Resources/GoogleSoftwareUpdateAgent.app/Contents/Resources/install.py --uninstall # Mac 10.9 上无此文件
+sudo /Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Resources/GoogleSoftwareUpdateAgent.app/Contents/Resources/install.py --uninstall
+</code></li>
+<li>折腾半天还是不行, 最后从官网下载了最新版的 Chrome, 覆盖安装</li>
+</ol>
+
+
+<hr />
+
+<ul>
+<li>Update@2016.03.10: 使用 Homebrew Cask
+<code>sh
+brew install caskroom/cask/brew-cask
+brew cask search chrome
+brew cask install google-chrome
+</code></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mac 图标缓存的二三事]]></title>
+    <link href="http://life.urakalee.me/blog/2013/11/25/about-mac-icon-cache/"/>
+    <updated>2013-11-25T13:50:02+08:00</updated>
+    <id>http://life.urakalee.me/blog/2013/11/25/about-mac-icon-cache</id>
+    <content type="html"><![CDATA[<p>信息焦虑的第三个症状：随时需要“清理”自己的电脑，虽然完全不知道究竟“清理”了啥。</p>
+
+<p>CleanMyMac 满足了我的这个愿望，但也给我带来了一些麻烦。首当其冲的就是图标缓存问题——每次清理完之后，缓存就会瘫痪，不仅 Launchpad 中有的图标显示不出来，Alfred 也难以幸免，最让人无法接受的是 Finder 会崩溃（Path Finder 貌似无碍）。好在重启之后一切如常。</p>
+
+<p>今天终于不淡定了，因为重启也不能解决问题了！按照 <a href="https://discussions.apple.com/message/23541241#23541241" title="Mavericks Launchpad, missing icons">Apple 社区</a>上给出的解决办法，打开终端，运行命令，图标找回，分组消失。。。
+<code>sh
+rm ~/Library/Application\ Support/Dock/*.db
+killall Dock
+</code></p>
+
+<p>好吧，本来分组这种东西也是我蛋疼搞的，消失就消失吧，有 Alfred 呢。。。</p>
+
+<hr />
+
+<ul>
+<li>Update@2013.11.26: 最新版的 CleanMyMac 2.2.0 貌似不会有清理完缓存瘫痪的问题了</li>
+<li>Update@2015.01.21: 最新版的 MacOS 10.10 已经不能用上述命令行清理 Launchpad 了</li>
+<li>Update@2016.03.10: 可以使用如下命令重置 Launchpad 图标
+<code>sh
+defaults write com.apple.dock ResetLaunchPad -bool true; killall Dock
+</code></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[纠结的 Alfred 与 Spotlight]]></title>
+    <link href="http://life.urakalee.me/blog/2013/11/25/confused-alfred-and-spotlight/"/>
+    <updated>2013-11-25T12:59:02+08:00</updated>
+    <id>http://life.urakalee.me/blog/2013/11/25/confused-alfred-and-spotlight</id>
+    <content type="html"><![CDATA[<p>既然已经不用 Spotlight 了，就打算把它的索引彻底关掉。Google 到若干相关文章，操作也都很简单，<a href="http://support.apple.com/kb/HT2409?viewlocale=zh_CN" title="Spotlight：如何重建文件夹或宗卷的索引">Apple 官网也有</a>，于是就照着做了。</p>
+
+<p>然后 Alfred 就挂了。新安装的 app 在 Alfred 中找不到，清了 cache 之后更是啥都没有了。</p>
+
+<p>继续搞！没有找到确切的答案，但也能根据现有知识猜个差不离。无非是 Alfred 要调用 Spotlight 的结果，所以 Spotlight 关得不对 Alfred 也就不 work了。</p>
+
+<p>于是还得打开 Spotlight，但是怎么打开还要考虑一下。目标是：Application 索引，而其它不索引。所以先把 HD 加到 privacy 中，再把 HD 下面 Application 之外的都加到 privacy 中；重启；查看一下索引大小，大概 12K；最后把 HD 从 privacy 中移除，DONE！</p>
+
+<hr />
+
+<ul>
+<li>PS1: Spotlight 索引文件的位置（from <a href="https://discussions.apple.com/thread/2429947" title="backup Spotlight index file - where is it?">Apple 社区</a>）在磁盘根目录 <code>/</code></li>
+<li>PS2: 查看其大小需要 root 权限: <code>sudo du -sh .Spotlight-V100</code></li>
+<li>PS3: Path Finder 居然也要调用 Spotlight 的结果</li>
+<li>PS4: Spotlight 真应该搞白名单机制，黑名单太纠结了</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

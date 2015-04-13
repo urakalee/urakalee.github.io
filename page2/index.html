@@ -1,0 +1,926 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Binary Life</title>
+  <meta name="author" content="Uraka Lee">
+
+  
+  <meta name="description" content="使用 git (ssh 模式)和 scp 等 ssh 相关命令时也遵从该配置 vim ~/.ssh/config Host github.com User git # 使用 github 时的默认用户名 IdentityFile ~/.ssh/id_rsa.github # 为不同的 host &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://life.urakalee.me/page2">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Binary Life" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<!--
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-46162042-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Binary Life</a></h1>
+  
+    <h2>诗人 方法论者 喝汤族 微微爸</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:life.urakalee.me" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+    <li><a href="/">Blog</a></li>
+    <li><a href="/blog/archives">Archives</a></li>
+    <li><a href="/blog/categories/cheatsheet">CheatSheets</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/12/14/ssh-configuration-explain/">SSH 配置解析</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-14T14:09:00+08:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><ul>
+<li>使用 git (ssh 模式)和 scp 等 ssh 相关命令时也遵从该配置</li>
+</ul>
+
+
+<pre><code>vim ~/.ssh/config
+
+Host github.com
+    User git # 使用 github 时的默认用户名
+    IdentityFile ~/.ssh/id_rsa.github # 为不同的 host 配置不同的 key
+
+Host gerrit.work-host.com
+    User work-name # 使用公司 gerrit 服务时的默认用户名
+    IdentityFile ~/.ssh/id_rsa.work # 为不同的 host 配置不同的 key
+
+# ssh mctx => ssh urakalee@192.168.1.1
+# 不需要配系统 host, 不过除 ssh 相关命令外, 该 host 不起作用
+Host mctx
+    HostName 192.168.1.1 # 私人服务器 ip
+    User urakalee # ssh 到私人服务器时的默认用户名
+    IdentityFile ~/.ssh/id_rsa.urakalee # 为不同的 host 配置不同的 key
+
+# ssh workstation 和 ssh 10.0.0.1 同时生效
+# 不需要配系统 host, 不过除 ssh 相关命令外, 该 host 不起作用
+Host workstation 10.0.0.1
+    HostName 10.0.0.1 # 公司 workstation 服务器 ip
+    User work-name # ssh 到公司 workstation 服务器时的默认用户名
+    IdentityFile ~/.ssh/id_rsa.work # 为不同的 host 配置不同的 key
+</code></pre>
+
+
+
+
+<pre><code>vim ~/.ssh/known_hosts
+
+# 通过用户认证的主机列表, 一行一个
+<主机名>,ip1[,ip2]...[,ipN] ssh-<加密方式> <主机指纹>
+</code></pre>
+
+
+
+
+<pre><code>vim ~/.ssh/authorized_keys
+
+# 设置本机允许那些用户登录, 一行一个
+ssh-<加密方式> <公钥> [user@host]
+</code></pre>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/12/08/newbie-to-android-studio/">Android Studio 新手小记</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-08T18:13:10+08:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>安装</h2>
+
+<ul>
+<li>下载安装后, 需要更新到最新版本
+
+<ul>
+<li>不更新可能会遇到一些奇葩问题</li>
+<li>如果能直接更新或者翻墙更新的, 请直接更新</li>
+<li>不能更新的, 请参考下列文章手动更新
+
+<ul>
+<li><a href="http://www.cnsecer.com/842.html">http://www.cnsecer.com/842.html</a></li>
+<li><a href="http://blog.csdn.net/hil2000/article/details/11395485">http://blog.csdn.net/hil2000/article/details/11395485</a></li>
+<li>关键命令</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>java -classpath AI-&lt;old-edition&gt;-&lt;new-edition&gt;-patch-&lt;os&gt;.jar com.intellij.updater.Runner install .
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>新建项目</h2>
+
+<ul>
+<li>新建一个项目时, 视选择的 SDK 版本, 可能会失败, 原因是包不全
+
+<ul>
+<li>打开 SDK Manager, 勾选需要的包, 点击 Install X package[s]&hellip;</li>
+<li>注意: 接受协议时可能需要在弹出的对话框里逐个接受, 才能一并下载</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>模拟器</h2>
+
+<ul>
+<li>以下问题仅限于 windows, Mac 用户可以直接放弃模拟器&hellip;</li>
+<li>运行模拟器失败, 需要把 <code>X盘/.android/avd</code> 拷贝到 <code>C盘/用户目录/.android</code> 下</li>
+<li>运行模拟器慢, 需要下载和安装 intel x86 emulator, 创建 avd 时也要选这个
+
+<ul>
+<li>用 SDK Manager 下载 intel x86 emulator 和对应的 rom</li>
+<li>注意: 下载 emulator 后需要安装, 可执行文件在 <code>sdk/extras/intel</code> 中</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>数据目录</h2>
+
+<ul>
+<li>Android Studio 目前还不太稳定, 偶尔折腾, 甚至需要把数据目录清空</li>
+<li>下面的内容摘自 <a href="http://www.jetbrains.com/idea/webhelp/project-and-ide-settings.html" title="Project and IDE Settings">Intellij 官网</a>, 只要把路径换成 AndroidStudioPreview 即可</li>
+</ul>
+
+
+<pre><code>Mac
+~/Library/Application Support/IntelliJIdeaXX contains the catalog with plugins.
+~/Library/Preferences/IntelliJIdeaXX contains the rest of the configuration settings.
+~/Library/Caches/IntelliJIdeaXX contains data caches, logs, local history, etc. These files can be quite significant in size.
+9.0+ ~/Library/Logs/IntelliJIdeaXX contains logs
+Windows
+~\.IntelliJIdeaXX\config that contains user-specific settings.
+~\.IntelliJIdeaXX\system that stores IntelliJ IDEA data caches.
+</code></pre>
+
+
+<hr />
+
+<ul>
+<li>Update@2015.04.13: Android Studio 在升级到 1+ 之后奇葩问题少多了</li>
+<li>Update@2016.03.10: 模拟器建议使用 Genymotion</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/12/08/linux-cheatsheet/">Linux 手册</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-08T12:13:45+08:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>常用命令</h2>
+
+<h3>find</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>find . -name <span class="s2">&quot;*.xyz&quot;</span>
+</span><span class='line'>find . -name <span class="s2">&quot;*abc*&quot;</span> -delete
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>grep</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>grep -i <span class="s2">&quot;abc&quot;</span> * <span class="c"># 忽略大小写</span>
+</span><span class='line'>grep -R <span class="s2">&quot;abc&quot;</span> .
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>wc</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>wc -l find -name <span class="s2">&quot;*.java&quot;</span> <span class="c"># 统计 java 代码行数</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>权限</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>chmod u+x &lt;file&gt; <span class="c"># 设为可执行文件</span>
+</span><span class='line'>chown &lt;name&gt; &lt;file&gt;
+</span><span class='line'>chown -R &lt;name&gt; &lt;dir&gt;
+</span><span class='line'>chgrp ... <span class="c"># 格式同 chown</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>系统工具</h2>
+
+<h3>ssh</h3>
+
+<ul>
+<li>ssh-add -D删除所有记住的key
+
+<ul>
+<li>解决 Mac 下所有使用过的 key 都会被记住，删除 key 文件没用的问题</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>链接库</h3>
+
+<ul>
+<li>查看链接库是否缺失: <code>ldd &lt;可执行文件&gt;</code></li>
+<li>修改系统加载库</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>vim /etc/ld.so.conf
+</span><span class='line'>/sbin/ldconfig
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/12/08/family-culture/">家庭文化</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-08T11:12:02+08:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><ul>
+<li>坦诚 信任（支持）</li>
+<li>尊重 包容（耐心）</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/12/07/measure-your-life/">你要如何衡量你的人生</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-07T20:08:40+08:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>概述</h2>
+
+<p>这本书并没有告诉我们应该确立什么样的人生目标, 但书中的观点可以帮助我们衡量目标的可行性, 并关注实现目标的过程中可能发生的问题</p>
+
+<h2>目标: 资源•应用流程•价值取向</h2>
+
+<ul>
+<li>资源是 Ta 所利用的东西</li>
+<li>应用流程是 Ta 做事的方法</li>
+<li>价值取向是 Ta 做某件事的动机</li>
+<li>-> <strong><em>用于评估什么样的目标可以实现, 什么样的目标遥不可及</em></strong></li>
+</ul>
+
+
+<h3>衡量目标的可行性:</h3>
+
+<ul>
+<li>资源是否足够, 如果不够, 可能需要一个更短期的目标来增加资源</li>
+<li>实现目标的方法已经有了吗? 可能没有, 那么需要 &ldquo;根据机遇权衡计划&rdquo;</li>
+<li>目标是否符合你的价值取向, 如果不符合, 那么可能需要放弃这个目标</li>
+</ul>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/12/07/measure-your-life/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/12/07/code-style/">Code Style</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-07T18:07:00+08:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>代码风格</h2>
+
+<ul>
+<li>代码是给人看的, 偶尔也在机器上跑一跑</li>
+<li>代码应该越写越少: <strong><em>Write Less Do More</em></strong></li>
+<li>所有源代码文件(包括 html/css/properties/readme 等)均为 utf-8 无 bom 格式, unix 换行</li>
+<li><strong><em>禁用tab</em></strong>, 所有源代码文件一律使用 4 空格缩进</li>
+</ul>
+
+
+<h2>Java</h2>
+
+<ul>
+<li><a href="http://www.oracle.com/technetwork/java/codeconv-138413.html" title="Java 编码规范">Java Code Conventions</a></li>
+<li><a href="http://doc.javanb.com/code-conventions-for-the-java-programming-language-zh/" title="Java 编码规范(中文版)">Java编码规范(中文版)</a></li>
+</ul>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/12/07/code-style/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/12/07/how-to-wiki/">How to Wiki</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-07T17:35:18+08:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>什么是 wiki</h2>
+
+<ul>
+<li>wiki 是一种网络应用</li>
+<li>遵照一定的格式, 使用纯文本书写, 输出 html 文档</li>
+<li>方便的内链接, 在多个内部页面之间跳转</li>
+<li>多人编辑, 支持版本历史</li>
+</ul>
+
+
+<h2>如何创建一个 wiki 页面</h2>
+
+<ul>
+<li>访问一个不存在的 url, 建立一个新的页面
+
+<ul>
+<li>比如 <code>/APageDoesNotExist</code></li>
+</ul>
+</li>
+<li>页面的名字必须是 <strong>首字母大写</strong> 的, 首字母大写的名字可以被 wiki 识别为内链接</li>
+<li>点击 &ldquo;创建页面&rdquo;, 编辑</li>
+<li>书写语法见 <code>/WikiFormatting</code></li>
+<li>编辑完点击 &ldquo;预览&rdquo;, 查看输出的 html 是否符合预期</li>
+<li>如果没问题, 点击 &ldquo;提交改动&rdquo;, 即生成一个新的 wiki 页面</li>
+</ul>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/12/07/how-to-wiki/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/12/07/work-style/">Work Style</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-07T15:20:01+08:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>工作模式(暂行)</h2>
+
+<ul>
+<li>4 天计划, 前紧后松</li>
+<li>CoC, 主动 &amp; 高效, 跨职能 的 技术团队</li>
+<li>执行 <strong>敏捷开发</strong> 和 <strong>文档驱动</strong>
+
+<ul>
+<li>每日站会, 详见 <strong>45个习惯</strong> 第 8 章</li>
+<li>代码集体所有制, 详见 <strong>45个习惯</strong> 第 8 章</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>CoC: Convention over Configuration</h2>
+
+<ul>
+<li>习惯优于配置</li>
+<li>达成目标的方式有很多种, 可以灵活配置, 但遵从习惯可以降低沟通成本
+
+<ul>
+<li>版本控制: Git</li>
+<li>Java 包管理和部署: Maven</li>
+<li>文档管理: wiki (Trac)</li>
+<li>项目管理: Trello</li>
+</ul>
+</li>
+<li>习惯可以改, 只要好处 >> 成本</li>
+</ul>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/12/07/work-style/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/12/04/how-to-git/">How to Git</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-04T09:37:29+08:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>Git 入门资料</h2>
+
+<ul>
+<li>windows 客户端: <a href="http://git-scm.com/download/win">http://git-scm.com/download/win</a></li>
+<li>Pro Git 中文版(书, 可能被墙): <a href="http://git-scm.com/book/zh">http://git-scm.com/book/zh</a></li>
+<li>Pro Git 中文下载版(pdf): <a href="http://ishare.iask.sina.com.cn/f/23292123.html">http://ishare.iask.sina.com.cn/f/23292123.html</a></li>
+<li>图解 Git (推荐阅读): <a href="http://my.oschina.net/xdev/blog/114383">http://my.oschina.net/xdev/blog/114383</a></li>
+</ul>
+
+
+<h2>windows 下 Git 的配置和使用</h2>
+
+<ul>
+<li>以下命令都在 Git Bash 中运行</li>
+<li>生成公钥/私钥
+
+<ul>
+<li><code>ssh-keygen -t rsa</code></li>
+<li>生成的密钥对的位置在 <code>C:\Users\&lt;user-name&gt;\.ssh</code></li>
+<li>id_rsa 为私钥, id_rsa.pub 为公钥</li>
+</ul>
+</li>
+<li>配置 Git 的用户名和邮件</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>git config --global user.name &lt;your-name&gt;
+</span><span class='line'>git config --global user.email &lt;your-email&gt;
+</span></code></pre></td></tr></table></div></figure>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/12/04/how-to-git/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/12/04/sublime-text-manual/">Sublime Text 手册</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-04T09:09:01+08:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>空白字符</h2>
+
+<ul>
+<li>Cmd+, 进入 Preference - Settings - User</li>
+<li>增加下列设置：</li>
+</ul>
+
+
+<pre><code>"tab_size": 4,
+"translate_tabs_to_spaces": true,
+"draw_white_space": all
+</code></pre>
+
+
+<ul>
+<li>Cmd+s 保存，Cmd+w 退出
+
+<h2>Vim 模式</h2></li>
+<li>进入 Preference -Settings - Default</li>
+<li>找到：ignored_packages</li>
+<li>删除其中的 &ldquo;Vintage&rdquo;</li>
+<li>Cmd+s 保存，Cmd+w 退出</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="3">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="1">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/03/10/android-night-theme-for-9-patch/">Android: 9-patch的夜间模式</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/03/10/optimize-question-and-solution-of-yuantiku-1/">做题解析性能优化始末(1)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/03/10/android-mechanism-asynctask/">Android机制: AsyncTask</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/04/19/disable-cmd-q-for-chrome/">Mac Tips: 对 Chrome 禁用 Cmd+Q</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/04/19/mac-migration/">Mac 重装/数据迁移</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/01/21/android-home-watcher/">Android: 捕获 Home 键</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/25/to-weiwei-waiting-for-you/">致 Weiwei: 我们期待着你的降临</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/25/mac-chrome-upgrade/">Mac Chrome 升级</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/20/android-tips/">Android 开发点滴</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/16/markdown-style/">Markdown Style</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+    <h1>Categories</h1>
+    <ul id="categories">
+        <li class='category'><a href='/blog/categories/android/'>android (6)</a></li>
+<li class='category'><a href='/blog/categories/cheatsheet/'>cheatsheet (4)</a></li>
+<li class='category'><a href='/blog/categories/familybuild/'>familybuild (2)</a></li>
+<li class='category'><a href='/blog/categories/oshack/'>oshack (5)</a></li>
+<li class='category'><a href='/blog/categories/readbook/'>readbook (1)</a></li>
+<li class='category'><a href='/blog/categories/selfengine/'>selfengine (3)</a></li>
+<li class='category'><a href='/blog/categories/teamtoy/'>teamtoy (8)</a></li>
+
+    </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2016 - Uraka Lee -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'urakalee';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

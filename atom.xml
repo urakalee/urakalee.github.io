@@ -1,0 +1,1471 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Binary Life]]></title>
+  <link href="http://life.urakalee.me/atom.xml" rel="self"/>
+  <link href="http://life.urakalee.me/"/>
+  <updated>2016-03-10T20:16:45+08:00</updated>
+  <id>http://life.urakalee.me/</id>
+  <author>
+    <name><![CDATA[Uraka Lee]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Android: 9-patch的夜间模式]]></title>
+    <link href="http://life.urakalee.me/blog/2016/03/10/android-night-theme-for-9-patch/"/>
+    <updated>2016-03-10T19:59:31+08:00</updated>
+    <id>http://life.urakalee.me/blog/2016/03/10/android-night-theme-for-9-patch</id>
+    <content type="html"><![CDATA[<p><a href="https://www.evernote.com/l/ABCVzpSbJs1HoKym6kJDBZQsyMlFtgXKYpM">https://www.evernote.com/l/ABCVzpSbJs1HoKym6kJDBZQsyMlFtgXKYpM</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[做题解析性能优化始末(1)]]></title>
+    <link href="http://life.urakalee.me/blog/2016/03/10/optimize-question-and-solution-of-yuantiku-1/"/>
+    <updated>2016-03-10T19:51:45+08:00</updated>
+    <id>http://life.urakalee.me/blog/2016/03/10/optimize-question-and-solution-of-yuantiku-1</id>
+    <content type="html"><![CDATA[<p><a href="https://www.evernote.com/l/ABC9oWR2d7xBaK-bic2LbgXHmwIsthq2-HI">https://www.evernote.com/l/ABC9oWR2d7xBaK-bic2LbgXHmwIsthq2-HI</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Android机制: AsyncTask]]></title>
+    <link href="http://life.urakalee.me/blog/2016/03/10/android-mechanism-asynctask/"/>
+    <updated>2016-03-10T19:35:34+08:00</updated>
+    <id>http://life.urakalee.me/blog/2016/03/10/android-mechanism-asynctask</id>
+    <content type="html"><![CDATA[<p><a href="https://www.evernote.com/l/ABDmk4yr90FNi6-Pa69oLDK291tym7e00qE">https://www.evernote.com/l/ABDmk4yr90FNi6-Pa69oLDK291tym7e00qE</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mac Tips: 对 Chrome 禁用 Cmd+Q]]></title>
+    <link href="http://life.urakalee.me/blog/2015/04/19/disable-cmd-q-for-chrome/"/>
+    <updated>2015-04-19T10:34:27+08:00</updated>
+    <id>http://life.urakalee.me/blog/2015/04/19/disable-cmd-q-for-chrome</id>
+    <content type="html"><![CDATA[<p>我有一个坏习惯, 开巨多 Chrome 标签页, 然后幻想着有一天可以一个一个看完并记录&hellip;</p>
+
+<p>以前的解决方案是使用 <a href="https://chrome.google.com/webstore/detail/onetab/chphlpgkkbolifaimnlloiipkdnihall" title="OneTab">OneTab</a>, 实际情况是内存占满, 从未看完过.</p>
+
+<p>在一天两次 Cmd+Q 把所有标签页都关掉之后, 我要继续 hack 这个问题. <a href="http://www.quora.com/How-do-I-disable-Command-q-in-OS-X" title="Disable Cmd+Q in OS X">Quora</a> 上已经有人遇到并解决了这个问题, copy 过来:</p>
+
+<ul>
+<li>System Pref - Keyboard - Shortcuts - App Shortcuts - Add
+
+<ul>
+<li>App: Chrome</li>
+<li>Title: Quit Google Chrome</li>
+<li>Shortcut: Cmd+Opt+Q</li>
+</ul>
+</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mac 重装/数据迁移]]></title>
+    <link href="http://life.urakalee.me/blog/2015/04/19/mac-migration/"/>
+    <updated>2015-04-19T10:14:44+08:00</updated>
+    <id>http://life.urakalee.me/blog/2015/04/19/mac-migration</id>
+    <content type="html"><![CDATA[<ul>
+<li>transfer 出来的 Mac 系统, 有一些地方需要重新设置
+
+<ol>
+<li>关闭 guest: Pref - User - Unlock - Guest User - Uncheck</li>
+<li>修改机器名1: Pref - Share - Computer Name</li>
+<li>修改机器名2: <code>sudo scutil --set HostName &lt;name&gt;</code></li>
+<li>修改 Terminal 提示符</li>
+</ol>
+</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>vim ~/.bash_profile
+</span><span class='line'>
+</span><span class='line'><span class="nb">export </span><span class="nv">PS1</span><span class="o">=</span><span class="s2">&quot;[\u@\h \W]\$ &quot;</span> <span class="c"># 增加这一行</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">source</span> ~/.bash_profile
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>开启 TRIM
+
+<ul>
+<li>方法 1: 使用 <a href="http://bbs.weiphone.com/read-htm-tid-7173782.html" title="[求助] 10.9 怎么开启TRIM">Terminal 命令</a></li>
+<li>方法 2: 使用 <a href="http://chameleon.alessandroboschini.it/index.php" title="Chameleon SSD Optimizer">Chameleon SSD Optimizer</a>
+
+<ul>
+<li>我是在使用过方法 1 之后才找到方法 2 的, 不过以后再有需要会先用方法 2</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>检查安装的软件
+
+<ul>
+<li><del>Dropbox</del></li>
+<li><del>CloudStation</del> -> 家用 ONLY</li>
+<li><del>GoAgentX: 升个级吧</del> -> 买个 VPN 吧</li>
+<li>Alfred: <a href="http://life.urakalee.me/blog/2013/11/25/confused-alfred-and-spotlight/" title="Alfred &amp; Spotlight">设置 Spotlight 索引</a>, 重建 Alfred 索引</li>
+</ul>
+</li>
+<li>配置 hosts/ssh-config/known_hosts/vimrc/gitconfig/SwitchySharp</li>
+<li>各种清理
+
+<ul>
+<li>清理个人的 Login Items: Pref - User - Login Items</li>
+<li>使用 CleanMyMac 清理全局的 Login Items</li>
+<li>使用 CleanMyMac 删除没用的软件</li>
+<li>到 <code>~/</code> 下删除没用的目录和没用软件的残留</li>
+<li>到 <code>~/Library/Application Support/</code> 和 <code>Preferences</code>, <code>Caches</code>, <code>Logs</code> 目录下删除没用软件的残留</li>
+</ul>
+</li>
+<li>运行 Disk Utility</li>
+<li>修复 HomeBrew
+
+<ul>
+<li>按照 <code>brew doctor</code> 的提示做即可</li>
+</ul>
+</li>
+</ul>
+
+
+<hr />
+
+<p>Update@2015.04.13: 修改"检查安装的软件"部分</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Android: 捕获 Home 键]]></title>
+    <link href="http://life.urakalee.me/blog/2015/01/21/android-home-watcher/"/>
+    <updated>2015-01-21T17:12:00+08:00</updated>
+    <id>http://life.urakalee.me/blog/2015/01/21/android-home-watcher</id>
+    <content type="html"><![CDATA[<p>在<a href="http://yuantiku.com">猿题库</a>工作一年多, 新功能做了不少, bug 也改了许多, 近期开始做更多的优化工作. 本篇博客的内容来自"错题锁屏"功能的优化.</p>
+
+<p>我们 2014 年 9 月开始做"错题锁屏"功能, 希望增加曝光, 提高存留. 开发该功能的同学现在已经结束实习出国工作了, 但做这个功能的时候我就知道坑很多, 而且上线前为了避免风险留了一些坑没改. 上线后, 发现该功能比较受欢迎, 所以又有了多次拉锯式的修改, 不过对于锁屏本身的坑并没有填.</p>
+
+<p>关于如何防止锁屏进程被杀, 我可能会开另外一篇博客来说明, 不过其实你也可以逆向工程我们的 apk 自己去看. 还有就是错题锁屏变成一个独立进程之后, 进程间共享数据变成了一个新的大坑&hellip;</p>
+
+<p>由于我们一开始就不想把错题锁屏做得很暴力, 所以虽然禁用了 Back 键(按 Back 键不能退出锁屏), 却还是保留了按 Home 键退出的可能性, 避免用户因为答不对题而无法解锁(我们可能低估用户了).</p>
+
+<p>于是有一个问题, 按 Home 键退出锁屏之后, 用户可以在"最近使用"中重新打开锁屏界面, 而我们只想让用户在"最近使用"中看到猿题库本身. 我开始寻找如何在用户按 Home 键时让锁屏界面自己把自己 finish 掉的方法.</p>
+
+<p>首先查到的方法是 onUserLeaveHint, 按 Home 键时确实会调用这个函数. 不过遇到的问题也很坑: 当有其它锁屏, 甚至 QQ 弹窗(实际上也是用类似锁屏的方法实现的)出现时, 我们的锁屏可能被挤掉(onUserLeaveHint 被调用).</p>
+
+<p>然后开始寻找能够捕获 Home 键的方法:</p>
+
+<ol>
+<li><a href="http://stackoverflow.com/questions/8881951/detect-home-button-press-in-android">override onKeyDown</a>, 不过 no longer works as of 4.0, <a href="http://www.coderzheaven.com/2012/06/02/override-hardware-home-button-android-listen-home-button-click-android/">这里</a>给出了完整的代码</li>
+<li><a href="http://stackoverflow.com/questions/5907102/home-button-listener">这篇 vote 比较少的文章</a>其实离最终答案很近了, 不过因为 vote 太少, 我一开始没有相信它&hellip;</li>
+<li>中文网络上看起来有更多人搞过这个问题: 文章 <a href="http://blog.csdn.net/way_ping_li/article/details/8953622">A</a> <a href="http://blog.csdn.net/watt520/article/details/18959897">B</a> <a href="http://blog.csdn.net/ekeuy/article/details/39400939">C</a> 大同小异, <a href="http://862123204-qq-com.iteye.com/blog/1888532">这里</a>分析得更详细一些. 其中 <a href="http://blog.csdn.net/watt520/article/details/18959897">B</a> 的代码更漂亮一些, 我试过可行 (Android4.+)</li>
+</ol>
+
+
+<p>可行之后, 我发现又掉到了坑里: <strong>即使 finish 掉了, 用户还是可以在最近使用中重新打开锁屏界面!!!</strong></p>
+
+<p>最后, 我解决这个问题的方法与捕获 Home 键没有任何关系, 只能把锁屏的 activity 设为最近不可见 (excludeFromRecents=&ldquo;true&rdquo;). 这充分体现了坚持做一个 SB 程序员的必要性: 过于相信一知半解的既有信息是错误的根源.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[致 Weiwei: 我们期待着你的降临]]></title>
+    <link href="http://life.urakalee.me/blog/2013/12/25/to-weiwei-waiting-for-you/"/>
+    <updated>2013-12-25T21:56:02+08:00</updated>
+    <id>http://life.urakalee.me/blog/2013/12/25/to-weiwei-waiting-for-you</id>
+    <content type="html"><![CDATA[<h2>记录</h2>
+
+<ul>
+<li>圣诞节, Mimi 怀孕 14 周 2 天; 大风; 上线结束的时间还好, 9点到家.</li>
+<li>本周体重 51kg, 没有增加; 食欲仍然一般, 胃有胀气, 偶尔拉肚子; 睡 8 小时, 但梦比较多.</li>
+<li>第一次产前筛查已经过了一周; 约了 1 月 5 号的孕期课程第一节.</li>
+</ul>
+
+
+<h2>致 Weiwei</h2>
+
+<p>你的名字叫李 Weiling, 因为还不知道你是男宝宝还是女宝宝, 所以字还没有定. Weiling 这个名字是爸爸起的, 依照 willing 的发音, 希望你能够有自己的意志, 不随波逐流. 不过名字只是个祝愿, 健康快乐才最重要, 爸爸妈妈都清楚这一点.</p>
+
+<p>因为你曾经离开过爸爸妈妈一次, 所以这一次爸爸妈妈都有点紧张. 说什么放轻松那是骗人, 但着急也没用却是真的. 一方面担心你是不是能顺利地到来, 另一方面也希望能在你到来之前做好更多的准备.</p>
+
+<p>两个月前爸爸刚换了一份工作, 降薪来到了一家创业公司. 虽然心态好了不少, 也有了努力的方向, 但钱少了是个事实. 于是爸爸开始尝试理财, 赶上比特币大涨, 小赚了一笔. 投资还是投机, 一开始爸爸没有把握好, 赚了又赔, 身心疲惫. 反复几次之后, 爸爸开始尝试给自己设定几条规则:</p>
+
+<ol>
+<li>投资自己(学习)最重要</li>
+<li>投机没有关系, 但要自律, 不能违背第一条</li>
+<li>设定合理的收益目标, 有助于平衡上述关系</li>
+</ol>
+
+
+<p>这几条规则并不一定普遍适用, 但至少符合爸爸目前的情况. 同时, 爸爸也意识到目前物质基础还算牢固, 但快速增长也不现实, 应该更关注精神方面的准备. 这一点妈妈做得很棒呢! 从很久以前就开始看书, 还给爸爸普及了许多妈妈和宝宝相关的健康知识. 不过爸爸偶尔还是会神经兮兮地在削苹果的过程中洗 3 次手, 生怕妈妈吃到什么脏东西.</p>
+
+<p><strong><em>&ldquo;对命运保持敬意, 对现实冷静分析&rdquo;</em></strong></p>
+
+<p>想想这么多年都好好地过来了, 而且妈妈的体质很好, 爸爸也无非就是对于各种未知的指标有些焦虑, 应该可以尽快调整好的. 然后陪妈妈一起度过之后的 N 周, 一起期待着你的降临.</p>
+
+<ul>
+<li>PS1, 爸爸会坚持锻炼身体, 减肥+增强体能, 带妈妈和你去看极光</li>
+<li>PS2, 爸爸会逐步总结经验, 并分享给你, 也许在你焦虑/失望/恐惧的时候会用得上</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mac Chrome 升级]]></title>
+    <link href="http://life.urakalee.me/blog/2013/12/25/mac-chrome-upgrade/"/>
+    <updated>2013-12-25T14:05:13+08:00</updated>
+    <id>http://life.urakalee.me/blog/2013/12/25/mac-chrome-upgrade</id>
+    <content type="html"><![CDATA[<ol>
+<li>直接升级失败, Error 12</li>
+<li>找到<a href="https://support.google.com/chrome/answer/1367288?hl=zh-Hans" title="无法在苹果机上更新 Google Chrome 浏览器">官方解决方案</a></li>
+</ol>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>~/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Resources/GoogleSoftwareUpdateAgent.app/Contents/Resources/install.py --uninstall <span class="c"># Mac 10.9 上无此文件</span>
+</span><span class='line'>sudo /Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Resources/GoogleSoftwareUpdateAgent.app/Contents/Resources/install.py --uninstall
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>折腾半天还是不行, 最后从官网下载了最新版的 Chrome, 覆盖安装</li>
+</ul>
+
+
+<hr />
+
+<ul>
+<li>Update@2016.03.10: 使用 Homebrew Cask</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>brew install caskroom/cask/brew-cask
+</span><span class='line'>brew cask search chrome
+</span><span class='line'>brew cask install google-chrome
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Android 开发点滴]]></title>
+    <link href="http://life.urakalee.me/blog/2013/12/20/android-tips/"/>
+    <updated>2013-12-20T13:27:02+08:00</updated>
+    <id>http://life.urakalee.me/blog/2013/12/20/android-tips</id>
+    <content type="html"><![CDATA[<h2>Manifest</h2>
+
+<h3>弹出键盘</h3>
+
+<ul>
+<li><code>android:windowSoftInputMode</code> 控制弹出键盘
+
+<ul>
+<li>stateHidden 为刚进入 activity 时不显示键盘</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>控件</h2>
+
+<h3>EditText 与弹出键盘</h3>
+
+<ul>
+<li>在 xml 中设置 <code>android:inputType</code>, 常用的有:
+
+<ul>
+<li>default, 中文手机会弹出中文输入法, 并切换到默认输入模式(通常是中文模式)</li>
+<li>phone, 电话号码键盘, 不过我们通常还是会用 number 彻底限制只能输入数字</li>
+<li>textEmailAddress, 虽然名字是 email, 但是也可以输入电话号码</li>
+</ul>
+</li>
+<li>java 中可以 <code>setInputType</code>, 对应的 type 在 <code>InputType</code> 找到:
+
+<ul>
+<li>比如 textEmailAddress 对应 TYPE_TEXT_VARIATION_EMAIL_ADDRESS</li>
+<li>注意 textPassword 对应 TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_PASSWORD</li>
+</ul>
+</li>
+<li>详见 <a href="http://developer.android.com/guide/topics/ui/controls/text.html" title="Text Fields">官方文档</a></li>
+</ul>
+
+
+<h2>工具</h2>
+
+<h3>sleep</h3>
+
+<ul>
+<li><code>SystemClock.sleep</code> 不会抛出 <code>InterruptedException</code>, 同时也无法 <code>thread.interrupt</code>
+
+<ul>
+<li>Thread.sleep 则正相反</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>线程</h2>
+
+<h3>UI 线程</h3>
+
+<ul>
+<li>UI 控件不是线程安全的, 所以只能在 UI 线程上操作
+
+<ul>
+<li>Activity.runOnUiThread</li>
+<li>View.post/postDelayed</li>
+<li>Handler</li>
+</ul>
+</li>
+<li>AsyncTask
+
+<ul>
+<li>doInBackground 在 worker 线程</li>
+<li>onPre/PostExecute 和 onProgressUpdate 在 UI 线程</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>WebView</h2>
+
+<h3>使用 HttpClient 的 cookie</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="cm">/**</span>
+</span><span class='line'><span class="cm"> * @param url - 形如 http://xxx.domain.com/yyy/zzz.z?mmm=nnn</span>
+</span><span class='line'><span class="cm"> * @param cookie - 从 HttpClient 取得的 cookie</span>
+</span><span class='line'><span class="cm"> */</span>
+</span><span class='line'><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">synCookies</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">,</span> <span class="n">String</span> <span class="n">url</span><span class="o">,</span> <span class="n">Cookie</span> <span class="n">cookie</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">CookieSyncManager</span><span class="o">.</span><span class="na">createInstance</span><span class="o">(</span><span class="n">context</span><span class="o">);</span>
+</span><span class='line'>    <span class="n">CookieManager</span> <span class="n">cookieManager</span> <span class="o">=</span> <span class="n">CookieManager</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>
+</span><span class='line'>    <span class="n">cookieManager</span><span class="o">.</span><span class="na">setAcceptCookie</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span> <span class="c1">// 这句可能可以不要</span>
+</span><span class='line'>    <span class="n">String</span> <span class="n">cookieString</span> <span class="o">=</span> <span class="n">cookie</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&quot;=&quot;</span> <span class="o">+</span> <span class="n">cookie</span><span class="o">.</span><span class="na">getValue</span><span class="o">()</span> <span class="o">+</span> <span class="s">&quot;; domain=&quot;</span> <span class="o">+</span> <span class="n">cookie</span><span class="o">.</span><span class="na">getDomain</span><span class="o">();</span>
+</span><span class='line'>    <span class="n">cookieManager</span><span class="o">.</span><span class="na">setCookie</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="n">cookieString</span><span class="o">);</span>
+</span><span class='line'>    <span class="n">CookieSyncManager</span><span class="o">.</span><span class="na">getInstance</span><span class="o">().</span><span class="na">sync</span><span class="o">();</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Markdown Style]]></title>
+    <link href="http://life.urakalee.me/blog/2013/12/16/markdown-style/"/>
+    <updated>2013-12-16T15:26:28+08:00</updated>
+    <id>http://life.urakalee.me/blog/2013/12/16/markdown-style</id>
+    <content type="html"><![CDATA[<ul>
+<li>本文仅用于有洁癖者(本人)统一 markdown 风格, 以及 check style</li>
+</ul>
+
+
+<h2>行文</h2>
+
+<h3>标点</h3>
+
+<ul>
+<li>除非必要, 所有标点都使用英文标点</li>
+</ul>
+
+
+<h3>强调</h3>
+
+<ul>
+<li>说明性的词和短语用双引号(&ldquo;&rdquo;)强调</li>
+<li>提示性的词和短语用双星号(**)强调</li>
+<li>结论性的短语和句子用三星号(***)强调</li>
+</ul>
+
+
+<h3>删除</h3>
+
+<ul>
+<li><code>~~删除的文字~~</code> -> <del>删除的文字</del></li>
+</ul>
+
+
+<h3>空格</h3>
+
+<ul>
+<li>第一级列表标记(比如*)前不需要空格</li>
+<li>英文单词的前后都需要空格
+
+<ul>
+<li>行首不需要前面的空格, 句尾不需要后面的空格</li>
+<li>如果英文单词在括号里, 则前后的空格写在括号外, 比如 &ldquo; (abc) &rdquo; 或 &ldquo; (abc 很不错)&rdquo;</li>
+</ul>
+</li>
+<li>左引号前和右引号后都需要空格
+
+<ul>
+<li>行首不需要前面的空格, 句尾不需要后面的空格</li>
+</ul>
+</li>
+<li>强调标记的前后都需要空格
+
+<ul>
+<li>行首不需要前面的空格, 句尾不需要后面的空格</li>
+</ul>
+</li>
+</ul>
+
+
+<!-- more -->
+
+
+<h3>链接</h3>
+
+<ul>
+<li>行文中需要文字的, 使用引用方式</li>
+<li>直接贴链接不影响行文的, 可以直接贴连接
+
+<ul>
+<li>比如 <strong>少量</strong> <strong>不是很长</strong> 且 <strong>在行尾</strong> 的链接</li>
+<li>比如 <strong>少量</strong> <strong>不是很长</strong> 的链接列表</li>
+</ul>
+</li>
+<li>其它情况均需要使用引用方式, 引用需要集中写在文章或段落末尾</li>
+</ul>
+
+
+<pre>
+[Display Name][name]
+...
+
+ [name]: http://external.link "Link Description"
+ [name]: /blog/yyyy/MM/dd/internal-link/ "Link Description"
+</pre>
+
+
+<h3>更新</h3>
+
+<ul>
+<li>在文档末尾添加</li>
+</ul>
+
+
+<pre>
+****
+Update@yyyy.MM.dd: 更新的内容
+</pre>
+
+
+<h3>大小写</h3>
+
+<ul>
+<li>TODO</li>
+</ul>
+
+
+<h3>用词</h3>
+
+<ul>
+<li>举例时用 &ldquo;比如&rdquo;, 不用 &ldquo;如&rdquo;; &ldquo;比如&rdquo; 后面不加冒号, 除非后面跟着列表</li>
+<li>并列时用 &ldquo;和&rdquo;, 不用 &ldquo;及&rdquo;; 除非需要使用 &ldquo;以及&rdquo;</li>
+<li>&ldquo;其他&rdquo; 修饰人, &ldquo;其它&rdquo; 修饰非人</li>
+</ul>
+
+
+<h2>代码</h2>
+
+<h3>单行模式</h3>
+
+<ul>
+<li>一行可执行代码使用变音符号(`)单行模式</li>
+<li>一行文本内容使用变音符号单行模式或 pre-code 多行模式</li>
+<li>特殊记号使用变音符号单行模式
+
+<ul>
+<li>比如文件路径 <code>C:\Windows</code></li>
+<li>比如代码元素 <code>++</code> <code>--</code></li>
+</ul>
+</li>
+<li>变音符号单行模式的空格规则同引号</li>
+</ul>
+
+
+<h3>可执行代码和支持代码高亮的文本</h3>
+
+<ul>
+<li>使用变音符号(`)多行模式</li>
+<li>支持代码高亮的语言列表: <a href="http://pygments.org/docs/lexers/">http://pygments.org/docs/lexers/</a></li>
+</ul>
+
+
+<h3>不支持代码高亮的文本内容</h3>
+
+<ul>
+<li>使用 pre-code 多行模式</li>
+<li>打开该文本文件的命令可以写在一起, 命令和文本之间空一行</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[SSH 配置解析]]></title>
+    <link href="http://life.urakalee.me/blog/2013/12/14/ssh-configuration-explain/"/>
+    <updated>2013-12-14T14:09:00+08:00</updated>
+    <id>http://life.urakalee.me/blog/2013/12/14/ssh-configuration-explain</id>
+    <content type="html"><![CDATA[<ul>
+<li>使用 git (ssh 模式)和 scp 等 ssh 相关命令时也遵从该配置</li>
+</ul>
+
+
+<pre><code>vim ~/.ssh/config
+
+Host github.com
+    User git # 使用 github 时的默认用户名
+    IdentityFile ~/.ssh/id_rsa.github # 为不同的 host 配置不同的 key
+
+Host gerrit.work-host.com
+    User work-name # 使用公司 gerrit 服务时的默认用户名
+    IdentityFile ~/.ssh/id_rsa.work # 为不同的 host 配置不同的 key
+
+# ssh mctx => ssh urakalee@192.168.1.1
+# 不需要配系统 host, 不过除 ssh 相关命令外, 该 host 不起作用
+Host mctx
+    HostName 192.168.1.1 # 私人服务器 ip
+    User urakalee # ssh 到私人服务器时的默认用户名
+    IdentityFile ~/.ssh/id_rsa.urakalee # 为不同的 host 配置不同的 key
+
+# ssh workstation 和 ssh 10.0.0.1 同时生效
+# 不需要配系统 host, 不过除 ssh 相关命令外, 该 host 不起作用
+Host workstation 10.0.0.1
+    HostName 10.0.0.1 # 公司 workstation 服务器 ip
+    User work-name # ssh 到公司 workstation 服务器时的默认用户名
+    IdentityFile ~/.ssh/id_rsa.work # 为不同的 host 配置不同的 key
+</code></pre>
+
+
+
+
+<pre><code>vim ~/.ssh/known_hosts
+
+# 通过用户认证的主机列表, 一行一个
+<主机名>,ip1[,ip2]...[,ipN] ssh-<加密方式> <主机指纹>
+</code></pre>
+
+
+
+
+<pre><code>vim ~/.ssh/authorized_keys
+
+# 设置本机允许那些用户登录, 一行一个
+ssh-<加密方式> <公钥> [user@host]
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Android Studio 新手小记]]></title>
+    <link href="http://life.urakalee.me/blog/2013/12/08/newbie-to-android-studio/"/>
+    <updated>2013-12-08T18:13:10+08:00</updated>
+    <id>http://life.urakalee.me/blog/2013/12/08/newbie-to-android-studio</id>
+    <content type="html"><![CDATA[<h2>安装</h2>
+
+<ul>
+<li>下载安装后, 需要更新到最新版本
+
+<ul>
+<li>不更新可能会遇到一些奇葩问题</li>
+<li>如果能直接更新或者翻墙更新的, 请直接更新</li>
+<li>不能更新的, 请参考下列文章手动更新
+
+<ul>
+<li><a href="http://www.cnsecer.com/842.html">http://www.cnsecer.com/842.html</a></li>
+<li><a href="http://blog.csdn.net/hil2000/article/details/11395485">http://blog.csdn.net/hil2000/article/details/11395485</a></li>
+<li>关键命令</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>java -classpath AI-&lt;old-edition&gt;-&lt;new-edition&gt;-patch-&lt;os&gt;.jar com.intellij.updater.Runner install .
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>新建项目</h2>
+
+<ul>
+<li>新建一个项目时, 视选择的 SDK 版本, 可能会失败, 原因是包不全
+
+<ul>
+<li>打开 SDK Manager, 勾选需要的包, 点击 Install X package[s]&hellip;</li>
+<li>注意: 接受协议时可能需要在弹出的对话框里逐个接受, 才能一并下载</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>模拟器</h2>
+
+<ul>
+<li>以下问题仅限于 windows, Mac 用户可以直接放弃模拟器&hellip;</li>
+<li>运行模拟器失败, 需要把 <code>X盘/.android/avd</code> 拷贝到 <code>C盘/用户目录/.android</code> 下</li>
+<li>运行模拟器慢, 需要下载和安装 intel x86 emulator, 创建 avd 时也要选这个
+
+<ul>
+<li>用 SDK Manager 下载 intel x86 emulator 和对应的 rom</li>
+<li>注意: 下载 emulator 后需要安装, 可执行文件在 <code>sdk/extras/intel</code> 中</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>数据目录</h2>
+
+<ul>
+<li>Android Studio 目前还不太稳定, 偶尔折腾, 甚至需要把数据目录清空</li>
+<li>下面的内容摘自 <a href="http://www.jetbrains.com/idea/webhelp/project-and-ide-settings.html" title="Project and IDE Settings">Intellij 官网</a>, 只要把路径换成 AndroidStudioPreview 即可</li>
+</ul>
+
+
+<pre><code>Mac
+~/Library/Application Support/IntelliJIdeaXX contains the catalog with plugins.
+~/Library/Preferences/IntelliJIdeaXX contains the rest of the configuration settings.
+~/Library/Caches/IntelliJIdeaXX contains data caches, logs, local history, etc. These files can be quite significant in size.
+9.0+ ~/Library/Logs/IntelliJIdeaXX contains logs
+Windows
+~\.IntelliJIdeaXX\config that contains user-specific settings.
+~\.IntelliJIdeaXX\system that stores IntelliJ IDEA data caches.
+</code></pre>
+
+
+<hr />
+
+<ul>
+<li>Update@2015.04.13: Android Studio 在升级到 1+ 之后奇葩问题少多了</li>
+<li>Update@2016.03.10: 模拟器建议使用 Genymotion</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Linux 手册]]></title>
+    <link href="http://life.urakalee.me/blog/2013/12/08/linux-cheatsheet/"/>
+    <updated>2013-12-08T12:13:45+08:00</updated>
+    <id>http://life.urakalee.me/blog/2013/12/08/linux-cheatsheet</id>
+    <content type="html"><![CDATA[<h2>常用命令</h2>
+
+<h3>find</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>find . -name <span class="s2">&quot;*.xyz&quot;</span>
+</span><span class='line'>find . -name <span class="s2">&quot;*abc*&quot;</span> -delete
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>grep</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>grep -i <span class="s2">&quot;abc&quot;</span> * <span class="c"># 忽略大小写</span>
+</span><span class='line'>grep -R <span class="s2">&quot;abc&quot;</span> .
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>wc</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>wc -l find -name <span class="s2">&quot;*.java&quot;</span> <span class="c"># 统计 java 代码行数</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>权限</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>chmod u+x &lt;file&gt; <span class="c"># 设为可执行文件</span>
+</span><span class='line'>chown &lt;name&gt; &lt;file&gt;
+</span><span class='line'>chown -R &lt;name&gt; &lt;dir&gt;
+</span><span class='line'>chgrp ... <span class="c"># 格式同 chown</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>系统工具</h2>
+
+<h3>ssh</h3>
+
+<ul>
+<li>ssh-add -D删除所有记住的key
+
+<ul>
+<li>解决 Mac 下所有使用过的 key 都会被记住，删除 key 文件没用的问题</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>链接库</h3>
+
+<ul>
+<li>查看链接库是否缺失: <code>ldd &lt;可执行文件&gt;</code></li>
+<li>修改系统加载库</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>vim /etc/ld.so.conf
+</span><span class='line'>/sbin/ldconfig
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[家庭文化]]></title>
+    <link href="http://life.urakalee.me/blog/2013/12/08/family-culture/"/>
+    <updated>2013-12-08T11:12:02+08:00</updated>
+    <id>http://life.urakalee.me/blog/2013/12/08/family-culture</id>
+    <content type="html"><![CDATA[<ul>
+<li>坦诚 信任（支持）</li>
+<li>尊重 包容（耐心）</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[你要如何衡量你的人生]]></title>
+    <link href="http://life.urakalee.me/blog/2013/12/07/measure-your-life/"/>
+    <updated>2013-12-07T20:08:40+08:00</updated>
+    <id>http://life.urakalee.me/blog/2013/12/07/measure-your-life</id>
+    <content type="html"><![CDATA[<h2>概述</h2>
+
+<p>这本书并没有告诉我们应该确立什么样的人生目标, 但书中的观点可以帮助我们衡量目标的可行性, 并关注实现目标的过程中可能发生的问题</p>
+
+<h2>目标: 资源•应用流程•价值取向</h2>
+
+<ul>
+<li>资源是 Ta 所利用的东西</li>
+<li>应用流程是 Ta 做事的方法</li>
+<li>价值取向是 Ta 做某件事的动机</li>
+<li>-> <strong><em>用于评估什么样的目标可以实现, 什么样的目标遥不可及</em></strong></li>
+</ul>
+
+
+<h3>衡量目标的可行性:</h3>
+
+<ul>
+<li>资源是否足够, 如果不够, 可能需要一个更短期的目标来增加资源</li>
+<li>实现目标的方法已经有了吗? 可能没有, 那么需要 &ldquo;根据机遇权衡计划&rdquo;</li>
+<li>目标是否符合你的价值取向, 如果不符合, 那么可能需要放弃这个目标</li>
+</ul>
+
+
+<!-- more -->
+
+
+<h3>每天都会面临的基本挑战:</h3>
+
+<ul>
+<li>接受哪些信息</li>
+<li>采纳哪些建议</li>
+<li>忽视哪些问题</li>
+<li>去做哪些事情</li>
+<li>-> 这些挑战归结为: <strong><em>如何选择</em></strong></li>
+</ul>
+
+
+<h3>目标 - 选择</h3>
+
+<ul>
+<li>所谓目标, 虽然分长期和短期, 却依然很难直接指导具体的选择</li>
+<li>相反, 选择的过程往往体现了 &ldquo;资源•应用流程•价值取向&rdquo; 这三要素</li>
+</ul>
+
+
+<h3>实现目标过程中可能会发生的问题:</h3>
+
+<ul>
+<li>重点不明确, 要关注你的价值取向中最重要的那部分</li>
+<li>&ldquo;根据机遇权衡计划&rdquo;</li>
+<li>既然是重点, 就要分配资源</li>
+</ul>
+
+
+<h2>战略: 重点•根据机遇权衡计划•分配资源</h2>
+
+<ul>
+<li>战略, 是指为实现某种目标而制定的大规模, 全方位的长期行动计划</li>
+<li>战略是长期的事情, 短期的事情不能通过战略搞定, 但应符合战略需要</li>
+</ul>
+
+
+<h3>重点</h3>
+
+<ul>
+<li>重点是你做决策时的核心标准</li>
+<li>薪水是一个基础因素, 不是动力因素</li>
+<li>工作满意和没有不满是两回事</li>
+</ul>
+
+
+<h3>权衡</h3>
+
+<ul>
+<li>&ldquo;哪些假设条件需要得到验证, 才能说明这个战略有效&rdquo;</li>
+<li>根据机遇权衡计划的重点是小成本尝试和拥抱变化, 是一个情况多样, 难以控制的连续过程, 很可能不是一开始就想到的</li>
+<li>没有哪个方法一经提出就更好或更糟, 而是要根据你走到哪个阶段来确定</li>
+</ul>
+
+
+<h3>分配资源</h3>
+
+<ul>
+<li>任何一个战略 - 不论是企业战略还是个人生活战略 - 都是从数百次日常决定中产生的, 它是关于如何安排时间(人)和金钱(物)的决定</li>
+<li>生活中的每一个有关如何分配时间盒金钱的决定, 都表明了你真正在乎的是什么</li>
+<li>你可以尽情地谈论自己的生活, 谈论有什么清晰的目标和战略, 但是如果你投入的资源和你的战略方向不一致, 这些谈论都毫无意义
+如果最终不能有效实施, 你的战略只能是一个良好的愿望</li>
+<li>-> <strong><em>如果家庭是重点, 就要家庭建设上分配资源</em></strong></li>
+</ul>
+
+
+<h2>我的目标</h2>
+
+<ul>
+<li>我的目标是帮助家人(包括自己)过上满足的生活
+
+<ul>
+<li>谈 &ldquo;幸福(的生活)&rdquo; 太虚幻, 说 &ldquo;满足&rdquo; 比较实际</li>
+<li>满足某些欲望并不能真的让人满足</li>
+</ul>
+</li>
+<li>为了生活得满足, 我需要更有竞争力, 更有效率; 所以 <strong><em>重点是生活</em></strong></li>
+</ul>
+
+
+<h3>重点</h3>
+
+<ul>
+<li>生活包括兴趣(工作), 收入(工作), 家庭</li>
+<li>兴趣(工作)使生活有成就感? 家庭也能使生活有成就感, 但我还是不愿意放弃兴趣(工作)的成就感</li>
+<li>收入(工作)让生活更有质量</li>
+<li>家庭是生活的保障</li>
+</ul>
+
+
+<h3>权衡</h3>
+
+<ul>
+<li>兴趣需要投入时间</li>
+<li>收入的多少虽然不直接与时间发生关系, 但间接需要投入时间去争取(比如加班)</li>
+<li>家庭建设需要投入时间, 可能还需要人脉</li>
+<li>人脉需要时间, 也需要金钱? 目前金钱不是关键问题, 如果真的是关键, 也拿不出来&hellip;</li>
+<li>持续性是生活中潜在的重要因素, 也是人的基本需求(安全感)</li>
+<li>-> <strong><em>当前战略的主要问题是如何分配时间</em></strong></li>
+</ul>
+
+
+<h3>分配资源</h3>
+
+<ul>
+<li>兴趣: 4hr</li>
+<li>收入: 4hr, 包括理财</li>
+<li>学习是支撑兴趣和收入的基础</li>
+<li>家庭: 1~1.5hr</li>
+<li>人脉: 0.5~1hr</li>
+<li>身体是一切的基础: 1hr</li>
+</ul>
+
+
+<h2>关于家庭</h2>
+
+<h3>好钱和坏钱</h3>
+
+<ul>
+<li>在事业刚起步阶段, 你或许还不知道公司策略是否能够成功, 你必须耐心等候公司成长, 同时把目光放在获利上面; 如此一来, 就要用最少的资金找到一个可行的策略, 不至于花了很多钱才知道走错了路; 如果投入资金之后, 急于看到成长而非获利, 则是 &ldquo;坏钱&rdquo;</li>
+<li>在所有成功的企业当中, 有93%都必须改变最初的策略; 也就是说一定会有拐点, 所以需要提前准备; 准备的方式则是投入 &ldquo;好钱&rdquo;</li>
+<li>家庭生活会有类似的问题, 同样需要提前准备, 投入"好钱"; 常见的问题是对孩子的教育
+
+<ul>
+<li>奶昔是被雇佣来做什么的</li>
+<li>学校是被雇佣来做什么的: 获得成功的感觉, 每天都会有朋友</li>
+<li>你是被雇佣来做什么的</li>
+<li>-> <strong><em>不要将未来外包出去</em></strong></li>
+</ul>
+</li>
+</ul>
+
+
+<h3>家庭文化</h3>
+
+<ul>
+<li>家庭文化是父母与孩子共同价值取向的保证</li>
+<li>文化, 是人们朝着一个共同的目标一起工作的方式, 这种方式一直以来被大家所沿用并且一直行之有效, 以至于人们根本不会想到要以另一种方式去做事</li>
+<li>特定文化一经形成, 人们就会自动地区做要取得成功需要做的事
+问题出现时, 要做的不仅仅是解决问题本身, 还要在解决问题的过程中明确什么事重要的, 在这个过程中形成了对价值取向的理解, 并学会如何去实践这一价值取向</li>
+<li>-> 文化是在 <strong><em>处理问题的过程和做选择时的价值取向被一个组织不断重复使用, 且被证明有效</em></strong> 的基础上形成的</li>
+<li>一个组织的文化是否健康, 需要看该组织的成员需要选择如何去做一件事情时, 他们的选择是不是组织的文化所要求的? 收到的效果是否也符合组织文化的要求?</li>
+</ul>
+
+
+<h3>我的父母没为我做的事</h3>
+
+<ul>
+<li>孩子们在成长过程中很少有机会负担重要的责任, 也很少有机会能为自己或他人解决复杂的问题</li>
+<li>&ldquo;我不害怕面对这个问题, 我相信自己能解决它&rdquo;, 这样的自信不是来自丰富的资源, 而是来自完成某件困难且重要的事情</li>
+<li>我们将孩子保护起来, 让他们远离生活中出现的各种问题, 但是却无意中阻止了孩子掌握成功所需的 &ldquo;应用流程&rdquo; 和 &ldquo;价值取向&rdquo;</li>
+<li>孩子们在自己准备好学习时才能学到东西, 而不是在我们准备好教导他们的时候</li>
+<li>孩子在各种 &ldquo;经验学校&rdquo; 中学到了什么, 是比奖励或奖品更能保证他们在外面世界的冒险中取得成功的关键</li>
+</ul>
+
+
+<h3>其它</h3>
+
+<ul>
+<li>第一代必须要辛苦一些, 不过 &ldquo;要与人交流&rdquo; 这件事情应该与是否第一代无关</li>
+<li>第一代只是资源匮乏一些, 应用流程与价值取向方面还是一样的, 都要靠实践</li>
+</ul>
+
+
+<h2>总结</h2>
+
+<ul>
+<li>资源•应用流程•价值取向 -> 目标 是确立目标的过程</li>
+<li>重点•根据机遇权衡计划•分配资源 -> 战略 是实现目标的过程</li>
+<li>价值取向和重点决定了方向, 应用流程和权衡决定了成败, 资源分配是杠杆</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Code Style]]></title>
+    <link href="http://life.urakalee.me/blog/2013/12/07/code-style/"/>
+    <updated>2013-12-07T18:07:00+08:00</updated>
+    <id>http://life.urakalee.me/blog/2013/12/07/code-style</id>
+    <content type="html"><![CDATA[<h2>代码风格</h2>
+
+<ul>
+<li>代码是给人看的, 偶尔也在机器上跑一跑</li>
+<li>代码应该越写越少: <strong><em>Write Less Do More</em></strong></li>
+<li>所有源代码文件(包括 html/css/properties/readme 等)均为 utf-8 无 bom 格式, unix 换行</li>
+<li><strong><em>禁用tab</em></strong>, 所有源代码文件一律使用 4 空格缩进</li>
+</ul>
+
+
+<h2>Java</h2>
+
+<ul>
+<li><a href="http://www.oracle.com/technetwork/java/codeconv-138413.html" title="Java 编码规范">Java Code Conventions</a></li>
+<li><a href="http://doc.javanb.com/code-conventions-for-the-java-programming-language-zh/" title="Java 编码规范(中文版)">Java编码规范(中文版)</a></li>
+</ul>
+
+
+<!-- more -->
+
+
+<h3>内部规范</h3>
+
+<ul>
+<li>第三部分
+
+<ul>
+<li>每行不超过 120 字符, 一个文件不超过 600 行</li>
+<li>愿意遵循每行不超过 72 或 80 字符的也可以, 但不超过 120 是必须的</li>
+</ul>
+</li>
+<li>第四部分
+
+<ul>
+<li>再次强调每行不超过 120 字符, 一个文件不超过 600 行</li>
+<li><strong><em>换行是检验代码可读性的重要标准</em></strong></li>
+</ul>
+</li>
+<li>第六部分
+
+<ul>
+<li>一行声明一个变量</li>
+</ul>
+</li>
+<li>第七部分
+
+<ul>
+<li>语句块即使只有一行也要有括号</li>
+<li>尤其是 if 语句!</li>
+</ul>
+</li>
+<li>第九部分
+
+<ul>
+<li>类名为首字母大写格式</li>
+<li>包名均为小写, 视觉上应为一个倒置的域名, 比如 <code>com.domain.codename</code></li>
+<li>常量为全大写, 下划线分隔</li>
+</ul>
+</li>
+<li>第十部分
+
+<ul>
+<li>善用 TODO, XXX, FIXME</li>
+</ul>
+</li>
+<li>其它
+
+<ul>
+<li>避免 magic number</li>
+<li>禁用 <code>System.out.print</code>, 使用 logger</li>
+<li>如果可能, 避免使用 <code>++</code>, 无论是前 <code>++</code> 还是后 <code>++</code>, 而是用 <code>+= 1</code>来替代</li>
+<li>文件结构: 将功能和方法分为命令和查询两类, 并将两者分别放在一起
+
+<ul>
+<li>也可以分成更多类, 比如 override/implement/public/private/getter/setter 等</li>
+<li>定义 code template 是个好办法, 但关键还是在于所有人都能坚持遵循</li>
+</ul>
+</li>
+<li>包结构: 包内文件不超过 10 个, 接口的实现要放在对应的 impl 目录下</li>
+<li>Singleton (helper): 需要初始化</li>
+<li>静态函数集合 (utils): 不需要初始化, 或者有瞬间又无异常的static初始化</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>防御</h3>
+
+<ul>
+<li>警告就是错误!</li>
+<li>报告所有的异常, 传播不能处理的异常, 禁止空 catch, 即使是临时这样做也不行!</li>
+<li>在异常发生之前使用断言, 可以避免更严重的问题(比如数据不一致)</li>
+</ul>
+
+
+<h3>测试</h3>
+
+<ul>
+<li>单元测试就是最可信的文档</li>
+<li>刚刚开始 TDD 时要用最简单的方式编写 TestCase, 而不是不断引入新的类, 否则你会强迫自己保留和使用它们</li>
+<li>像重构代码一样重构测试</li>
+<li>测试用例以 Test 开头, 测试一个类用 TestClassName, 测试一个包用 TestPackageName (为了遵循类命名规范, 包名需要首字母大写)</li>
+</ul>
+
+
+<h3>调试</h3>
+
+<ul>
+<li>善用 debug 模式, 而不是 log, 更不是 print</li>
+<li>但是, 在运行着的系统中 log 还是很有用的, 所以 log 中要展示有用的信息</li>
+<li>实验用例以 Run 开头, 后面同测试用例, 通常每个实验用例都只有一个 main 函数, 主要用来做实验</li>
+</ul>
+
+
+<h2>Html/Css/Javascipt</h2>
+
+<ul>
+<li>html 的 id 为驼峰格式, 形如 abcXyz</li>
+<li>html 的 class 为全小写, 形如 abc-xyz</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to Wiki]]></title>
+    <link href="http://life.urakalee.me/blog/2013/12/07/how-to-wiki/"/>
+    <updated>2013-12-07T17:35:18+08:00</updated>
+    <id>http://life.urakalee.me/blog/2013/12/07/how-to-wiki</id>
+    <content type="html"><![CDATA[<h2>什么是 wiki</h2>
+
+<ul>
+<li>wiki 是一种网络应用</li>
+<li>遵照一定的格式, 使用纯文本书写, 输出 html 文档</li>
+<li>方便的内链接, 在多个内部页面之间跳转</li>
+<li>多人编辑, 支持版本历史</li>
+</ul>
+
+
+<h2>如何创建一个 wiki 页面</h2>
+
+<ul>
+<li>访问一个不存在的 url, 建立一个新的页面
+
+<ul>
+<li>比如 <code>/APageDoesNotExist</code></li>
+</ul>
+</li>
+<li>页面的名字必须是 <strong>首字母大写</strong> 的, 首字母大写的名字可以被 wiki 识别为内链接</li>
+<li>点击 &ldquo;创建页面&rdquo;, 编辑</li>
+<li>书写语法见 <code>/WikiFormatting</code></li>
+<li>编辑完点击 &ldquo;预览&rdquo;, 查看输出的 html 是否符合预期</li>
+<li>如果没问题, 点击 &ldquo;提交改动&rdquo;, 即生成一个新的 wiki 页面</li>
+</ul>
+
+
+<!-- more -->
+
+
+<h2>添加附件</h2>
+
+<ul>
+<li>wiki 允许增加附件</li>
+<li>打开一个存在的 wiki 页面, 点击页面底部的 &ldquo;附件&rdquo;</li>
+<li>选择文件并上传</li>
+<li>如果可能, 尽量书写一份 wiki 文档而不是上传一个 word 文档作为 wiki 的附件</li>
+</ul>
+
+
+<h2>规划 wiki 文档的层次结构</h2>
+
+<ul>
+<li>wiki 中使用 <code>=</code> 到 <code>======</code> 代表 h1 到 h6 标签, 标识文档的层次结构</li>
+<li>书写 wiki 文档时, 需要合理地规划层次结构, 增加文档的可读性</li>
+<li>需要合理地使用表格, 列表等 html 元素, 增加文档的可读性</li>
+<li>更多格式语法见 <code>/WikiFormatting</code></li>
+<li>当一个文档过长时, 可以考虑切分成几个文档, 或者当成一个项目</li>
+</ul>
+
+
+<h2>如何创建一个项目的 wiki 页面</h2>
+
+<ul>
+<li>一个项目通常有很多内容, 需要创建多个页面</li>
+<li>先创建项目首页, 比如 <code>/NewProject</code></li>
+<li>再创建子页面, 比如:
+
+<ul>
+<li>设计文档: <code>/NewProject/Design</code></li>
+<li>如何部署: <code>/NewProject/Deploy</code></li>
+</ul>
+</li>
+<li>每个子页面可以根据需要再创建子页面</li>
+<li>编辑项目页面, 在底部加入下面的代码, 即可在项目页面上看到所有子页面:</li>
+</ul>
+
+
+<pre><code>== 文章列表 ==
+[[TitleIndex(NewProject)]]
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Work Style]]></title>
+    <link href="http://life.urakalee.me/blog/2013/12/07/work-style/"/>
+    <updated>2013-12-07T15:20:01+08:00</updated>
+    <id>http://life.urakalee.me/blog/2013/12/07/work-style</id>
+    <content type="html"><![CDATA[<h2>工作模式(暂行)</h2>
+
+<ul>
+<li>4 天计划, 前紧后松</li>
+<li>CoC, 主动 &amp; 高效, 跨职能 的 技术团队</li>
+<li>执行 <strong>敏捷开发</strong> 和 <strong>文档驱动</strong>
+
+<ul>
+<li>每日站会, 详见 <strong>45个习惯</strong> 第 8 章</li>
+<li>代码集体所有制, 详见 <strong>45个习惯</strong> 第 8 章</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>CoC: Convention over Configuration</h2>
+
+<ul>
+<li>习惯优于配置</li>
+<li>达成目标的方式有很多种, 可以灵活配置, 但遵从习惯可以降低沟通成本
+
+<ul>
+<li>版本控制: Git</li>
+<li>Java 包管理和部署: Maven</li>
+<li>文档管理: wiki (Trac)</li>
+<li>项目管理: Trello</li>
+</ul>
+</li>
+<li>习惯可以改, 只要好处 >> 成本</li>
+</ul>
+
+
+<!-- more -->
+
+
+<h2>主动&amp;高效</h2>
+
+<ul>
+<li>主动提问, 站会匆匆而过, 没听明白的一定要问</li>
+<li>主动沟通, 有问题超过 1h 搞不定, 就应该想想能找谁帮忙解决</li>
+<li>主动通知, 邮件是广播 &amp; 存档, 不能指望每个人都会看邮件, 但至少让 Ta 有地方去看</li>
+<li>4 天做完 1 周的事, 剩下一天提高团队战斗力, 或者爱干嘛干嘛</li>
+<li>一图抵万言, 确保大家说的 A 是同一个 A, 理解的 B 是同一个 B</li>
+</ul>
+
+
+<h2>跨职能</h2>
+
+<ul>
+<li>为了大家都能做一些爱做的事, 需要大家都做一些不爱做的事</li>
+<li>每项工作都需要有至少 2 个人了解, 避免某件事情由于某个人不在就搞不定</li>
+</ul>
+
+
+<h2>技术团队</h2>
+
+<ul>
+<li>关注解决方案, 尽可能的解决问题</li>
+<li>让 &ldquo;这个很难&rdquo;, &ldquo;这个搞不定&rdquo; 越来越少</li>
+<li>领取 <strong>个人项目</strong>, 作为 bonus</li>
+</ul>
+
+
+<h2>借鉴 Scrum 敏捷开发框架</h2>
+
+<ul>
+<li>每周一个 Sprint, 按照大版本规划 Sprint</li>
+<li>持续交付, 每个 Sprint 产出的结果对于最终用户都是有用的</li>
+<li>每个 Sprint 需要分拆成最小 0.5D, 最大 2D 的任务</li>
+<li>每天 10 ~ 20 分钟同步进度, 解决问题</li>
+<li>使用 Trello 进行项目管理</li>
+</ul>
+
+
+<h2>文档驱动</h2>
+
+<ul>
+<li>任何 <strong>三个月后还有用的东西</strong> 都需要文档</li>
+<li>文档需要回答的问题: 如果我完全不了解这个项目, 我想知道什么
+
+<ul>
+<li>怎么用: 如何部署/运行, 提供什么接口</li>
+<li>怎么开发: 代码结构/核心算法/核心模块和逻辑(数据流图)</li>
+</ul>
+</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to Git]]></title>
+    <link href="http://life.urakalee.me/blog/2013/12/04/how-to-git/"/>
+    <updated>2013-12-04T09:37:29+08:00</updated>
+    <id>http://life.urakalee.me/blog/2013/12/04/how-to-git</id>
+    <content type="html"><![CDATA[<h2>Git 入门资料</h2>
+
+<ul>
+<li>windows 客户端: <a href="http://git-scm.com/download/win">http://git-scm.com/download/win</a></li>
+<li>Pro Git 中文版(书, 可能被墙): <a href="http://git-scm.com/book/zh">http://git-scm.com/book/zh</a></li>
+<li>Pro Git 中文下载版(pdf): <a href="http://ishare.iask.sina.com.cn/f/23292123.html">http://ishare.iask.sina.com.cn/f/23292123.html</a></li>
+<li>图解 Git (推荐阅读): <a href="http://my.oschina.net/xdev/blog/114383">http://my.oschina.net/xdev/blog/114383</a></li>
+</ul>
+
+
+<h2>windows 下 Git 的配置和使用</h2>
+
+<ul>
+<li>以下命令都在 Git Bash 中运行</li>
+<li>生成公钥/私钥
+
+<ul>
+<li><code>ssh-keygen -t rsa</code></li>
+<li>生成的密钥对的位置在 <code>C:\Users\&lt;user-name&gt;\.ssh</code></li>
+<li>id_rsa 为私钥, id_rsa.pub 为公钥</li>
+</ul>
+</li>
+<li>配置 Git 的用户名和邮件</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>git config --global user.name &lt;your-name&gt;
+</span><span class='line'>git config --global user.email &lt;your-email&gt;
+</span></code></pre></td></tr></table></div></figure>
+
+
+<!-- more -->
+
+
+<h3>进阶配置</h3>
+
+<ul>
+<li>编辑 <code>&lt;git-install-path&gt;\etc\gitconfig</code>
+
+<ol>
+<li>修改autocrlf = input, 确保提交的文本都是 utf8 编码</li>
+<li>在文件末尾增加下面的代码, 使 Git GUI 能显示中文</li>
+</ol>
+</li>
+</ul>
+
+
+<pre><code>[gui]
+    encoding = utf-8
+</code></pre>
+
+
+<ul>
+<li>编辑 <code>&lt;git-install-path&gt;\etc\git-completion.bash</code>
+
+<ol>
+<li>在文件末尾增加下面的代码, 使 Git Bash 能显示中文</li>
+</ol>
+</li>
+</ul>
+
+
+<pre><code>alias ls='ls --show-control-chars --color=auto'
+</code></pre>
+
+
+<h2>Git 使用规范</h2>
+
+<ul>
+<li>禁用中文文件名</li>
+<li>所有文本文件使用 utf8 编码</li>
+<li>所有文本文件使用 unix 换行 (\n), 而非 windows 换行 (\r\n)</li>
+</ul>
+
+
+<h3>Git 分枝管理</h3>
+
+<ul>
+<li>master: 稳定可编译/测试通过的代码</li>
+<li>test: 测试环境的代码, 通过测试后merge到master</li>
+<li>pri-xxx: 个人开发代码 (private), 由于可能需要到部署到服务器上, 因此允许 push 到 remote</li>
+<li>dev: 开发环境的代码</li>
+<li>在 pri-xxx 上开发的代码, 可能需要 merge 到开发环境上验证</li>
+<li>验证通过后, <strong>禁止</strong> 直接把 dev merge 到 test, 而是应该从 pri-xxx merge 到 test</li>
+<li>由于 dev 代码在多人 merge 后可能出问题, 所以定期会从 master 重开 dev 分枝</li>
+</ul>
+
+
+<h3>Git 注释规范</h3>
+
+<ul>
+<li>所有注释, 除了 merge 时系统自动生成的, 均应符合以下规范
+
+<ol>
+<li>格式为 <code>&lt;OPERATION&gt;: description</code></li>
+<li>OPERATION 包括 ADD/MOD/DEL/FIX/MERGE/REFACTOR/CLEAN, 全部大写, 后面跟着冒号</li>
+<li>description 需要是全英文, 包括标点</li>
+</ol>
+</li>
+<li>一次提交可以有多个 OPERATION, 但最好只有一个
+
+<ul>
+<li>多个 OPERATION 一行一个</li>
+</ul>
+</li>
+</ul>
+
+
+<table>
+<thead>
+<tr>
+<th>OPERATION</th>
+<th> 何时使用 </th>
+<th> description应该写什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ADD </td>
+<td> 增加功能/文件 </td>
+<td> 增加了什么功能/文件(文件太多可以写目录)</td>
+</tr>
+<tr>
+<td>MOD </td>
+<td> 修改功能/文件 </td>
+<td> 修改了什么功能/文件, 以及修改原因</td>
+</tr>
+<tr>
+<td>DEL </td>
+<td> 删除功能/文件 </td>
+<td> 删除了什么功能/文件, 以及删除原因</td>
+</tr>
+<tr>
+<td>FIX </td>
+<td> 修复 bug </td>
+<td> bug 列表中有的, 可以只写 bug 号, 没有的需要说明</td>
+</tr>
+<tr>
+<td>MERGE </td>
+<td> 手动合并 </td>
+<td> 从哪里合并到哪里 (from x to y), 如何解决了冲突</td>
+</tr>
+<tr>
+<td>REFACTOR </td>
+<td> 重构 </td>
+<td> 重构了什么</td>
+</tr>
+<tr>
+<td>CLEAN </td>
+<td> 清理 </td>
+<td> 清理了什么</td>
+</tr>
+</tbody>
+</table>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Sublime Text 手册]]></title>
+    <link href="http://life.urakalee.me/blog/2013/12/04/sublime-text-manual/"/>
+    <updated>2013-12-04T09:09:01+08:00</updated>
+    <id>http://life.urakalee.me/blog/2013/12/04/sublime-text-manual</id>
+    <content type="html"><![CDATA[<h2>空白字符</h2>
+
+<ul>
+<li>Cmd+, 进入 Preference - Settings - User</li>
+<li>增加下列设置：</li>
+</ul>
+
+
+<pre><code>"tab_size": 4,
+"translate_tabs_to_spaces": true,
+"draw_white_space": all
+</code></pre>
+
+
+<ul>
+<li>Cmd+s 保存，Cmd+w 退出
+
+<h2>Vim 模式</h2></li>
+<li>进入 Preference -Settings - Default</li>
+<li>找到：ignored_packages</li>
+<li>删除其中的 &ldquo;Vintage&rdquo;</li>
+<li>Cmd+s 保存，Cmd+w 退出</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

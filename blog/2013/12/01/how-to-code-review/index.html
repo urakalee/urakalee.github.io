@@ -1,0 +1,423 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>How to Code Review - Binary Life</title>
+  <meta name="author" content="Uraka Lee">
+
+  
+  <meta name="description" content="引 版本控制工具：Git
+代码 review 工具：ReviewBoard
+代码 review 需要积极评估代码的设计和清晰程度，项目 owner 还要确保被review 代码的逻辑正确性，而不仅限于命名和格式 准备工作 用 ldap 账号登录
+确保参与 review 的人都需要登录过， &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://life.urakalee.me/blog/2013/12/01/how-to-code-review">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Binary Life" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<!--
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-46162042-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Binary Life</a></h1>
+  
+    <h2>诗人 方法论者 喝汤族 微微爸</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:life.urakalee.me" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+    <li><a href="/">Blog</a></li>
+    <li><a href="/blog/archives">Archives</a></li>
+    <li><a href="/blog/categories/cheatsheet">CheatSheets</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">How to Code Review</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-01T21:17:33+08:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2>引</h2>
+
+<ul>
+<li>版本控制工具：Git</li>
+<li>代码 review 工具：<a href="http://www.reviewboard.org/" title="Review Board">ReviewBoard</a></li>
+<li>代码 review 需要积极评估代码的设计和清晰程度，项目 owner 还要确保被review 代码的逻辑正确性，而不仅限于命名和格式</li>
+</ul>
+
+
+<h2>准备工作</h2>
+
+<ul>
+<li>用 ldap 账号登录</li>
+<li>确保参与 review 的人都需要登录过，否则会找不到人</li>
+<li>确保你要 review 的代码的 git 已经加入 reviewboard</li>
+<li>确保你要 review 的代码基点已经 push 到 git 服务器
+
+<ul>
+<li>代码基点: <code>git diff &lt;src-rev&gt; &lt;tgt-rev&gt;</code> 中的 <code>&lt;src-rev&gt;</code></li>
+</ul>
+</li>
+</ul>
+
+
+<h2>提交一个 review</h2>
+
+<!-- more -->
+
+
+<ol>
+<li>生成diff
+
+<ul>
+<li><code>git diff &lt;src-rev&gt; &lt;tgt-rev&gt; &gt; d1.diff</code>
+
+<ul>
+<li>一般来说src是tgt的父节点</li>
+</ul>
+</li>
+<li>如何得到 <code>&lt;src-rev&gt;</code>
+
+<ul>
+<li>对于开分枝 / 开发 / merge 的工作模式而言
+
+<ul>
+<li><code>&lt;src-rev&gt;</code> 就是你开分枝时分枝点的版本</li>
+<li>可以用 <code>git merge-base &lt;src-branch&gt; &lt;tgt-branch&gt;</code> 得到 <code>&lt;src-rev&gt;</code>
+
+<ul>
+<li>比如你要从 work 分枝 merge 回 master，则执行 <code>git merge-base master work</code> 得到 <code>&lt;src-rev&gt;</code>，前提是你没有 merge 过</li>
+<li>但如果你已经 merge 过，这样得到的 <code>&lt;src-rev&gt;</code> 是从最后一次 merge 的版本</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>对于在一个分枝上持续开发的工作模式
+
+<ul>
+<li>查看git log 找到需要的 <code>&lt;src-rev&gt;</code></li>
+</ul>
+</li>
+<li>应该尽量在代码稳定时再 merge：勤开分枝，慎重 merge</li>
+<li>应该尽量使用 amend，减少 commit，git log 才好找</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>访问 reviewboard，点击 New Review Request</li>
+<li>选择 Repository，选择 diff 文件，点击 Create Review Request</li>
+<li>点击 View Diff，查看上传结果是否和预期一致</li>
+<li>填写 Summary / People / Description，注意 people 是 ldap 账号名，用 tab 补全，别按回车</li>
+<li>确认提交，系统会发邮件给 people，通知他们来 review</li>
+</ol>
+
+
+<h2>更新一个 review</h2>
+
+<ol>
+<li>修改代码提交之后生成新 diff
+
+<ul>
+<li><code>git diff &lt;src-rev&gt; &lt;tgt-rev2&gt; &gt; d2.diff</code></li>
+<li><strong>注意</strong> 确保在一次 review 中，所有 diff 的 <code>&lt;src-rev&gt;</code> 都是同一个</li>
+</ul>
+</li>
+<li>访问 reviewboard，打开要更新的 review
+
+<ul>
+<li>只能更新自己提交的 review</li>
+</ul>
+</li>
+<li>点击 Update 下拉菜单中的 Update Diff，选择 diff 文件，点击 Upload</li>
+<li>点击 View Diff，查看上传结果是否和预期一致</li>
+<li>填写本次更新的内容，确认提交</li>
+</ol>
+
+
+<h2>review 别人的代码</h2>
+
+<ol>
+<li>点击邮件通知中的链接，登录 reviewboard</li>
+<li>点击 View Diff，查看被修改的代码</li>
+<li>点击有问题的行，填写有什么问题</li>
+<li>继续 review，直到所有代码都 review 完毕</li>
+<li>点击页面上方悬浮条中的 Edit Review，预览所有你填写的内容</li>
+<li>如果没有问题，点击 Publish Review
+
+<ul>
+<li>如果需要修改，可以直接在预览页面上修改</li>
+<li>如果需要增加，点击 Cancel，增加，再 Edit Review</li>
+</ul>
+</li>
+<li>如果代码较多，可以 review 一页提交一页</li>
+</ol>
+
+
+<h2>根据别人的 review 修改代码</h2>
+
+<ol>
+<li>别人提出的每个问题都会生成一个 issue</li>
+<li>对照这些 issue 修改代码；如果 fix 了，就点 fixed；如果有异议，可以回复讨论；如果确认不需要改，就点 drop</li>
+<li>修改完成后，提交代码，生成新的 diff</li>
+<li>更新 review，继续，直到所有 issue 都 fixed 或 drop</li>
+</ol>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Uraka Lee</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-01T21:17:33+08:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/teamtoy/'>teamtoy</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+  
+    <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+    <span class="jiathis_txt">分享到：</span>
+    <a class="jiathis_button_weixin">微信</a>
+    <a class="jiathis_button_tsina">新浪微博</a>
+    <a class="jiathis_button_douban">豆瓣</a>
+    <a class="jiathis_button_tqq">腾讯微博</a>
+    <a class="jiathis_button_ydnote">有道云笔记</a>
+    <a class="jiathis_button_copy">复制网址</a>
+    <!--
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+    <a class="jiathis_counter_style"></a>
+    -->
+</div>
+<script type="text/javascript" >
+var jiathis_config = {
+    summary: "",
+    shortUrl: true,
+    hideMore: true
+};
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+  
+</div>
+
+    
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/03/10/android-night-theme-for-9-patch/">Android: 9-patch的夜间模式</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/03/10/optimize-question-and-solution-of-yuantiku-1/">做题解析性能优化始末(1)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/03/10/android-mechanism-asynctask/">Android机制: AsyncTask</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/04/19/disable-cmd-q-for-chrome/">Mac Tips: 对 Chrome 禁用 Cmd+Q</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/04/19/mac-migration/">Mac 重装/数据迁移</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/01/21/android-home-watcher/">Android: 捕获 Home 键</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/25/to-weiwei-waiting-for-you/">致 Weiwei: 我们期待着你的降临</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/25/mac-chrome-upgrade/">Mac Chrome 升级</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/20/android-tips/">Android 开发点滴</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/16/markdown-style/">Markdown Style</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+    <h1>Categories</h1>
+    <ul id="categories">
+        <li class='category'><a href='/blog/categories/android/'>android (6)</a></li>
+<li class='category'><a href='/blog/categories/cheatsheet/'>cheatsheet (4)</a></li>
+<li class='category'><a href='/blog/categories/familybuild/'>familybuild (2)</a></li>
+<li class='category'><a href='/blog/categories/oshack/'>oshack (5)</a></li>
+<li class='category'><a href='/blog/categories/readbook/'>readbook (1)</a></li>
+<li class='category'><a href='/blog/categories/selfengine/'>selfengine (3)</a></li>
+<li class='category'><a href='/blog/categories/teamtoy/'>teamtoy (8)</a></li>
+
+    </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2016 - Uraka Lee -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'urakalee';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://life.urakalee.me/blog/2013/12/01/how-to-code-review/';
+        var disqus_url = 'http://life.urakalee.me/blog/2013/12/01/how-to-code-review/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

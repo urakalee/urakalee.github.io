@@ -1,0 +1,419 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Code Style - Binary Life</title>
+  <meta name="author" content="Uraka Lee">
+
+  
+  <meta name="description" content="代码风格 代码是给人看的, 偶尔也在机器上跑一跑
+代码应该越写越少: Write Less Do More
+所有源代码文件(包括 html/css/properties/readme 等)均为 utf-8 无 bom 格式, unix 换行
+禁用tab, 所有源代码文件一律使用 4 空格缩进 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://life.urakalee.me/blog/2013/12/07/code-style">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Binary Life" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<!--
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-46162042-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Binary Life</a></h1>
+  
+    <h2>诗人 方法论者 喝汤族 微微爸</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:life.urakalee.me" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+    <li><a href="/">Blog</a></li>
+    <li><a href="/blog/archives">Archives</a></li>
+    <li><a href="/blog/categories/cheatsheet">CheatSheets</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Code Style</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-07T18:07:00+08:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2>代码风格</h2>
+
+<ul>
+<li>代码是给人看的, 偶尔也在机器上跑一跑</li>
+<li>代码应该越写越少: <strong><em>Write Less Do More</em></strong></li>
+<li>所有源代码文件(包括 html/css/properties/readme 等)均为 utf-8 无 bom 格式, unix 换行</li>
+<li><strong><em>禁用tab</em></strong>, 所有源代码文件一律使用 4 空格缩进</li>
+</ul>
+
+
+<h2>Java</h2>
+
+<ul>
+<li><a href="http://www.oracle.com/technetwork/java/codeconv-138413.html" title="Java 编码规范">Java Code Conventions</a></li>
+<li><a href="http://doc.javanb.com/code-conventions-for-the-java-programming-language-zh/" title="Java 编码规范(中文版)">Java编码规范(中文版)</a></li>
+</ul>
+
+
+<!-- more -->
+
+
+<h3>内部规范</h3>
+
+<ul>
+<li>第三部分
+
+<ul>
+<li>每行不超过 120 字符, 一个文件不超过 600 行</li>
+<li>愿意遵循每行不超过 72 或 80 字符的也可以, 但不超过 120 是必须的</li>
+</ul>
+</li>
+<li>第四部分
+
+<ul>
+<li>再次强调每行不超过 120 字符, 一个文件不超过 600 行</li>
+<li><strong><em>换行是检验代码可读性的重要标准</em></strong></li>
+</ul>
+</li>
+<li>第六部分
+
+<ul>
+<li>一行声明一个变量</li>
+</ul>
+</li>
+<li>第七部分
+
+<ul>
+<li>语句块即使只有一行也要有括号</li>
+<li>尤其是 if 语句!</li>
+</ul>
+</li>
+<li>第九部分
+
+<ul>
+<li>类名为首字母大写格式</li>
+<li>包名均为小写, 视觉上应为一个倒置的域名, 比如 <code>com.domain.codename</code></li>
+<li>常量为全大写, 下划线分隔</li>
+</ul>
+</li>
+<li>第十部分
+
+<ul>
+<li>善用 TODO, XXX, FIXME</li>
+</ul>
+</li>
+<li>其它
+
+<ul>
+<li>避免 magic number</li>
+<li>禁用 <code>System.out.print</code>, 使用 logger</li>
+<li>如果可能, 避免使用 <code>++</code>, 无论是前 <code>++</code> 还是后 <code>++</code>, 而是用 <code>+= 1</code>来替代</li>
+<li>文件结构: 将功能和方法分为命令和查询两类, 并将两者分别放在一起
+
+<ul>
+<li>也可以分成更多类, 比如 override/implement/public/private/getter/setter 等</li>
+<li>定义 code template 是个好办法, 但关键还是在于所有人都能坚持遵循</li>
+</ul>
+</li>
+<li>包结构: 包内文件不超过 10 个, 接口的实现要放在对应的 impl 目录下</li>
+<li>Singleton (helper): 需要初始化</li>
+<li>静态函数集合 (utils): 不需要初始化, 或者有瞬间又无异常的static初始化</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>防御</h3>
+
+<ul>
+<li>警告就是错误!</li>
+<li>报告所有的异常, 传播不能处理的异常, 禁止空 catch, 即使是临时这样做也不行!</li>
+<li>在异常发生之前使用断言, 可以避免更严重的问题(比如数据不一致)</li>
+</ul>
+
+
+<h3>测试</h3>
+
+<ul>
+<li>单元测试就是最可信的文档</li>
+<li>刚刚开始 TDD 时要用最简单的方式编写 TestCase, 而不是不断引入新的类, 否则你会强迫自己保留和使用它们</li>
+<li>像重构代码一样重构测试</li>
+<li>测试用例以 Test 开头, 测试一个类用 TestClassName, 测试一个包用 TestPackageName (为了遵循类命名规范, 包名需要首字母大写)</li>
+</ul>
+
+
+<h3>调试</h3>
+
+<ul>
+<li>善用 debug 模式, 而不是 log, 更不是 print</li>
+<li>但是, 在运行着的系统中 log 还是很有用的, 所以 log 中要展示有用的信息</li>
+<li>实验用例以 Run 开头, 后面同测试用例, 通常每个实验用例都只有一个 main 函数, 主要用来做实验</li>
+</ul>
+
+
+<h2>Html/Css/Javascipt</h2>
+
+<ul>
+<li>html 的 id 为驼峰格式, 形如 abcXyz</li>
+<li>html 的 class 为全小写, 形如 abc-xyz</li>
+</ul>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Uraka Lee</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-07T18:07:00+08:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/teamtoy/'>teamtoy</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+  
+    <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+    <span class="jiathis_txt">分享到：</span>
+    <a class="jiathis_button_weixin">微信</a>
+    <a class="jiathis_button_tsina">新浪微博</a>
+    <a class="jiathis_button_douban">豆瓣</a>
+    <a class="jiathis_button_tqq">腾讯微博</a>
+    <a class="jiathis_button_ydnote">有道云笔记</a>
+    <a class="jiathis_button_copy">复制网址</a>
+    <!--
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+    <a class="jiathis_counter_style"></a>
+    -->
+</div>
+<script type="text/javascript" >
+var jiathis_config = {
+    summary: "",
+    shortUrl: true,
+    hideMore: true
+};
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+  
+</div>
+
+    
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/03/10/android-night-theme-for-9-patch/">Android: 9-patch的夜间模式</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/03/10/optimize-question-and-solution-of-yuantiku-1/">做题解析性能优化始末(1)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/03/10/android-mechanism-asynctask/">Android机制: AsyncTask</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/04/19/disable-cmd-q-for-chrome/">Mac Tips: 对 Chrome 禁用 Cmd+Q</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/04/19/mac-migration/">Mac 重装/数据迁移</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/01/21/android-home-watcher/">Android: 捕获 Home 键</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/25/to-weiwei-waiting-for-you/">致 Weiwei: 我们期待着你的降临</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/25/mac-chrome-upgrade/">Mac Chrome 升级</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/20/android-tips/">Android 开发点滴</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/16/markdown-style/">Markdown Style</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+    <h1>Categories</h1>
+    <ul id="categories">
+        <li class='category'><a href='/blog/categories/android/'>android (6)</a></li>
+<li class='category'><a href='/blog/categories/cheatsheet/'>cheatsheet (4)</a></li>
+<li class='category'><a href='/blog/categories/familybuild/'>familybuild (2)</a></li>
+<li class='category'><a href='/blog/categories/oshack/'>oshack (5)</a></li>
+<li class='category'><a href='/blog/categories/readbook/'>readbook (1)</a></li>
+<li class='category'><a href='/blog/categories/selfengine/'>selfengine (3)</a></li>
+<li class='category'><a href='/blog/categories/teamtoy/'>teamtoy (8)</a></li>
+
+    </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2016 - Uraka Lee -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'urakalee';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://life.urakalee.me/blog/2013/12/07/code-style/';
+        var disqus_url = 'http://life.urakalee.me/blog/2013/12/07/code-style/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
