@@ -126,5 +126,17 @@ git tag # 标签列表
 git tag <tag> # 在当前版本上打标签
 git show <tag> # 查看标签
 git tag -d <tag> # 删除标签
-git push <repo-name> <tag> # 分享标签
+git push <repo-name> <tag> # 提交标签
+git push <repo-name> :<tag> # 删除远程标签
+```
+
+## submodule @2015.04.13
+``` sh
+git submodule add <remote-path> [<local-path>] # 添加 remote-path 为当前项目的 submodule
+```
+``` sh 删除 local-path 下的子项目
+git rm -r <local-path> # 如果有问题, 试试 git rm --cached <local-path>
+vim .gitmodules # 通常会在 git rm 时自动执行
+vim .git/config
+git commit
 ```
