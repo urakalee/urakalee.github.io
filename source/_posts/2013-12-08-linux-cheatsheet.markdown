@@ -4,7 +4,6 @@ title: "Linux 手册"
 date: 2013-12-08 12:13:45 +0800
 comments: true
 categories: cheatsheet
-published: false
 ---
 ## 常用命令
 
@@ -12,6 +11,12 @@ published: false
 ``` sh
 find . -name "*.xyz"
 find . -name "*abc*" -delete
+```
+
+### grep
+``` sh
+grep -i "abc" * # 忽略大小写
+grep -R "abc" .
 ```
 
 ### wc
