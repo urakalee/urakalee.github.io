@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "AndroidStudio 新手小记"
+title: "Android Studio 新手小记"
 date: 2013-12-08 18:13:10 +0800
 comments: true
 categories: android
@@ -30,7 +30,7 @@ java -classpath AI-<old-edition>-<new-edition>-patch-<os>.jar com.intellij.updat
   * 注意: 下载 emulator 后需要安装, 可执行文件在 ```sdk/extras/intel``` 中
 
 ## 数据目录
-* AndroidStudio 目前还不太稳定, 偶尔折腾, 甚至需要把数据目录清空
+* Android Studio 目前还不太稳定, 偶尔折腾, 甚至需要把数据目录清空
 * 下面的内容摘自 [Intellij 官网][jetbrain], 只要把路径换成 AndroidStudioPreview 即可
 <pre><code>Mac
 ~/Library/Application Support/IntelliJIdeaXX contains the catalog with plugins.
@@ -43,3 +43,7 @@ Windows
 </code></pre>
 
  [jetbrain]: http://www.jetbrains.com/idea/webhelp/project-and-ide-settings.html "Project and IDE Settings"
+
+****
+Update@2015.04.13: Android Studio 在升级到 1+ 之后奇葩问题少多了
+TODO@2015.04.13: gradle
