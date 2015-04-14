@@ -3,7 +3,7 @@ layout: post
 title: "Markdown Style"
 date: 2013-12-16 15:26:28 +0800
 comments: true
-categories: selfengine
+categories: selfengine cheatsheet
 ---
 * 本文仅用于有洁癖者(本人)统一 markdown 风格, 以及 check style
 
