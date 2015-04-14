@@ -3,7 +3,7 @@ layout: post
 title: "Octopress 新手小记"
 date: 2013-11-24 21:10:28 +0800
 comments: true
-categories: selfengine
+categories: selfengine cheatsheet
 ---
 信息焦虑的第二个症状：换过好几个博客，但都因为配置复杂、格式不可控、备份麻烦等原因放弃了。
 
@@ -16,6 +16,7 @@ cd octopress
 sudo gem install bundler
 sudo bundle install
 rake install
+rake new_post['Article Name']
 ```
 <!-- more -->
 
