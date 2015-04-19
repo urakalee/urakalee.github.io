@@ -41,7 +41,8 @@ categories: selfengine cheatsheet
 [Display Name][name]
 ...
 
- [name]: link(url) "Link Description"
+ [name]: http://external.link "Link Description"
+ [name]: /blog/yyyy/MM/dd/internal-link/ "Link Description"
 </pre>
 
 ### 更新

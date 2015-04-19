@@ -1,22 +1,10 @@
 ---
 layout: post
-title: "Mac Tips"
-date: 2013-12-25 14:05:13 +0800
+title: "Mac 重装/数据迁移"
+date: 2015-04-19 10:14:44 +0800
 comments: true
 categories: oshack
 ---
-## 升级 Chrome
-1. 直接升级失败, Error 12
-1. 找到[官方解决方案][google]
-```sh
-~/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Resources/GoogleSoftwareUpdateAgent.app/Contents/Resources/install.py --uninstall # Mac 10.9 上无此文件
-sudo /Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Resources/GoogleSoftwareUpdateAgent.app/Contents/Resources/install.py --uninstall
-```
-* 折腾半天还是不行, 最后从官网下载了最新版的 Chrome, 覆盖安装
-
- [google]: https://support.google.com/chrome/answer/1367288?hl=zh-Hans "无法在苹果机上更新 Google Chrome 浏览器"
-
-## Migration
 * transfer 出来的 Mac 系统, 有一些地方需要重新设置
   1. 关闭 guest: Pref - User - Unlock - Guest User - Uncheck
   1. 修改机器名1: Pref - Share - Computer Name
@@ -49,7 +37,7 @@ source ~/.bash_profile
 * 修复 HomeBrew
   * 按照 `brew doctor` 的提示做即可
 
- [spotlight]: /blog/2013/11/25/jiu-jie-de-alfred-yu-spotlight-huan-cun/ "Alfred & Spotlight"
+ [spotlight]: /blog/2013/11/25/confused-alfred-and-spotlight/ "Alfred & Spotlight"
  [weiphone]: http://bbs.weiphone.com/read-htm-tid-7173782.html "[求助] 10.9 怎么开启TRIM"
  [chameleon]: http://chameleon.alessandroboschini.it/index.php "Chameleon SSD Optimizer"
 
