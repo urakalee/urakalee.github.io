@@ -45,5 +45,5 @@ Windows
  [jetbrain]: http://www.jetbrains.com/idea/webhelp/project-and-ide-settings.html "Project and IDE Settings"
 
 ****
-Update@2015.04.13: Android Studio 在升级到 1+ 之后奇葩问题少多了
-TODO@2015.04.13: gradle
+ * Update@2015.04.13: Android Studio 在升级到 1+ 之后奇葩问题少多了
+ * Update@2016.03.10: 模拟器建议使用 Genymotion

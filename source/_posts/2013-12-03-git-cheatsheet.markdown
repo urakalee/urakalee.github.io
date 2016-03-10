@@ -74,6 +74,7 @@ git commit --amend
 * 将分枝提交到远程(在远程建立新分枝): ```git push <repo-name> <branch>```
   * 提交到远程之后, 如果希望能够 pull 该分枝, 需要 ```git push -u```
 * 删除远程分枝: ```git push <repo-name> :<remote-branch>```
+* 删除已删除远程分枝的本地缓存: ```git remote prune origin```
 * 查看所有分枝: ```git branch -av```
   * ```git branch``` 不显示远程分枝
 
@@ -137,6 +138,7 @@ git submodule add <remote-path> [<local-path>] # 添加 remote-path 为当前项
 ``` sh 删除 local-path 下的子项目
 git rm -r <local-path> # 如果有问题, 试试 git rm --cached <local-path>
 vim .gitmodules # 通常会在 git rm 时自动执行
-vim .git/config
 git commit
+rm -rf .git/modules/<local-path> # 可能不必要
+vim .git/config
 ```

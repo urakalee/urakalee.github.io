@@ -11,7 +11,7 @@ categories: oshack
 
 在一天两次 Cmd+Q 把所有标签页都关掉之后, 我要继续 hack 这个问题. [Quora][quora] 上已经有人遇到并解决了这个问题, copy 过来:
 
-* System Pref - Keyboard - Shortcuts - Add
+* System Pref - Keyboard - Shortcuts - App Shortcuts - Add
   * App: Chrome
   * Title: Quit Google Chrome
   * Shortcut: Cmd+Opt+Q

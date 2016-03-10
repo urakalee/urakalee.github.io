@@ -14,7 +14,7 @@ categories: selfengine cheatsheet
 git clone git://github.com/imathis/octopress.git octopress
 cd octopress
 sudo gem install bundler
-sudo bundle install
+bundle install
 rake install
 rake new_post['Article Name']
 ```
@@ -48,7 +48,6 @@ git clone <your-blog-repo> _deploy # 模拟 rake setup_github_pages
 
 ### 更多设置
  * 设置导航栏和增加文章分类的方法可以参考[冯威的博客][fengwei]
-   * 文中 category_list.html 的代码有点小问题，应该是 <code>{&#37; category_list &#37;}</code>，估计是作者没有找到转义的方法，我用的是 ```<code>{&#37; category_list &#37;}</code>```
  * 输入和显示表格的方法可以参考 [@samwize 的博客][samwize]
  * 增加 disqus 的评论只需要申请 disqus 账号并修改 _config.yml @2013.12.14
 
@@ -58,4 +57,20 @@ git clone <your-blog-repo> _deploy # 模拟 rake setup_github_pages
 
 ****
  * PS: 由于可以使用 `rake preview` 进行调试，master 分枝仅用于发布，所以完全没有必要 checkout master；不 checkout 还避免了 pull 和 push 时会捎上 master 的问题
- * TODO: 更新 Octopress
+
+****
+ * Update@2016.03.10: 更新Octopress, 解决升级 Mac 后无法 preview 的问题
+``` sh
+git merge octopress/master
+sudo gem install bundler # 可能不必要
+bundle update
+bundle install
+```
+``` sh 如果需要升级 Ruby
+brew update
+brew install rbenv ruby-build
+rbenv install 2.2.4
+rbenv local 2.2.4
+sudo gem install bundler
+rbenv rehash
+```

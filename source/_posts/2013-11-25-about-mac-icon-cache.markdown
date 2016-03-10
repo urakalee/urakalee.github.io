@@ -20,5 +20,9 @@ killall Dock
  [community]: https://discussions.apple.com/message/23541241#23541241 "Mavericks Launchpad, missing icons"
 
 ****
-Update@2013.11.26: 最新版的 CleanMyMac 2.2.0 貌似不会有清理完缓存瘫痪的问题了
-Update@2015.01.21: 最新版的 MacOS 10.10 已经不能用上述命令行清理 Launchpad 了
+ * Update@2013.11.26: 最新版的 CleanMyMac 2.2.0 貌似不会有清理完缓存瘫痪的问题了
+ * Update@2015.01.21: 最新版的 MacOS 10.10 已经不能用上述命令行清理 Launchpad 了
+ * Update@2016.03.10: 可以使用如下命令重置 Launchpad 图标
+``` sh
+defaults write com.apple.dock ResetLaunchPad -bool true; killall Dock
+```

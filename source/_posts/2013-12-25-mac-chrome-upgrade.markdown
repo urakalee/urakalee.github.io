@@ -14,3 +14,11 @@ sudo /Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/R
 * 折腾半天还是不行, 最后从官网下载了最新版的 Chrome, 覆盖安装
 
  [google]: https://support.google.com/chrome/answer/1367288?hl=zh-Hans "无法在苹果机上更新 Google Chrome 浏览器"
+
+****
+ * Update@2016.03.10: 使用 Homebrew Cask
+``` sh
+brew install caskroom/cask/brew-cask
+brew cask search chrome
+brew cask install google-chrome
+```
