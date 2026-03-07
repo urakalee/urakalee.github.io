@@ -18,7 +18,16 @@ paginate = 10
 
   [params.homeInfoParams]
     Title = "Binary Life"
-    Content = "诗人 · 方法论者 · 喝汤族 · 微微爸"
+    Content = "诗人·方法论者·喝汤族·微微爸"
+
+  [[params.friendLinks]]
+    name = "我的公众号"
+    qrcode = "/images/wechat_blog.jpg"
+    desc = "扫码关注"
+  #[[params.friendLinks]]
+  #  name = "示例博客"
+  #  url = "https://example.com"
+  #  desc = "一个示例友链"
 
 [menu]
   [[menu.main]]
