@@ -7,7 +7,8 @@ paginate = 10
 [params]
   author = "Uraka Lee"
   description = "诗人 方法论者 喝汤族 微微爸"
-  defaultTheme = "auto"
+  defaultTheme = "light"
+  disableThemeToggle = true
   showShareButtons = false
   showReadingTime = true
   showPostNavLinks = true
@@ -44,5 +45,5 @@ paginate = 10
     [markup.goldmark.renderer]
       unsafe = true
   [markup.highlight]
-    style = "dracula"
+    noClasses = false
     lineNos = false
