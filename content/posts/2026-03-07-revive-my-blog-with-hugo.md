@@ -40,7 +40,7 @@ cd /path/to/blog
 hugo new content posts/YYYY-MM-DD-my-post-title.md
 ```
 
-这会在 `content/posts/` 下生成一个带 front matter 模板的 Markdown 文件。
+会在 `content/posts/` 下生成一个带 front matter 模板的 Markdown 文件。
 
 ```yaml
 ---
@@ -70,7 +70,7 @@ git commit -m "新文章: xxx"
 git push
 ```
 
-push 到 `main` 分支后，GitHub Actions 会自动构建并部署到。
+push 到 `main` 分支后，GitHub Actions 会自动构建并部署。
 
 ## 样式
 
@@ -80,7 +80,7 @@ push 到 `main` 分支后，GitHub Actions 会自动构建并部署到。
 
 ## 附件
 
-### 友情链接
+### 链接
 
 - 费了半天劲，最终还是 Opus 搞定了，不知道为什么 Sonnet 不行（位置搞不对）
 - 公众号链接没搞定（感觉现在微信已经不支持了，但 AI 搜到的还都是过时消息），最后放了二维码
@@ -92,3 +92,7 @@ push 到 `main` 分支后，GitHub Actions 会自动构建并部署到。
 ### 打赏
 
 - 未调研，目前需求不大
+
+### 发布到其它平台
+
+- wechatsync：Chrome 插件；试了一下发布到公众号时代码格式有点问题
