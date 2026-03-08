@@ -367,11 +367,11 @@ body.list .main:has(.home-container) {
 }
 
 .post-content .alert-note {
-  border-inline-start-color: #3b82f6;
+  border-inline-start-color: var(--accent);
 }
 
 .post-content .alert-note .alert-heading {
-  color: #3b82f6;
+  color: var(--accent);
 }
 
 .post-content .alert-tip {
