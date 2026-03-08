@@ -2,7 +2,7 @@
 title: "修复嵌套 Git 仓库 Cursor Timeline 为空问题"
 date: 2026-03-08
 draft: false
-tags: ["aitool"]
+tags: ["ai-tool"]
 ---
 
 主目录是 Git 仓库，子目录也是 Git 仓库时，用 Cursor 查看子目录文件的 Git 历史时，Timeline 面板显示为空。
