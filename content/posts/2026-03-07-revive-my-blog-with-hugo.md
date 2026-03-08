@@ -95,4 +95,4 @@ push 到 `main` 分支后，GitHub Actions 会自动构建并部署。
 
 ### 发布到其它平台
 
-- wechatsync：Chrome 插件；试了一下发布到公众号时代码格式有点问题
+- Wechatsync：Chrome 插件；试了一下发布到公众号时代码格式有点问题
