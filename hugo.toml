@@ -54,6 +54,10 @@ paginate = 10
 [outputs]
   home = ["HTML", "RSS", "JSON"]
 
+[services]
+  [services.googleAnalytics]
+    ID = "G-W6DHDN39NY"
+
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
