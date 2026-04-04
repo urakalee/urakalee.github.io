@@ -2,7 +2,7 @@
 title: "macOS 应用图标：去背景 + 导入 Xcode"
 date: 2026-03-28
 draft: false
-tags: ["cheatsheet"]
+tags: ["design", "cheatsheet"]
 ---
 
 两步搞定：用"预览"去掉图标背景，再把透明 PNG 拖进 Xcode 的 AppIcon。
